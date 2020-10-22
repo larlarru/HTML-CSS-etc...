@@ -1,0 +1,12 @@
+@charset = "UTF-8";
+
+pre {
+		padding : 10px; /*padding : 10px 20px;는 위아래는 10px 좌우는20px*/
+		/* background : #daaafd; */
+		/*background : rgb(120, 100, 200);*/
+		/*background : rgba(120, 100, 200, 0.5);*/ /*rgb에 붙은 a는 투명도를 나타낸다. 0.5도*/
+		background : rgba(40%, 37%, 78%, 0.2);
+		border-top : 2px solid blue; /*한줄 파란색 윗줄*/
+		border-bottom : 5px double blue; /*밑에 2줄 파란색 */
+		font-size : 1.5em; /*1.5em은 1.5배이다.*/
+	}

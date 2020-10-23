@@ -3,8 +3,140 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
+<link rel="stylesheet" href="../css/public.css">
+
+	<style>
+		div {
+		border : 1px solid blue;
+		width : 150px;
+		float : left;
+		margin : 5px 10px; <!-- 위아래는 5px 좌우는 10px라는 의미이다. -->
+	}
+	
+	#dd{
+		width : 300px;
+	}
+	
+	img {
+		width : 50px;
+		height : 50px;
+	}
+	
+	hr {
+		clear : both;
+	}
+	
+	
+	</style>
+
 </head>
 <body>
+	<pre>
+		&lt;ol&gt;
+				&lt;li&gt;아메리카노&lt;/li&gt;
+		&lt;/ol&gt;
+		
+		&lt;ol&gt;
+				&lt;li&gt;&lt;img src=""&gt;&lt;/li&gt;
+		&lt;/ol&gt;
+		
+		&lt;ol&gt;
+				&lt;li&gt;&lt;a href=""&gt;네이버&lt;/a&gt;&lt;/li&gt;
+				&lt;li&gt;&lt;a href=""&gt;&lt;img src=""&gt;&lt;/a&gt;&lt;/li&gt;
+		&lt;/ol&gt;
+		
+		&lt;ol&gt;
+			&lt;li&gt;아메리카노
+				&lt;ul&gt;
+					&lt;li&gt;아메리카노1
+						&lt;ol&gt;
+							&lt;li&gt;아메리카노a&lt;/li&gt;
+							&lt;li&gt;아메리카노b&lt;/li&gt;
+						&lt;/ol&gt;
+					&lt;/li&gt;
+					&lt;li&gt;아메리카노2&lt;/li&gt;
+				&lt;/ul&gt;
+			&lt;/li&gt;
+		
+	</pre>
+
+	<div>
+		<ol>
+			<li>아메리카노</li>
+			<li>카푸치노</li>
+			<li>카페라떼</li>
+			<li>에스프레소</li>
+		</ol>
+	</div>
+	
+	<div>
+		<ol>
+			<li><img src="../images/아메리카노.jpg" alt="아메리카노"></li>
+			<li><img src="../images/카푸치노.jpg" alt="카푸치노"></li>
+			<li><img src="../images/카페라떼.jpg" alt="카페라떼"></li>
+			<li><img src="../images/에스프레소.jpg" alt="에스프레소"></li>
+		</ol>
+	</div>
+	
+	<div>
+		<ol>
+			<li><a href="http://www.naver.com" target="_blank">네이버</a></li>
+			<li><a href="http://www.naver.com" target="_blank"><img src="../images/네이버.jpg"></a></li>
+		</ol>
+	</div>
+	
+	<div id="dd">
+		<ol>
+			<li>아메리카노
+				<ul></ul>
+					<li>아메리카노1
+						<ol>
+							<li>아메리카노a</li>
+							<li>아메리카노b</li>
+						</ol>
+					</li>
+					<li>아메리카노2</li>
+				</ul>
+			</li>
+			
+			
+			<li>카푸치노
+				<ul>
+					<li>카푸치노1
+						<ul>
+							<li>카푸치노a</li>
+							<li>카푸치노b</li>
+						</ul>
+					</li>
+					<li>카푸치노2</li>
+				</ul>
+			</li>
+			<li>카페라떼</li>
+			<li>에스프레소</li>
+		</ol>
+	</div>
+
+<hr>
+<p>즐거운 하루!!!	
+
 
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

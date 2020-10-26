@@ -11,15 +11,40 @@
 	
 	table .b{
 		background: lightblue;
+		width : 100px;
+		height : 20px;
 	}
 	
 	table .c{
 		background: lightgreen;
+		width : 100px;
+		height : 50px;
 	}
 	
-	* {
+	body .bCenter {
 		text-align : center;
 	}
+	
+	#first {
+		width:60%;
+		margin:auto;
+	}
+	
+	#second{
+		border : 1px solid black;
+		background: lightyellow;
+		width:300px;
+		margin:auto;
+		float: right;
+	}
+	
+	#div1 {
+		width: auto;
+		margin : auto;
+		float : right;
+	}
+	
+	
 	
 </style>
 
@@ -27,10 +52,11 @@
 
 <body>
 
-<h1>도시락</h1>
+<h1 class="bCenter">대전도시락</h1>
+<h2 class="bCenter">10월 식단표</h2>
 
 <table id="first" border="1">
-	<caption><h2>메뉴표</h2></caption>
+	<caption><h2 class="bCenter">메뉴표</h2></caption>
 	<tr>
 		<th>월</th>
 		<th>화</th>
@@ -117,12 +143,30 @@
 		<td>test3</td>
 		<td>test4</td>
 		<td>test5</td>
-	</tr>
-	
-	
-	
-	
+	</tr>	
 </table>
+
+
+쌀 : 국내산<br>
+소고기 : 호주산<br>
+돼지고기 : 국내산<br>
+닭고기 : 국내산<br>
+김치 : 중국산을 사용하고 있습니다.<br>
+
+<div id="dd">
+<li>위 식단은 시장 사정에 따라 변경할 수 있습니다.</li>
+</div>
+
+<table id="second">
+	<tr><th>확인자</th></tr>
+</table>
+
+<br><br>
+
+<div id="div1">
+042-1111-1111<br>
+계좌번호
+</div>
 
 
 </body>

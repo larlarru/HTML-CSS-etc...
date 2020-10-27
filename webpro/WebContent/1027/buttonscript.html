@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<style>
+</style>
+
+<script>
+/* 함수정의 */
+	function calc(){
+
+		var a = document.ff.price.value
+		var b = document.ff.qty.value
+		c = a * b
+		
+		alert(c + "원 입니다.") /* alert() 여기다가 출력할거라는 의미이다. */
+	}
+</script>
+
+</head>
+<body>
+
+<pre>
+	input type="button" 요소는 자체 기능이 없다.
+	기능을 부여하기 위해서 script를 이용한다.
+</pre>
+
+	<form name="ff" action="script.jsp" method="post">
+		물품가격 : <input type="text" name="price"><br>
+		수량 : <input type="text" name="qty"><br>
+		<input type="button" value="확인" onclick="alert('10000원 입니다.')">
+		<input type="button" value="확인calc" onclick="calc()"> <!-- 함수 호출 -->
+		<input type="submit" value="전송">
+	</form>
+
+</body>
+</html>

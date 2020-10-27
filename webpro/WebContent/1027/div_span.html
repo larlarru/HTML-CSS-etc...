@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>div_span</title>
+
+<style>
+	/*body {
+		min-width : 1000px;
+	}*/
+	img {
+		width : 90%;
+		height : 90%;
+	}
+	
+	div.cdiv { /* 바깥쪽 div */
+		border : 1px solid blue;
+		width : 95%;
+		height : 300px;
+		padding-left : 20px;
+		margin-bottom : 1%;
+	}
+	
+	.indiv { /* 안쪽 div 2개*/
+		box-sizing : border-box;
+		float : left;
+		border : 1px dotted orange;
+		height : 200px;
+		/*width : 65%;*/
+		width : calc(65% - 2%);
+		margin : 10px;
+		overflow : auto;
+		padding : 0.5%;
+	}
+	
+	.in1 { /* 안쪽 div중 첫번째 이미지가 있는 div */
+		width : calc(25% - 1%);
+		/*padding : 5px;*/
+		box-sizing : border-box;
+	}
+	
+	h2 {
+		text-align : center;
+	}
+	
+	span { /*span에다가 크기등 속성 지정*/
+		background : pink;
+		display : inline-block;
+		width : auto;
+		height : auto;
+	}
+	
+	sup {
+		color : red;
+	}
+	
+	#span1 { /*span에다가 크기등 속성 지정*/
+		background : lightblue;
+		display : inline-block;
+		width : auto;
+		height : auto;
+	}
+	
+</style>
+
+</head>
+<body>
+	<div class="cdiv">
+		<h2>사자</h2>
+		<div class="indiv in1">
+			<img src="../images/사자.jpg">
+		</div>
+	    <div class="indiv">
+	            사자는 아프리카에 살며 
+	            강한 다리와 턱, 
+	    	<span>긴 송곳니</span>를 지니고 있다.
+	    	
+	    	북아프리카와 중동, 서아시아, 유럽, 아라비아에서도 과거엔 서식했었으나 
+	    	유럽 지역에서는 기원전부터 씨가 말랐고, 인도를 제외한 아시아 지역에서도 
+	    	19~20세기부터 하나둘씩 사라져갔다[13]. 
+	    	북아프리카에서도 1920년 모로코에서 사살되어 이 지역들의 야생 사자는 멸종된 상태이다. 
+	    	지금은 대부분이 남아프리카 사바나 일대에 서식하고 있고, 
+	    	남서아프리카의 나미비아 사막[14]에 밀렵으로
+			멸종된 줄 알았던 사막 사자가 살아남아 있으며 
+	    	사헬 지대에도 일부 살아남아 있다. 
+	    	인도의 기르숲이란 곳에도 사자가 약간 남아있기는 하다. 
+	    	현재도 개체수가 계속 감소 중인 사자기에, 
+	    	나중엔 일부 보호구역에서 소수만이 남을것이다. 
+	    	간지나는 비주얼과 강인한 사냥 능력으로 오랫동안 
+	    	<span>'백수의 왕'</span>으로 불리우며 <sup>왕의 상징</sup>으로 
+	    	여겨지는 등 인기를 누려온 동물이다. 
+	    	동양권에서도 호랑이와 쌍벽으로 여겨지지만 호랑이와 달리 또한 
+	    	모든 동물들 중에서 유독 사자(獅子)에게만 공자(孔子), 
+	    	맹자(孟子)처럼 자(子)를 붙이는 걸 보면 사자의 위상을 알 수 있다.
+	    	
+		</div>
+	</div>
+	
+	<div class="cdiv">
+		<h2>호랑이</h2>
+		<div class="indiv in1">
+			<img src="../images/호랑이.jpg">
+		</div>
+	    <div class="indiv">
+	          아시아[8]에 서식하는 식육목(食肉目) 고양잇과의 포유류. 
+	          현존하는 모든 고양잇과 동물들 중 가장 큰 동물로 
+	          수컷의 무게는 100~360 kg, 암컷의 무게는 70~200 kg 정도 나간다. 
+	          또한 IUCN 멸종 위기 등급 EN인 멸종 위기 종이기도 하다.
+	     
+	     <span id="span1">"호랑이"</span>의 어원에는 여러 설이 있으나 범을 뜻하는 
+	           虎와 이리를 뜻하는 狼에 접미사가 붙어(虎+狼+이) 
+	         육식 맹수를 가리키던 것이 점차 범 대신 호랑이라고 
+	         부르게 된 것으로 본다. 불교 용어로는 대충(大蟲)[9]이라고 부른다. 
+	         
+	         중국 소설 수호지에는 '모대충(母大蟲)'이란 별명을 가진 
+	         고대수라는 여자 호걸이 등장하는데, 모대충이란 말도 '암호랑이'라는 뜻. 
+	         같은 작품에 등장하는 설영 역시 별명이 병대충(病大蟲 - 호랑이만큼이나 용맹한 자)이다.
+
+		순우리말로 범이라는 단어가 있고, 잘 발달되고 균형 잡힌 신체 구조와 
+		느리게 움직이다가도 목표물을 향할 때의 빠른 몸놀림 
+		그리고 빼어난 지혜와 늠름한 기품을 지녔다 하여 
+		산군(山君), 산령 (山靈), 산신령(山神靈), 산중왕(山中王)으로 불렸다.
+	    	
+		</div>
+	</div>
+</body>
+
+</html>

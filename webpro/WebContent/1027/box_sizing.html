@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>box-sizing</title>
+
+<link rel="stylesheet" href="../css/public.css">
+
+<style>
+	.wrapper {
+		width : 300px;
+		height : 100px;
+		border : 5px solid #ffb2f5;
+		background : #ffd9ec;
+	}
+	
+	.one, .two {
+		float : left;
+		width : 50%;
+		height : 100px;
+		border : 5px solid purple;
+	}
+	
+	.one {
+		box-sizing : border-box;
+	}
+	
+	.two {
+		box-sizing : content-box;
+	}
+	
+</style>
+
+</head>
+<body>
+
+	<pre>
+		box-sizing : 브라우저의 크기가 줄어들때 각 요소를 브라우저의 크기에 맞게
+					  각 요소의 크기를 조절할때  필요하다.
+		
+		요소의 가로 크기 width : calc(50%-0.5%)
+		width : calc(300px-1%)
+		width : calc(100px - 1px)
+	</pre>
+
+	<pre>
+		전체길이 300px 두개의 div가 각각 50%를 차지한다.
+		box-sizing : border-box 일때 border와 padding 속성을 포함해서
+		가로 크기를 50%로 한다.
+	</pre>
+
+	<h3> box-sizing : border-box</h3>
+	
+	<div class="wrapper">
+		<div class="one">50%</div>
+		<div class="one">50%</div>
+	</div>
+	<br>
+
+	<pre>
+		전체길이 300px 두개의 div가 각각 50%를 차지한다.
+		box-sizing : content-box 일때 border와 padding 속성을 포함하지 않고
+		내용을 기준으로 50%를 차지 하기 때문에 실제로 차지하는 크기는 50%가 넘는다.
+	</pre>
+
+	<h3> box-sizing : content-box</h3>
+	
+	<div class="wrapper">
+		<div class="two">50%</div>
+		<div class="two">50%</div>
+	</div>
+	
+
+</body>
+</html>

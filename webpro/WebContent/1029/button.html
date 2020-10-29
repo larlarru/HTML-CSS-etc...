@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<link rel="stylesheet" href="../css/public.css">
+
+<style>
+	select {
+		width : 150px;
+	}
+	
+	div {
+		border : 1px dotted orange;
+		padding : 10px;
+	}
+</style>
+
+
+<script type="text/javascript">
+
+	// 변수 선언 : var 변수명, let 변수명, const 변수명
+	function proc1() {
+		const name = ff.name.value
+		var area = ff.area.value
+		
+		//area = area.replace(/\r\n/g, "<br>");
+		area = area.replace(/\r/g, "").replace(/\n/g, "<br>");
+		
+		/* 
+		ECMAScript
+		표준 no - es2, es4, es6(2016), es8 
+		*/
+		
+		// alert(name + "\n" + area);
+		
+		sel = ff.fruit.options.length;
+		
+		var res ="";
+		
+		for(var i=0; i < sel; i++) {
+			res += sel[i].selected.value + " ";
+		}
+		
+		alert(res);
+		//alert(sel);
+		
+		/* 
+		res = "<h1>실행결과</h1>"
+		res += "이름 : " + name + "<br>";
+		res += "내용 : <br>" + area + "<br>";
+		 */
+		
+		//document.querySelector('#result').innerHTML = res;
+		document.querySelector('#result').textContent = res;
+		
+	}
+</script>
+
+
+</head>
+
+<body>
+
+<pre>
+
+여러줄 입력 : &lt;textarea&gt;&lt;/textarea&gt;
+
+기능이 없다.  onclick=""에 의해서 기능을 부여
+ &lt;button type="button" onclick=""&gt;&lt;/button&gt;
+ 
+ 전송 기능을 수행
+ &lt;button type="submit"&gt;&lt;/button&gt;
+ &lt;button&gt;&lt;/butto&gt;
+ 
+ select요소의 선택한 값 전달
+ jsp : request.getParameterValues("fruit")
+ script : ff.fruit.value
+
+</pre>
+
+<form name="ff" action="buttonsend.jsp" method="post">
+	이름<input name="name"><br>
+	
+	남기고 싶은 말 <br>
+	<textarea name="area" rows="10" cols="60"></textarea>
+	
+	<br>
+	좋아하는 과일
+	<select name="fruit" multiple="multiple" size="6">
+		<option value="사과">사과</option>
+		<option value="복숭아">복숭아</option>
+		<option value="바나나">바나나</option>
+		<option value="참외">참외</option>
+		<option value="수박">수박</option>
+		<option value="오렌지">오렌지</option>
+	</select>
+	
+	<br><br>
+	
+	<button type="button" onclick="proc1()">확인버튼</button>
+	<button type="submit">전송</button>
+	<button type="reset">취소</button>
+	<button>전송</button>
+</form>
+
+<br><br>
+확인버튼 클릭하면 proc1()함수가 호출되어 실행 결과를 출력한다.<br>
+
+script에서 div에 접근하기 위해서<br>
+document.getElementByid('result')<br>
+document.getElementsByTagName('div')<br>
+
+
+document.querySelector("#result") q 또는<br>
+document.querySelector("div") 이런식으로 접근하는데 2가지 방법이 있다.<br>
+- 접근요소에 출력 - innerHTML / textContent<br>
+
+<div id="result">
+</div>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

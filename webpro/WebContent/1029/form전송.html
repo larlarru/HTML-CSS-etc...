@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<link rel="stylesheet" href="../css/public.css">
+
+<style>
+	label {
+		display : inline-block;
+		width : 200px;
+		height : 30px;
+	}
+	
+	form {
+		border : 1px solid blue;
+		padding : 10px;
+		text-align : center;
+		width : 60%;
+		margin-top : 50px;
+		margin-left : 10%;
+	}
+	
+</style>
+
+</head>
+
+<body>
+
+<pre>
+
+	&lt;input type="hidden" name="name" value="홍길동"&gt;
+	화면에서 보이지 않지만 서버로 데이터를 전송한다.
+	
+	&lt;input type="image" src="../images/check.png"&gt;
+	전송 submit을 수행한다.
+	
+</pre>
+
+<form action="send.jsp" method="post">
+	<label>아이디 : </label><input type="text" name="id"><br>
+	<label>비밀번호 : </label><input type="password" name="pass"><br>
+	<label>생일 : </label><input type="date" name="bir"><br>
+	<label>좋아하는 과일 : </label><input type="checkbox" name="fruit" value="사과">사과
+	<input type="checkbox" name="fruit" value="복숭아">복숭아
+	<input type="checkbox" name="fruit" value="참외">참외
+	<input type="checkbox" name="fruit" value="포도">포도
+	<input type="checkbox" name="fruit" value="수박">수박
+	<input type="checkbox" name="fruit" value="오렌지">오렌지
+	<input type="checkbox" name="fruit" value="자두">자두
+	<br>
+	
+	<label>성별 : </label><input type="radio" name="gender" value="남자">남자
+	<input type="radio" name="gender" value="여자">여자<br>
+	<input type="hidden" name="name" value="홍길동"> <!-- 화면상에 hidden이 없어서 value가 있어야한다. -->
+	
+	<label>파일 : </label><input type="file" name="file"><br> <!-- 파일첨부기능 -->
+	
+	<input type="submit" value="전송">
+	<input type="reset" value="취소">
+	<input type="image" src="../images/check.png"> <!-- 초기화 -->
+</form>
+
+
+
+</body>
+</html>

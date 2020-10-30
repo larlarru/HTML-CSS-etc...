@@ -15,6 +15,19 @@
 		border : 1px dotted orange;
 		padding : 10px;
 	}
+	
+	form {
+		width : 50%;
+		padding : 5px;
+		border : 1px solid blue;
+		box-sizing : border-box;
+		margin-left : 5%;
+	}
+	
+	textarea {
+		width : calc(100% - 1%);
+	}
+	
 </style>
 
 
@@ -22,8 +35,8 @@
 
 	// 변수 선언 : var 변수명, let 변수명, const 변수명
 	function proc1() {
-		const name = ff.name.value
-		var area = ff.area.value
+		const name = document.ff.name.value
+		var area = document.ff.area.value
 		
 		//area = area.replace(/\r\n/g, "<br>");
 		area = area.replace(/\r/g, "").replace(/\n/g, "<br>");
@@ -35,27 +48,42 @@
 		
 		// alert(name + "\n" + area);
 		
-		sel = ff.fruit.options.length;
 		
-		var res ="";
 		
-		for(var i=0; i < sel; i++) {
-			res += sel[i].selected.value + " ";
-		}
+		sel = document.ff.fruit.options.length;
 		
-		alert(res);
-		//alert(sel);
-		
-		/* 
-		res = "<h1>실행결과</h1>"
+		//var res ="";
+		var res ="<h1>실행결과</h1>";
 		res += "이름 : " + name + "<br>";
 		res += "내용 : <br>" + area + "<br>";
-		 */
+		res += "좋아하는 과일 : <br>";
 		
-		//document.querySelector('#result').innerHTML = res;
-		document.querySelector('#result').textContent = res;
+		for(var i=0; i < sel; i++) {
+			//res += sel[i].selected.value + " ";
+			if(document.ff.fruit.options[i].selected) {
+				res += document.ff.fruit.options[i].value + " ";
+			}
+		}
+		
+		//alert(res);
+		
+		//alert(sel);
+		
+		
+		//res = "<h1>실행결과</h1>"
+		//res += "이름 : " + name + "<br>";
+		//res += "내용 : <br>" + area + "<br>";
+		
+		document.querySelector('#result').innerHTML = res;
+		//document.querySelector('#result').textContent = res;
 		
 	}
+	
+	function proc2() {
+		document.ff.submit(); // jsp가 수행
+		
+	}
+	
 </script>
 
 
@@ -75,8 +103,11 @@
  &lt;button&gt;&lt;/butto&gt;
  
  select요소의 선택한 값 전달
- jsp : request.getParameterValues("fruit")
- script : ff.fruit.value
+ <!-- jsp : request.getParameterValues("fruit") -->
+ jsp : String sel[] = request.getParameterValues("fruit") -sel[i]
+ 
+ <!-- script : ff.fruit.value -->
+ script : document.ff.fruit.value.options[i].value
 
 </pre>
 
@@ -90,7 +121,7 @@
 	좋아하는 과일
 	<select name="fruit" multiple="multiple" size="6">
 		<option value="사과">사과</option>
-		<option value="복숭아">복숭아</option>
+		<option value="복숭아" selected>복숭아</option>
 		<option value="바나나">바나나</option>
 		<option value="참외">참외</option>
 		<option value="수박">수박</option>
@@ -99,10 +130,11 @@
 	
 	<br><br>
 	
-	<button type="button" onclick="proc1()">확인버튼</button>
-	<button type="submit">전송</button>
+	<button type="button" onclick="proc1()">확인버튼</button> - proc1()함수 호출.script에서 결과 실행<br>
+	<button type="button" onclick="proc2()">확인전송</button> - proc2()함수 호출해서 함수내에서 submit을 실행<br>
+	<button type="submit">전송</button> - 직접 form의 action="buttonsend.jsp"이 실행되어 결과 발생.<br>
 	<button type="reset">취소</button>
-	<button>전송</button>
+	<button>전송</button> - 직접 form의 action="buttonsend.jsp"이 실행되어 결과 발생.<br>
 </form>
 
 <br><br>

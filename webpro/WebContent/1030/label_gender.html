@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<link rel="stylesheet" href="../css/public.css">
+
+<style>
+
+	fieldset {
+		width : 40%;
+	}
+	
+	label {
+		display : inline-block;
+		width : 100px;
+		height : 30px;
+	}
+	
+	.gend {
+		width : 40px;
+		
+	}
+	
+	body {
+		background : #efd3e9;
+		font-size : 1.2em;
+	}
+	
+</style>
+
+<script>
+	function proc1(){
+		a = document.getElementById('color').value
+		b = document.querySelector('#color').value
+		console.log(a + " ," + b);
+		//alert(a + " ," + b);
+		
+		document.body.style.backgroundColor = a;
+		document.body.style
+	}
+	
+</script>
+
+
+</head>
+
+<body>
+
+<fieldset>
+	<legend>인적사항 입력</legend>
+	<label>이름</label><input type="text" name="name"><br>
+	<label>주소</label><input type="tel" name="addr"><br>
+	<label>전화번호</label><input type="text" name="tel"><br>
+	<label>성별</label>
+	<input type="radio" name="gend1" value="남자">남자
+	<input type="radio" name="gend1" value="여자">여자<br>
+	<br>
+	
+	<label class="gend">남자</label>
+	<input type="radio" name="gend2" value="남자">
+	<label class="gend">여자</label>
+	<input type="radio" name="gend2" value="여자">
+	
+</fieldset>
+
+<fieldset>
+	<legend>경력사항 입력</legend>
+	<label>이메일</label><input type="email" name="email"><br>
+	<label>수량</label><input type="number" min="10" value="10" max="100" step="1" name="qty"><br>
+	<label>가격</label><input type="range" value="10000" min="1000" max="1000000" step="1000" name="price"><br>
+</fieldset>
+
+<fieldset>
+	<legend>수상경력 입력</legend>
+	<label>색상</label><input type="color" name="color" id="color"><br>
+	<input type="button" value="변경" onclick="proc1()">
+	<button type="button" onclick="proc1()">변경</button>
+</fieldset>
+
+<fieldset>
+	<legend>봉사활동</legend>
+	
+	<pre>
+		pattern : 정규식을 이용한 데이터 형식을 지정
+		required : 필수 항목을 지정
+		placeholder : 흐리게 나타나는 예시 문자를 지정
+		title : 마우스를 올려놨을때 말풍선처럼 나타나는 문자를 지정
+		size : 입력 요소의 크기를 지정
+	</pre>
+	
+	<form>
+	<label>이름</label><input type="text" name="name" size="5" pattern="[가-힣]{3,5}" required="required"><br>
+	<label>전화번호</label><input type="text" name="tel" required title="010-1234-5678"><br>
+	<label>이메일</label><input type="email" name="email" placeholder="kk123@abc.com"><br>
+	<input type="submit" value="전송">
+	</form>
+</fieldset>
+
+
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

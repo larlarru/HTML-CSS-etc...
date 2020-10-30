@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<style>
+	
+	h1{
+		text-indent: 100px;
+	}
+	
+	form {
+		width : 500px;
+		border : 3px solid blue;
+		padding : 10px;
+		margin : 10px;
+	}
+	
+	label {
+		display : inline-block;
+		width : 100px;
+		height : 30px;
+	}
+	
+	.gend {
+		width : 40px;
+		
+	}
+</style>
+
+</head>
+
+<body>
+<h1>이메일 전송화면</h1>
+<form action="input1.jsp" method="post">
+	
+	<label>이름</label><input type="text" name="name" pattern="[가-힣]{3,5}" required="required"><br>
+	<label>이메일</label><input type="email" name="email" placeholder="kk123@abc.com"><br>
+	내용 <br>
+	<textarea name="area" rows="10" cols="60"></textarea>
+	<br>
+	<input type="submit" value="전송">
+	<input type="reset" value="재설정">
+
+</form>
+
+<h1>회원 가입 화면</h1>
+<form action="input2.jsp" method="post">
+	<label>이름</label><input type="text" name="name" pattern="[가-힣]{3,5}" required="required"><br>
+	<label>주소</label><input type="text" name="addr" required title="대한미국서울어딘가..."><br>
+	<label>이메일</label><input type="email" name="email" placeholder="kk123@abc.com"><br>
+	
+	<input type="radio" name="gend1" value="Male">
+	<label class="gend">Male</label>
+	<br>
+	<input type="radio" name="gend1" value="Femal">
+	<label class="gend">Femal</label>
+	<br>
+	
+	<input type="submit" value="Send">
+	<input type="reset" value="원래대로">
+</form>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+

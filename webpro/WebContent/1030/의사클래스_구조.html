@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<link rel="stylesheet" href="../css/public.css">
+
+<style>
+	table {
+		border : 1px solid pink;
+	}
+	
+	td {
+		width : 200px;
+		height : 50px;
+	}
+	
+	#tab1 td:nth-child(even) {
+		background : lightblue;
+	}
+	
+	#tab1 td:nth-child(odd) {
+		background : lightgreen;
+	}
+	
+	#tab2 tr:nth-child(2n) {
+		background : lightgray;
+	}
+	
+	#tab2 tr:nth-child(2n-1) {
+		background : lightblue;
+	}
+	
+	
+</style>
+
+</head>
+<body>
+
+<pre>
+	의사코드 : 구조나 상태에 따라서 선택
+	구조 : 
+	부모를 기준으로 짝수번째 자식요소를 선택 
+		td:nth-child(2n) nth-child(even)
+	
+	부모를 기준으로 홀수번째 자식요소를 선택
+		nth-child(2n+1) nth-child(odd)
+	부모를 기준으로 지정한 번째의 자식요소를 선택
+		nth-child(3) nth-child(1)
+	
+	
+</pre>
+
+td:nth-child(even) { background : lightblue }<br>
+td:nth-child(odd) { background : lightgreen }<br>
+
+#tab2 tr:nth-child(2n) { background : lightgray }<br>
+#tab2 tr:nth-child(2n-1) { background : lightblue } <br>
+<table id="tab1" border="1">
+	<tr>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+	
+	<tr>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+	
+	<tr>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+	
+	<tr>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+	
+	<tr>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+	
+	<tr>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+	
+	<tr>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+	
+</table>
+
+
+<br><br>
+<table id="tab2" border="1">
+	<tr>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+	
+	<tr>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+	
+	<tr>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+	
+	<tr>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+	
+	<tr>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+	
+	<tr>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+	
+	<tr>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+	
+</table>
+
+
+</body>
+</html>

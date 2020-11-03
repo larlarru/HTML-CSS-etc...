@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/public.css">
+
+<style>
+	label {
+		display : inline-block;
+		width : 80px;
+		height : 40px;
+	}
+	div#result1{
+		border : 1px dotted orange;
+		width : 500px;
+		height : auto;
+		display : none;
+	}
+</style>
+
+<script>
+	function proc1() {
+		// 이름과 전화번호의 입력한 값 가져오기
+		var name = document.getElementById('name').value;
+		var tel = document.querySelector('#tel').value;
+		
+		var res = "<h2>결과출력</h2>";
+		res += "<label>이름</label>" + name + "<br>";
+		res += "<label>전화번호</label>" + tel + "<br>";
+		
+		document.getElementById('result1').innerHTML = res;
+		
+		document.getElementById('ff').style.display = "none";
+		document.getElementById('result1').style.display = "block";
+	}
+	
+	function proc2() {
+		document.getElementById('ff').style.display = "block";
+		document.getElementById('name').value="";
+		document.getElementById('tel').value="";
+		document.getElementById('result1').style.display = "none";
+	}
+</script>
+
+</head>
+<body>
+
+	<pre>
+		이름과 전화번호 입력한다.
+		확인버튼 클릭하면 - proc1() 함수 호출 
+		입력폼은 사라지고 결과 div가 나타난다.
+		document.getElementById('ff').style.display = "none";
+		document.getElementById('result1').style.display = "block";
+		
+		무궁화 꽃이 피었습니다 를 클릭하면 - proc2() 함수호출 
+		반대로 결과 div는 사라지고
+		입력폼은 다시 나타난다.
+		document.getElementById('ff').style.display = "block";
+		document.getElementById('result1').style.display = "none";
+	</pre>
+
+	<p onclick="proc2()">무궁화 꽃이 피었습니다.</p>
+	
+	<form id="ff">
+		<label>이름</label>
+		<input type="text" id="name"><br>
+		
+		<label>전화번호 </label>
+		<input type="text" id="tel"><br>
+		<input type="button" value="확인" onclick="proc1()">
+	</form>
+	<br>
+	<div id="result1">
+	</div>
+
+</body>
+</html>

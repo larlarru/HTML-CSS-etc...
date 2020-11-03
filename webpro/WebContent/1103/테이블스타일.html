@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/public.css">
+
+<style>
+	table {
+		border : 2px solid blue;
+		/*border-collapse: collapse;*/
+		border-spacing: 10px;
+	}
+	caption {
+		margin-top : 10px;
+		margin-bottom : 10px; 
+		caption-side : bottom;
+		font-size : 1.5em;
+	}
+	td {
+		text-align : center;
+		width : 200px;
+		height : 50px;
+	}
+	th {
+		height : 50px;
+	}
+	.title {
+		background : lightblue;
+	}
+	.aa {
+		background : lightgreen;
+	}
+	.bb {
+		background : orange;
+	}
+	tr:nth-child(even) {
+		background : gray;
+	}
+	tr:nth-child(odd){
+		background : yellow;
+	}
+	tr:nth-child(1) {
+		background : lightblue;
+	}
+</style>
+
+</head>
+<body>
+
+	<table border="1">
+		<caption>VIP리스트</caption>
+		<tr class="title">
+			<th>이름</th>
+			<th>전화번호</th>
+		</tr>
+		
+		<tr class="aa">
+			<td>홍길동</td>
+			<td>1234</td>
+		</tr>
+		
+		<tr class="bb">
+			<td>개나리</td>
+			<td>3412</td>
+		</tr>
+		
+		<tr class="aa">
+			<td>진달래</td>
+			<td>7890</td>
+		</tr>
+		
+		<tr class="bb">
+			<td>무공화</td>
+			<td>4567</td>
+		</tr>
+	</table>
+
+</body>
+</html>

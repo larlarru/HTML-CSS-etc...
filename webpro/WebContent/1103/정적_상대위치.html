@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/public.css">
+
+<style>
+	p, div {
+		width : 150px;
+		height : 50px;
+		margin : 10px;
+	}
+	
+	#one, #one2 {
+		background : lightblue;
+	}
+	#two, #two2 {
+		background : lightgreen;
+	}
+	#three, #three2 {
+		background : orange;
+	}
+	
+	#two2 {
+		position : relative;
+		top : 100px;
+		left : 100px;
+	}
+</style>
+
+</head>
+<body>
+
+	<p id="one">block #1</p>
+    <div id="two">
+       	block #2<br>
+       	position:static;<br>
+    </div>
+	<p id="three">block #3</p>
+	
+	<hr color ="blue">
+	
+	<pre>
+		현재위치(정적위치)를 기준으로 배치
+		#two2 {
+			position : relative;
+			top : 100px;
+			left : 100px;
+		}	
+	</pre>
+	<p id="one2">block #1</p>
+    <div id="two2">
+       	block #2<br>
+       	position:static;<br>
+    </div>
+	<p id="three2">block #3</p>
+
+
+</body>
+</html>

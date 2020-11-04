@@ -2,10 +2,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
-<link rel="stylesheet" href="../css/public.css">
+<title>Web Shop</title>
+<link rel="stylesheet" href="../WebPage/css/mystyle.css">
 
-<style>
+<!-- <style>
 	#mainImage {
 		width : 50px;
 		height : 50px;
@@ -64,6 +64,7 @@
 		overflow: auto;
 		text-decoration: none;
 		font-size : 2em;
+		color : white;
 	}
 	#a_a2 {
 		overflow: auto;
@@ -87,11 +88,17 @@
 	.div_etc {
 		overflow: auto;
 	}
-</style>
+	.padding_lefts {
+		padding-left: 30px;
+	}
+</style> -->
 
 <script>
 	function etc() {
 		alert("해당 작업이 완료되었습니다.");
+	}
+	function login() {
+		alert("로그인 되었습니다.");
 	}
 </script>
 
@@ -118,10 +125,19 @@
     <div id="nav">
     	<aside id="left">
 			<div class="div_a">
-				<a id="a_a1" href="../WebPage/sofa.html" target="ifr"><Strong>소파</Strong></a>
+				<a id="a_a1" href="../WebPage/sofaProducts.html" target="ifr"><Strong>소파</Strong></a>
 			</div>
 			<div class="div_a">
 				<a id="a_a1" href="../WebPage/bed.html" target="ifr"><Strong>침대</Strong></a>
+			</div>
+			<div class="div_a">
+				<a id="a_a1" href="../WebPage/tableproducts.html" target="ifr"><Strong>테이블</Strong></a>
+			</div>
+			<div class="div_a">
+				<a id="a_a1" href="../WebPage/chairproducts.html" target="ifr"><Strong>의자</Strong></a>
+			</div>
+			<div class="div_a">
+				<a id="a_a1" href="../WebPage/bookshelf.html" target="ifr"><Strong>책꽂이</Strong></a>
 			</div>
     	</aside>
 		
@@ -131,7 +147,7 @@
     	<div>
 			<section id="main">
 		        <article id="article1">
-		            <iframe id="iframe" src="../WebPage/main.html" name="ifr"> 
+		            <iframe id="iframe" src="../WebPage/sofaProducts.html" name="ifr"> 
 		            </iframe>
 		        </article>
 	    	</section>
@@ -140,12 +156,27 @@
 	
 	
 	<div id="content">
-		<aside id="right">
+		<aside id="right" class="padding_lefts">
 			<strong>Shopping cart</strong>
 			<p>현재쇼핑카트에 물품이 없습니다.</p>
-	        <div id="shopcart" style=" cursor: pointer;" onclick="etc()">
-	        	쇼핑카트 보기
+	        <div id="shopcart" style=" cursor: pointer;">
+	        	<a href="../WebPage/shopcart.html" target="ifr">쇼핑카트</a>
 	        </div>
+	        
+	        <div id="login">
+	            <h4>Log In</h4>
+	            <form action="#">
+	            	<label>아이디 : </label><input type="text" name="id"><br>
+					<label>비밀번호 : </label><input type="password" name="pass"><br>
+	
+	            	<input type="submit" value="로그인" onclick="login()">
+	            	<input type="reset" value="초기화">
+	            </form>
+	            <a href="../WebPage/register.html" target="ifr">회원가입</a>
+	            <a href="../WebPage/sofaProducts.html" target="ifr" onclick="etc()">비밀번호분실</a>
+            </div>
+	        
+	        
 	    </aside>
 	</div>
 	<div id="footer">

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/public.css">
+<link rel="shortcut icon" type="image/x-icon" 
+href="../images/check2.ico"/>
+
+<style>
+</style>
+
+<script>
+	function proc1() {
+		in1 = document.getElementById('input1').value;
+		in2 = document.getElementById('input2').value;
+		
+		res = parseInt(in1) + parseInt(in2);
+		
+		document.getElementById('result').value = res;
+		/* 
+		result2 = document.getElementById('result2');
+		document.getElementById('result2').innerHTML = res;
+		document.getElementById('result2').style.fontSize = "2.0em";
+		document.getElementById('result2').style.color = "red";
+		 */
+		result2.innerHTML = res;
+		result2.style.fontSize = "2.0em";
+		result2.style.color = "blue";
+	}
+</script>
+
+</head>
+<body>
+
+	<pre>
+		계산버튼 클릭하면 proc1()함수 호출
+		input text요소에 입력한 값(value)으로 덧셈연산하고
+		input text요소에 출력(value)한다.
+		
+		div요소에 출력시에는 innerHTML, textContent로 한다.
+	</pre>
+	<h1>&lt;&lt;계산하기>></h1>
+	입력1 : <input type="text" id="input1"><br>
+	입력2 : <input type="text" id="input2"><br>
+	결과 : <input type="text" id="result"><br>
+	<input type="button" value="계산" onclick="proc1()"><br>
+	<br><br>
+	<div id="result2"></div>
+	
+
+</body>
+</html>

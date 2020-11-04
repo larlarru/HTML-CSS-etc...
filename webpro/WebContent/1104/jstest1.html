@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/public.css">
+
+<style>
+</style>
+
+<script>
+	function proc1() {
+		
+		//alert("hello~~");
+		//document.write("hello");
+		
+		document.getElementById('result').textContent ="hello";
+	}
+</script>
+
+</head>
+<body>
+	
+	<pre>
+		확인버튼 클릭하면 proc1() 함수 호출
+		함수내에서 출력문 작성
+		alert("hello~~");	-> 팝업창으로 결과를 출력한다.
+		document.write("hello");	-> 기ㅣ존에 만들어져 실행되어 있는 문서를 덮어쓰기가 된다.
+		document.getElementById('result').textContent ="hello";
+	</pre>
+	
+	<input type="button" value="확인" onclick="proc1()">
+	<div id="result">
+	</div>
+
+</body>
+</html>

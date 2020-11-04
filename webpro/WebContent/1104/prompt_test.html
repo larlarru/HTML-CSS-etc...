@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/public.css">
+
+<style>
+</style>
+
+<script>
+	window.onload = function() {
+		input1 = parseInt(prompt("정수1를 입력하세요."));
+		input2 = parseInt(prompt("정수2를 입력하세요."));
+		
+		sum = input1 + input2;
+		sub = input1 - input2;
+		mul = input1 * input2;
+		div = input1 / input2;
+		
+		res = "input1 : " + input1 + "<br>"
+		res += "input2 : " + input2 + "<br>"
+		res += "더하기 : " + sum + "<br>"
+		res += "빼기 : " + sub + "<br>"
+		res += "곱하기 : " + mul + "<br>"
+		res += "나누기 : " + div + "<br>"
+		
+		//document.write(res);
+		
+		/* document.write("input2 : " + input2 + "<br>");
+		document.write("더하기 : " + sum + "<br>");
+		document.write("빼기 : " + sub + "<br>");
+		document.write("곱하기 : " + mul + "<br>");
+		document.write("나누기 : " + div + "<br>"); */
+		
+		document.getElementById('result').innerHTML = res;
+	}
+	
+</script>
+
+</head>
+<body>
+
+	<pre>
+		입력 : prompt("para1", "para2");
+		para2은 옵션, 생략가능
+		입력한 값을 덧셈 연산시 parseInt
+	</pre>
+	
+	<img src="../images/등대.jpg">
+	<div id="result"></div>
+
+
+</body>
+</html>

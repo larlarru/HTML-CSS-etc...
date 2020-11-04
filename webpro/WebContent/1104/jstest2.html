@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/public.css">
+
+<style>
+	div {
+		border : 2px solid orange;
+		height : 50px;
+	}
+</style>
+
+<script>
+	window.onload = function() {
+		document.getElementById('result').innerHTML ="<h1>Hello~</h1>";
+		
+		a=100
+		b="100"
+		
+		c = a==b;
+		d = a===b;
+		alert(c + " , " + d);
+	}
+</script>
+
+</head>
+<body>
+
+	<pre>
+		script가 먼저 실행되어 body 태그안의 어떤 요소를 검색하고자 한다면
+		검색이 불가하여 오류가 발생한다.
+		document.getElementById('result').innerHTML ="&lt;h1>Hello~&lt;/h1>";
+		
+		body태그안의 요소로 document를 생성하여 window에 완전히 실행되어졌을때
+		script를 실행하도록 하기 위해서
+		<strong>window.onload = function()</strong> {
+			document.getElementById('result').innerHTML ="&lt;h1>Hello~&lt;/h1>";
+		}
+		
+	</pre>
+
+	<div id="result"></div>
+	<p> a= 100 &nbsp;&nbsp;&nbsp; b= "100"<br> 
+		a==b : true(값을 비교) &nbsp;&nbsp;&nbsp;<br> 
+		a===b : false(값과 타입을 비교)</p>
+
+</body>
+</html>

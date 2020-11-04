@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/public.css">
+
+<style>
+	#mainImage {
+		width : 50px;
+		height : 50px;
+	}
+	#nav {
+		width : 25%;
+		height : 700px;
+		float : left;
+		background : gray;
+	}
+	#content {
+		width : 25%;
+		height : 700px;
+		float : right;
+		background : lightblue;	
+	}
+	iframe#iframe {
+		width : 100%;
+		height : 700px;
+		float : left;
+	}
+	#content1 {
+		width : 50%;
+		height : 700px;
+		float : left;
+	} 
+	#footer {
+		height : 80px;
+		background : #722f37;
+		clear : both;
+	}
+	.ul, .li {
+		float : left;
+		list-style:none;
+		padding : 5px;
+		text-align: center;
+	}
+	.ul {
+		width : 100%;
+		padding-left: 30%;
+		border : 1px solid red;
+		border-left: none;
+		border-right: none;
+	}
+	#WebShop {
+		padding : 30px;
+		text-align: center;
+	}
+	#a_a1 {
+		text-decoration: none;
+		font-size : 2em;
+		text-overflow: ellipsis;
+	}
+	.div_a {
+		border : 1px solid white;
+		height : 50px;
+		text-align: center;
+		text-overflow: ellipsis;
+	}
+</style>
+
+</head>
+<body>
+
+	<header>
+        <h1>
+            <img id="mainImage" src="../WebPage/images/가구2.jpg">
+            <a href="../WebPage/main.html">Web Shop</a>
+       </h1>
+   </header>
+   
+   <nav>
+        <ul class="ul">
+            <li class="li"><a href="main.html">Home</a></li>
+            <li class="li"><a href="main.html">About Us</a></li>
+            <li class="li"><a href="main.html">News</a></li>
+            <li class="li"><a href="main.html">My Account</a></li>
+            <li class="li"><a href="main.html">Contacts</a></li>
+        </ul>
+    </nav>
+    
+    <div id="nav">
+		<p style="color:white">카테고리 넣을곳</p>
+		<div class="div_a">
+			<a id="a_a1" href="../WebPage/products.html" target="ifr"><Strong>소파</Strong></a>
+		</div>
+		<div class="div_a">
+			<a id="a_a1" href="../WebPage/products.html" target="ifr"><Strong>침대</Strong></a>
+		</div>
+	</div>
+	
+    <div id="content1">
+    	<div>
+			<section id="main">
+		        <article id="article1">
+		            <iframe id="iframe" src="../WebPage/main.html" name="ifr"> 
+		            </iframe>
+		        </article>
+	    	</section>
+    	</div>
+	</div>
+	
+	
+	<div id="content">
+		<div>
+			<strong>test</strong>
+			<p>test</p>
+		</div>
+		<div>
+			<strong>test</strong>
+			<p>test</p>
+		</div>
+	</div>
+	<div id="footer">
+		<p id="WebShop" style="color:white">Web Shop</p>
+	</div>
+   
+
+
+</body>
+</html>

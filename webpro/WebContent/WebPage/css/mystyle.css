@@ -4,25 +4,26 @@
 		width : 50px;
 		height : 50px;
 	}
-	#nav {
+	#left {
 		width : 25%;
 		height : 700px;
 		float : left;
-		background : gray;
+		text-align: center;
+		overflow: auto;
 	}
-	#content {
+	#right {
 		width : 25%;
 		height : 700px;
 		float : right;
-		background : lightblue;	
+		overflow: auto;
 	}
-	#content1 {
-		width : 50%;
+	#main {
+		width : 46%;
 		height : 700px;
 		float : left;
 		overflow: auto;
 	} 
-	#main, #article1 {		
+	#article1 {		
 		overflow: auto;
 	}
 	iframe#iframe {
@@ -40,7 +41,7 @@
 	.ul, .li {
 		float : left;
 		list-style:none;
-		padding : 5px;
+		margin : 5px;
 		text-align: center;
 	}
 	.ul {
@@ -64,9 +65,6 @@
 		overflow: auto;
 		font-size : 1.5em;
 	}
-	#left {
-		text-align: center;
-	}
 	#rigth {
 		overflow: auto;
 	}
@@ -77,6 +75,7 @@
 		overflow: auto;
 		border : 1px solid white;
 		height : 50px;
+		background : gray;
 		text-align: center;
 	}
 	.div_etc {
@@ -84,4 +83,33 @@
 	}
 	.padding_lefts {
 		padding-left: 30px;
+	}
+	.input {
+		margin-top: 10px;
+		margin-bottom: 10px;
+	}
+	.img_product {
+		width : 200px;
+		height : 200px;
+		overflow: auto;
+	}
+	.div_product {
+		border : 1px solid white;
+		height : auto;
+		text-align: center;
+		overflow: auto;
+		float : left;
+		margin : 20px;
+	}
+	#shopcheck {
+		text-decoration: underline;
+	}
+	.div_div {
+		width : 200px;
+		height : 200px;
+		text-align: center;
+		overflow: auto;
+	}
+	.input_button_add {
+		margin : 10px;
 	}

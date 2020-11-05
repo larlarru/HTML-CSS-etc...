@@ -40,6 +40,9 @@
 		
 		res += "결과 : " + calc + "<br>"
 		
+		// 백틱
+		// res += ` 결과 : ${input1} ${oper} ${input2} = ${calc} `;
+		
 		document.getElementById('result').innerHTML = res;
 				
 	}
@@ -52,6 +55,15 @@
 		두개의 수와 연산자 하나를 입력 받는다 - prompt이용
 		
 		연산자의 종류에 따라서 각 연산을 수행한다.
+		
+		빅택, backquote, backtic, grave accent
+		템플릿 리터럴 : script에서  backtic(`)을 사용하여 
+		문자열, 표현한것을 템플릿 리터럴이라고 한다.
+		
+		일반문자열은 각 문자열("",'')과 변수 사이를
+		+ 기호를 사용하여 문장을 구성한다.
+		`문자열 ${변수} 문자열 문자열 ${변수}`
+		
 	</pre>
 
 	<input type="button" value="확인" onclick="proc1()"><br><br>

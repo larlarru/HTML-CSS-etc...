@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/public.css">
+
+<style>
+	table {
+		border-spacing: 5px;
+	}
+	td {
+		width : 50px;
+		height : 40px;
+		text-align: center;
+	}
+</style>
+
+<script>
+	function proc1() {
+		// 단입력
+		var dan = prompt("단입력");
+		var res = `${dan} 단 <br>`;
+		
+		// 1~9 반복 출력
+		for(var i=1; i<10; i++) {
+			res += `${dan} * ${i} = ${dan*i} <br>`;
+		}
+		
+		result1 = document.getElementById("result1");
+		result1.innerHTML = res;
+		
+	}
+	
+	function proc2() {
+		
+		res = "";
+		
+		for(i=2; i<10; i++) {
+			res += `${i}단 <br>`;
+			for(k=1; k<10; k++) {
+				res += `${i} * ${k} = ${i*k} <br>`;
+			}
+		}
+		
+		result2 = document.getElementById("result2");
+		result2.innerHTML = res;
+		
+	}
+	
+	function proc3() {
+		
+		res="<table border='1'>";
+		
+		for(i=1; i<10; i++) {
+			
+			res +="<tr>";
+			res +="<td>" + i + "</td>";
+			
+			for(k=1; k<10; k++) {
+				res += "<td>" + i*k + "</td>";
+			}
+			res +="</tr>";
+		}
+		
+		result3 = document.getElementById("result3");
+		result3.innerHTML = res;
+		
+	}
+</script>
+
+</head>
+
+<body>
+
+	<div class="box">
+		<h3>1.구구단</h3>
+		단입력 - prompt()<br><br>
+		<input type="button" value="확인" onclick="proc1()">
+		<br>
+		<div id="result1"></div>
+	</div>
+	
+	<div class="box">
+		<h3>2.구구단</h3>
+		다중 for문을 이용<br><br>
+		<input type="button" value="확인" onclick="proc2()">
+		<br>
+		<div id="result2"></div>
+	</div>
+	
+	<div class="box">
+		<h3>3.구구단</h3>
+		다중 for문을 이용<br>
+		table을 이용해서 출력<br>
+		
+		<input type="button" value="확인" onclick="proc3()">
+		<br>
+		<div id="result3"></div>
+	</div>
+
+</body>
+</html>

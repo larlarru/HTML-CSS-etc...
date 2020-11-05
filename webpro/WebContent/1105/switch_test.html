@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/public.css">
+
+<style>
+	div {
+		border : 1px dotted green;
+		height : 40px;
+	}
+</style>
+
+<script>
+	function proc1() {
+		
+	
+		input1 = parseInt(prompt("정수1를 입력하세요."));
+		input2 = parseInt(prompt("정수2를 입력하세요."));
+		opper = prompt("+,-,*,/ 중 하나를 입력하세요.");
+		 
+		
+		res = "수1 : " + input1 + "<br>"
+		res += "수2 : " + input2 + "<br>"
+		res += "연산자 : " + opper + "<br>"
+		
+		switch(opper) {
+			case "+":
+				calc = input1 + input2;
+				break;
+			case "-":
+				calc = input1 * input2;
+				break;
+			case "*":
+				calc = input1 * input2;
+				break;
+			case "/":
+				calc = input1 / input2;
+				break;
+		}
+		
+		//res += "결과 : " + input1 + opper + input2 + " = " + calc + "<br>"
+		
+		// 백틱
+		res += ` 결과 : ${input1} ${opper} ${input2} = ${calc} `;
+		
+		document.getElementById('result').innerHTML = res;
+				
+	}
+	
+	function proc2() {
+		
+		// 입력
+		
+		jumsu = parseInt(prompt("점수를 입력해 주세요.(0~100)"));
+		
+		//res = "점수 : " + jumsu + "<br>";
+		res = `점수 : ${jumsu} <br>결과 : `;
+		
+		jumsu = parseInt(jumsu / 10);
+		
+		/* document.getElementById('result2').innerHTML = jumsu; */
+		
+		jumsuNum=""
+		// 비교-switch
+		switch(jumsu) {
+			case 10: case 9:
+				jumsuNum+="A";
+				break;
+			case 8:
+				jumsuNum+="B";
+				break;
+			case 7:
+				jumsuNum+="C";
+				break;
+			case 6:
+				jumsuNum+="D";
+				break;
+			default:
+				jumsuNum+="F";
+				break
+		}
+		
+		// 출력
+		res += jumsuNum + "입니다.";
+		document.getElementById('result2').innerHTML = res;
+		
+	}
+	
+	function proc3() {
+		// 입력1
+		in1 = prompt("첫번째 사람");
+		
+		// 입력2
+		in2 = prompt("두번째 사람");
+		
+		//res = "첫번째 사람 : " + in1 + "<br>";
+		res = `첫번째 사람 : ${in1} <br>`;
+		res += `두번째 사람 : ${in2} <br> 결과 : `;
+		
+		// 승자 비교
+		if(in1 == in2) {
+			res += "비김";
+		} else if(in1 == "가위" && in2 == "보" || 
+				in1 == "바위" && in2 == "가위" || 
+				in1 == "보" && in2 == "바위") {
+			res += "첫번째 사람 이김";
+		} else {
+			res += "두번째 사람 이김";
+		}
+		
+		//document.getElementById('result3').innerHTML = res;
+		result3 = document.getElementById("result3");
+		result3.innerHTML = res;
+	}
+</script>
+
+</head>
+
+<body>
+	
+	<div class="box">
+		<h3>두수연산하기</h3>
+		수1, 수2입력 - prompt()<br>
+		연산자 입력<br>
+		연산자에 따라 두수를 계산 한다.<br>
+		<input type="button" value="확인" onclick="proc1()"><br><br>
+		<div id="result"></div>
+		
+		<br>
+	</div>
+	<br>
+	
+	<div class="box">
+		<h3>학점구하기</h3>
+		0~100사이의 값을 입력 - prompt()<br>
+		학점구하기<br>
+		<input type="button" value="확인" onclick="proc2()"><br><br>
+		<div id="result2"></div>
+	</div>
+	
+	<div class="box">
+		<h3>가위바위보</h3>
+		두사람의 가위바위보를 각각 입력 - prompt()<br>
+		승자를 출력하기<br>
+		<input type="button" value="확인" onclick="proc3()"><br><br>
+		<div id="result3"></div>
+	</div>
+	
+</body>
+</html>

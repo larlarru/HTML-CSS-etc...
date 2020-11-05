@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<style>
+	img {
+		width : 100px;
+		height : 100px;
+		overflow: auto;
+	}
+	.div_a {
+		border : 1px solid white;
+		height : auto;
+		text-align: center;
+		overflow: auto;
+		float : left;
+	}
+	#shopcheck {
+		text-decoration: underline;
+	}
+</style>
+
+<script>
+	function etc() {
+		alert("쇼핑카트에 추가되었습니다.");
+	}
+</script>
+
+</head>
+<body>
+
+	
+	<div class="div_a">
+		<video width="200" height="200" controls>
+			<source src="../multi/trailer.mp4" type='video/mp4'>
+			<source src="../multi/trailer.ogv"  type='video/ogg'>
+		</video>
+		<br>	
+		<img src="../WebPage/images/데스크탑1.jpg"><br>
+		
+		<p>
+			영화1<br>
+			
+		</p>
+		<input type="button" value="쇼핑카트에 추가하기" onclick="etc()">
+	</div>
+	
+	<div class="div_a">
+		<!-- <video width="200" height="200" controls>
+			<source src="http://youtu.be/7oKAPbnl7mQ">
+		</video> -->
+		<br>
+		<video src="https://tv.naver.com/v/16548577" width=100% max-width="200px" controls></video>
+		<br>	
+		<img src="../WebPage/images/데스크탑1.jpg"><br>
+		<br>
+		<iframe id="iframe" src="https://tv.naver.com/v/16548577" name="ifr">
+			</iframe>
+		<p>
+			영화2<br>
+			
+		</p>
+		<input type="button" value="쇼핑카트에 추가하기" onclick="etc()">
+	</div>
+	
+	<div class="div_a">
+		<video width="100" height="100" controls>
+			<source src="../multi/trailer.mp4" type='video/mp4'>
+			<source src="../multi/trailer.ogv"  type='video/ogg'>
+		</video>	
+		<br>
+		<img src="../WebPage/images/데스크탑1.jpg"><br>
+		
+		<p>
+			영화3<br>
+			
+		</p>
+		<input type="button" value="쇼핑카트에 추가하기" onclick="etc()">
+	</div>
+	
+	
+</body>
+</html>

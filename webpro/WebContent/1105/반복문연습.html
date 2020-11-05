@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/public.css">
+
+<style>
+</style>
+
+<script>
+	function proc1() {
+		
+		sum=0;
+		res="";
+		
+		for(i=1; i<=10; i++) {
+			sum += i;
+		}
+		
+		res += sum;
+		
+		result1 = document.getElementById('result1');
+		result1.innerHTML = res;
+		
+	}
+	
+	function proc2() {
+		
+		sum = 0;
+		res = "";
+		
+		for(i=1; i<=200; i++) {
+			//if(i%2==0) sum += i;
+			
+			if(i % 2 != 0) continue;
+			sum += i;
+			res += ` ${i} `;
+		}
+		
+		res += ` <br>1 ~ 200 사이의 짝수의 합 = ${sum}`;
+		
+		result2 = document.getElementById('result2');
+		result2.innerHTML = res;
+		
+	}
+	
+	function proc3() {
+		
+			sum = 0;
+			res = "";
+			
+		while(true) {
+			
+			// 입력
+			input = parseInt(prompt("정수를 입력", "0이면 종료"));
+			
+			// 입력값이 0인지 비교해서 종료
+			if(input == 0) break;
+			
+			// 0이 아니면 계속 누적해서 더하기
+			sum += input;
+			res += ` ${input} `;
+		}
+		res += `<br>전체 합은 :  ${sum}`;
+		// 더한값을 출력하기
+		result3 = document.getElementById('result3');
+		result3.innerHTML = res;
+		/* result3.innerHTML = `<br>전체 합은 :  ${sum}`; */
+		
+	}
+	
+	function proc4() {
+		sum = 0;
+		res = "";
+		
+		for(i=1; i<=10; i++) {
+			
+			for(k=1; k<=10; k++) {
+				
+				if((i+k) % 3 != 0) continue;
+				sum += i+k;
+				res += ` ${i} 와 ${k}의 합 = ${sum} <br>`;
+			}
+			//if(i%2==0) sum += i;
+			
+		}
+		
+		res += ` <br>1 ~ 10 까지중 i와 k의 합 = ${sum}`;
+		
+		result4 = document.getElementById('result4');
+		result4.innerHTML = res;	
+	}
+	
+	function proc5() {
+		sum = 0;
+		res = "결과 : <br>";
+		
+		for(i=1; i<=100; i++) {
+				
+			if(i%3 ==0 && i%2 ==0) {
+				sum += i;
+				res += ` ${i} `;
+			}
+		}
+		
+		result5 = document.getElementById('result5');
+		result5.innerHTML = res;	
+	}
+	
+	function proc6() {
+		sum = 0;
+		res = "";
+		
+	while(true) {
+		
+		input1 = parseInt(prompt("첫번째 정수를 입력", "0이면 종료"));
+		input2 = parseInt(prompt("두번째 정수를 입력", "0이면 종료"));
+		
+		if(input1 == 0 || input2 == 0 ) break;
+		
+		res += ` <br>${input1} ${input2} `;
+		
+		if((input1+input2) >= 100) {
+			sum += input1 + input2;
+			res += `전체 합은 :  ${sum}`;
+		}
+	}
+	
+	result6 = document.getElementById('result6');
+	result6.innerHTML = res;
+	}
+	
+</script>
+
+</head>
+<body>
+
+	<div class="box">
+		<h3>1. 1~10 까지 합 구하기</h3>
+		
+		<input type="button" value="확인" onclick="proc1()">
+		<br>
+		<div id="result1"></div>
+	</div>
+
+	<div class="box">
+		<h3>2. 1~200 까지 짝수합 구하기</h3>
+		continue를 이용 <br>
+		<input type="button" value="확인" onclick="proc2()">
+		<br>
+		<div id="result2"></div>
+	</div>
+	
+	<div class="box">
+		<h3>3. 입력한 수의 합 구하기</h3>
+		wile를 이용 <br>
+		0를 입력하면 종료<br>
+		<input type="button" value="확인" onclick="proc3()">
+		<br>
+		<div id="result3"></div>
+	</div>
+	
+	<div class="box">
+		<h3>4. 1~10까지중 i와k의 더한 합이 3의 배수일때만 출력</h3>
+		<input type="button" value="확인" onclick="proc4()">
+		<br>
+		<div id="result4"></div>
+	</div>
+	
+	<div class="box">
+		<h3>5. 1~100까지 중 2의 배수이면서 3의 배수인것만 출력</h3>
+		<input type="button" value="확인" onclick="proc5()">
+		<br>
+		<div id="result5"></div>
+	</div>
+	
+	<div class="box">
+		<h3>6. 두수를 입력받아 두수 합이 100이상이면 결과까지 출력 아니면 입력만 출력</h3>
+		<input type="button" value="확인" onclick="proc6()">
+		<br>
+		<div id="result6"></div>
+	</div>
+	
+</body>
+</html>

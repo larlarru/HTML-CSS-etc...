@@ -9,4 +9,29 @@ pre {
 		border-top : 2px solid blue; /*한줄 파란색 윗줄*/
 		border-bottom : 5px double blue; /*밑에 2줄 파란색 */
 		font-size : 1.5em; /*1.5em은 1.5배이다.*/
-	}
+}
+
+.box {
+	border : none;
+	background: #efefef;
+	margin : 10px;
+	height : auto;
+	padding : 10px;
+}
+
+.box div{
+	border : 1px dotted green;
+	height : auto;
+	padding : 10px;
+}
+
+.box input[type=button] {
+	width : 80px;
+	background : blue;
+	color : white;
+	padding : 5px 10px;
+	border-radius: 50px;
+	font-weight: bold;
+	margin-top : 20px;
+	margin-bottom: 20px;
+}

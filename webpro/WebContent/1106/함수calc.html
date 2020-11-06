@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/public.css">
+
+<style>
+</style>
+
+<script>
+	function calc(oper) {
+		
+		var x = document.getElementById("x").value;
+		var y = document.getElementById("y").value;
+		
+		x = parseInt(x);
+		y = parseInt(y);
+		
+		switch(oper) {
+			case "+":
+				vcalc = add(x,y);
+				break;
+			case "-":
+				vcalc = sub(x,y);
+				break;
+			case "*":
+				vcalc = mult(x,y);
+				break;
+			case "/":
+				vcalc = divide(x,y);
+				break;
+		}
+		
+		res = ` x = ${x} <br>`;
+		res += `y = ${y} <br>`;
+		res += `${x} ${oper} ${y} = ${vcalc}`;
+		
+		document.getElementById('result1').innerHTML = res;
+		
+	}
+	
+	function add(a, b) {
+		return a + b;
+	}
+	
+	function sub(a, b) {
+		return a - b;
+	}
+	
+	function mult(a, b) {
+		return a * b;
+	}
+	
+	function divide(a, b) {
+		return a / b;
+	}
+	
+</script>
+
+</head>
+
+<body>
+
+	<div class="box">
+		<h3>제목</h3>
+		내용<br>
+		x : <input type="text" id="x"><br>
+		y : <input type="text" id="y"><br>
+		<input type="button" value="확인 +" onclick="calc('+')">
+		<input type="button" value="확인 -" onclick="calc('-')">
+		<input type="button" value="확인 *" onclick="calc('*')">
+		<input type="button" value="확인 /" onclick="calc('/')">
+		<br>
+		<div id="result1"></div>
+	</div>
+
+</body>
+</html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/public.css">
+
+<style>
+	.box input[type=button]{
+		width : 100px;
+  	}
+</style>
+
+<script>
+
+	function proc1() {
+		
+		fruits = ["사과", "바나나", "수박", "참외", "복숭아", "메론"];
+		
+		result1 = document.getElementById("result1");
+		print(result1);
+	}
+	
+	function proc2() {
+		
+		fruits = ["사과", "바나나", "수박", "참외", "복숭아"];
+		
+		result2 = document.getElementById("result2");
+		print(result2);
+	}
+	
+	function proc3() {
+		
+		fruits = ["사과", "바나나", "수박", "참외"];
+		
+		result3 = document.getElementById("result3");
+		print(result3);
+	}
+	
+	function print(result) {
+		res = "";
+		
+		for(i=0; i<fruits.length; i++) {
+			
+			res += fruits[i] + " ";
+		}
+		
+		result.textContent = res;
+		
+	}
+	
+	////////////////////////////////////////
+	
+	function proc4() {
+		var fruits = ["사과", "바나나", "수박", "참외", "복숭아", "메론"];
+		var result = document.querySelector("#result4");
+		localprint(fruits, result);
+	}
+	
+	function proc5() {
+		var fruits = ["사과", "바나나", "수박", "참외", "복숭아", "메론"];
+		var result = document.querySelector("#result5");
+		localprint(fruits, result);
+	}
+	
+	function proc6() {
+		var fruits = ["토마토", "수박", "오렌지", "메론"];
+		var result = document.querySelector("#result6");
+		localprint(fruits, result);
+	}
+	
+	function localprint(fr, result) {
+		
+		res = "";
+		
+		for(i=0; i<fr.length; i++) {
+			res += fr[i] + " ";
+		}
+		
+		result.innerHTML = res;
+		
+	}
+	
+</script>
+
+</head>
+
+<body>
+
+	<div class="box">
+		<h3>배열</h3>
+		print() 출력 함수 정의<br>
+		전역변수를 이용한 출력<br>
+		<input type="button" value="확인리터럴" onclick="proc1()">
+		<input type="button" value="확인파라미터" onclick="proc2()">
+		<input type="button" value="확인default" onclick="proc3()">
+		<br>
+		<div id="result1"></div>
+		<div id="result2"></div>
+		<div id="result3"></div>
+	</div>
+	
+	<div class="box">
+		<h3>배열</h3>
+		localprint(fr, result) 출력 함수 정의<br>
+		지역변수를 이용한 출력<br>
+		지역변수는 다른 함수-localprint()함수를 호출시 매개변수로 값을 넘긴다.<br>
+		<br>
+		<input type="button" value="확인리터럴" onclick="proc4()">
+		<input type="button" value="확인파라미터" onclick="proc5()">
+		<input type="button" value="확인default" onclick="proc6()">
+		<br>
+		<div id="result4"></div>
+		<div id="result5"></div>
+		<div id="result6"></div>
+	</div>
+
+</body>
+</html>

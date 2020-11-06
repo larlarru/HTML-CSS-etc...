@@ -94,7 +94,7 @@
 		overflow: auto;
 	}
 	.div_product {
-		border : 1px solid white;
+		border : 1px solid gray;
 		height : auto;
 		text-align: center;
 		overflow: auto;
@@ -106,10 +106,20 @@
 	}
 	.div_div {
 		width : 200px;
-		height : 200px;
+		height : 100px;
 		text-align: center;
 		overflow: auto;
 	}
 	.input_button_add {
 		margin : 10px;
+	}
+	.video_main_movie {
+		width: auto;
+		max-width: 1000px;
+		height : auto;
+		max-height : 200px;
+		margin : 20px;
+	}
+	.audio_music {
+		width : 200px;
 	}

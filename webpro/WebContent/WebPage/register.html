@@ -14,9 +14,6 @@
 	
 	form {
 		width : 500px;
-		border : 3px solid blue;
-		padding : 10px;
-		margin : 10px;
 	}
 	
 	label {
@@ -29,11 +26,20 @@
 	.gend {
 		padding-left: 60px;;
 	}
+	.register_input {
+		width : 200px;
+	}
+	#register_fieldset_legend {
+		font-size : 2em;	
+	}
 </style>
 
 <script>
 	function check() {
 		alert("중복된 id가 없습니다.");
+	}
+	function submit1() {
+		alert("제출 되었습니다.");
 	}
 </script>
 
@@ -41,28 +47,30 @@
 
 <body>
 
-
-	<h1>회원 가입 화면</h1>
-	<form action="#" >
-		<label>아이디</label><input type="text" name="id" pattern="{1,20}" required="required">
-		<input type="button" value="중복검사" onclick="check()"><br>
-		<label>비밀번호</label><input type="text" name="password" required="required"><br>
-		<label>비밀번호확인</label><input type="text" name="password" required="required"><br>
-		<label>이름</label><input type="text" name="name" pattern="[가-힣]{3,5}" required="required"><br>
-		<label>휴대폰번호</label><input type="email" name="phnum"><br>
-		<label>이메일</label><input type="email" name="email" placeholder="kk123@abc.com"><br>
-		<label>생일 : </label><input type="date" name="bir"><br>
-		<label>홈페이지</label><input type="text" name="HomePage"><br>
-		<label></label><input class="input_gender" type="radio" name="gend1" value="Male">
-		<label class="gend">Male</label>
-		<br>
-		<label></label><input class="input_gender" type="radio" name="gend1" value="Femal">
-		<label class="gend">Femal</label>
-		<br>
-		
-		<input type="submit" value="제출">
-		<input type="reset" value="초기화">
-	</form>
+	<fieldset>
+		<legend id="register_fieldset_legend">회원정보입력</legend>
+		<form action="#" >
+			<!-- <div id="form_div"> -->
+				<label>아이디</label><input type="text" name="id" pattern="{1,20}" required="required">
+				<input type="button" value="중복검사" onclick="check()"><br>
+				<label>비밀번호</label><input type="text" name="password" required="required"><br>
+				<label>비밀번호확인</label><input type="text" name="password" required="required"><br>
+				<label>이름</label><input type="text" name="name" pattern="[가-힣]{3,5}" required="required"><br>
+				<label>휴대폰번호</label><input type="email" name="phnum"><br>
+				<label>이메일</label><input type="email" name="email" placeholder="kk123@abc.com"><br>
+				<label>생일 : </label><input type="date" name="bir"><br>
+				<label>홈페이지</label><input type="text" name="HomePage"><br>
+				<label></label><input class="input_gender" type="radio" name="gend1" value="Male">
+				<label class="gend">남성</label>
+				<br>
+				<label></label><input class="input_gender" type="radio" name="gend1" value="Femal">
+				<label class="gend">여성</label>
+				<br>
+			<!-- </div> -->
+			<input class="register_input" type="submit" value="제출" onclick="submit1()">
+			<input class="register_input" type="reset" value="초기화">
+		</form>
+	</fieldset>
 	<a href="../WebPage/main.html" target="ifr">Back to Home</a>
 
 </body>

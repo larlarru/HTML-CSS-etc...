@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/public.css">
+
+<style>
+</style>
+
+<script>
+	function proc1() {
+		myCar = {};
+		
+		myCar.name="홍길동";
+		myCar.tel = "010-1234-5678";
+		myCar.addr="대전";
+		
+		result = document.getElementById('result1');
+		
+		//res = "이름 : " + this.name + "<br>";
+		res = `이름 : ${myCar.name} <br>`;
+		res += `전화번호 : ${myCar.tel} <br>`;
+		res += `주소 : ${myCar.addr} <br>`;
+		
+		result1.innerHTML = res;
+		
+	}
+	
+	var rect = {
+			width : 10,
+			height : 8,
+			getArea : function() { return this.width * this.height; },
+			getCircum : function() { return (this.width + this.height) * 2; }
+	}
+	// 함수 추가
+	rect.disp = function() {
+		res = "이름 : " + this.name + "<br>";
+		res += "가로 : " + this.width + "<br>";
+		res += "세로 : " + this.height + "<br>";
+		res += "면접 : " + this.getArea() + "<br>";
+		res += "둘레 : " + this.getCircum() + "<br>";
+		
+		return res;
+	}
+	
+	function proc2() {
+		/* rect = {
+			width : 10,
+			height : 8,
+			getArea : function() { return this.width * this.height; },
+			getCircum : function() { return (this.width + this.height) * 2; }
+		} */
+		
+		// 동적으로 속성추가
+		rect.name="사각형";
+		
+		result2 = document.getElementById('result2');
+		/* res = "이름 : " + rect.name + "<br>";
+		res += "가로 : " + rect.width + "<br>";
+		res += "세로 : " + rect.height + "<br>";
+		res += "면접 : " + rect.getArea() + "<br>";
+		res += "둘레 : " + rect.getCircum() + "<br>";
+		
+		result2.innerHTML = res; */
+		result = rect.disp();
+		result2.innerHTML = result;
+		
+	}
+	function proc3() {
+		su = parseInt(prompt("증가할 값을 입력"));
+		rect.width = rect.width + su;
+		
+		//rect.getArea()
+		//rect.getCircum()
+		
+		result3 = document.getElementById('result3');
+		/* res = "이름 : " + rect.name + "<br>";
+		res += "가로 : " + rect.width + "<br>";
+		res += "세로 : " + rect.height + "<br>";
+		res += "면접 : " + rect.getArea() + "<br>";
+		res += "둘레 : " + rect.getCircum() + "<br>"; */
+		res = rect.disp();
+		result3.innerHTML = res;
+	} 
+	function proc4() {
+		su = parseInt(prompt("증가할 값을 입력"));
+		rect.height = rect.height + su;
+		
+		result4 = document.getElementById('result4');
+		/* res = "이름 : " + rect.name + "<br>";
+		res += "가로 : " + rect.width + "<br>";
+		res += "세로 : " + rect.height + "<br>";
+		res += "면접 : " + rect.getArea() + "<br>";
+		res += "둘레 : " + rect.getCircum() + "<br>"; */
+		result4.innerHTML = rect.disp();
+		
+	}
+	
+</script>
+
+</head>
+
+<body>
+
+
+	<div class="box">
+		<h3>객체Rect</h3>
+		객체상수에 의한 객체 생성<br>
+		myCar = {};<br>
+		myCar.name = "홍길동";
+		선언후에 동적으로 속성을 추가해서 사용 가능<br>
+		<input type="button" value="확인" onclick="proc1()">
+		<br>
+		<div id="result1"></div>
+	</div>
+
+	<div class="box">
+		<h3>객체Rect</h3>
+		객체상수에 의한 객체 생성<br>
+		rect = {}; rect.width=10<br>
+		rect = {width : 10, height : 20, ......};<br>
+		<input type="button" value="확인" onclick="proc2()">
+		<input type="button" value="가로증가" onclick="proc3()">
+		<input type="button" value="세로증가" onclick="proc4()">
+		<br>
+		<div id="result2"></div>
+		<div id="result3"></div>
+		<div id="result4"></div>
+	</div>
+
+</body>
+</html>

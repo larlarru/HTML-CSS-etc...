@@ -12,7 +12,100 @@
 	fruits = ["사과", "바나나", "수박", "참외", "사과", "바나나", "포도", "사과"];
 	
 	function proc1() {
-		prompt("찾을 과일을 입력");
+		fr = prompt("찾을 과일을 입력");
+		idx = fruits.indexOf(fr);
+		
+		res = "찾는 과일 : " + fr + "<br>";
+		
+		if(idx == -1) {
+			res += "현재 배열에 찾는 과일이 없습니다."; 
+		} else {
+			res += "위치 : " + idx + "번째 <br>";
+			
+		}
+		
+		document.getElementById('result1').innerHTML = res;
+		
+	}
+	
+	function proc2() {
+		fr = prompt("찾을 과일을 입력");
+		idx = fruits.lastIndexOf(fr);
+		
+		//res = "찾는 과일 : " + fr + "<br>";
+		res = `lastIndexOf('${fr}') 찾는과일 : ${fr} <br>`;
+		
+		if(idx == -1) {
+			res += "현재 배열에 찾는 과일이 없습니다."; 
+		} else {
+			res += "위치 : " + idx + "번째 <br>";
+			
+		}
+		
+		document.getElementById('result2').innerHTML = res;
+	}
+	function proc3() {
+		fr = prompt("찾을 과일을 입력");
+		idx = 0;
+		flag = true;
+		res = "indexOf(item, start)<br>";
+		res += "찾는 과일 : " + fr + "<br>";
+		
+		while(true) {
+			idx = fruits.indexOf(fr, idx);
+			if(idx == -1) break;
+			flag = false;
+			res += idx + "번째 ";
+			idx++;
+		}
+		
+		if(flag) res += "목록에 없는 과일 입니다<br>"; 
+		document.getElementById('result3').innerHTML = res;
+		
+	}
+	function proc4() {
+		// 추가할 항목을 입력
+		item = prompt("추가할 과일을 입력");
+		
+		
+		// 배열 요소로 추가
+		fruits.push(item);
+		
+		/* res = "";
+		for(i=0;i<fruits.length; i++) {
+			res += fruits[i] + "";
+		}
+		document.getEledmentById('result4').innerHTML = fruits;
+		 */
+		
+		// 출력
+		document.getElementById('result4').innerHTML = "push : " + fruits;
+	}
+	function proc5() {
+		fruits.pop();
+		
+		document.getElementById('result5').innerHTML = "pop : " + fruits;
+	}
+	function proc6() {
+		nums = [234, 10, 134, 250, 300, 3];
+		// 10, 134, 234, 250, 3, 300
+		nums.sort();
+		
+		document.getElementById('result6').innerHTML = nums;
+	}
+	function proc7() {
+		nums.sort(function(b,a){return a-b;});
+		document.getElementById('result7').innerHTML = nums;
+	}
+	function proc8() {
+		nums.sort(function(a,b){return a-b;});
+		document.getElementById('result8').innerHTML = nums;
+	}
+	function proc9(){
+		res = "원래 배열 : " + fruits + "<br>";
+		fruits.splice(2, 1, "메론", "토마토");
+		res += "fruits.splice(2, 1, '메론', '토마토') : " + fruits + "<br>";
+		document.getElementById('result9').innerHTML = res;
 	}
 </script>
 
@@ -26,9 +119,53 @@
 		item의 위치값을 찾는다./start위치부터 item의 위치값을 찾는다.<br>
 		indexof(item), indoxOf(item, start)<br>
 		lastIndexOf(item), lastIndexOf(item, start)<br>
-		<input type="button" value="확인" onclick="proc1()">
+		<input type="button" value="indexOf" onclick="proc1()">
+		<input type="button" value="lastIndexOf" onclick="proc2()">
+		<input type="button" value="위치지정검색" onclick="proc3()">
 		<br>
 		<div id="result1"></div>
+		<div id="result2"></div>
+		<div id="result3"></div>
+	</div>
+
+	<div class="box">
+		<h3>추가삭제</h3>
+		push(item) : 배열의 마지막 요소에 item를 추가<br>
+		pop() : 배열의 마지막 요소를 제거한다.<br>
+		<input type="button" value="push" onclick="proc4()">
+		<input type="button" value="pop" onclick="proc5()">
+		<br>
+		<div id="result4"></div>
+		<div id="result5"></div>
+	</div>
+
+	<div class="box">
+		<h3>sort</h3>
+		nums = [234, 10, 134, 250, 300, 3]<br>
+		nums.sort() : 자리수별 숫자크기를 판별<br>
+		오름차순 nums.sort(function(a,b) {a-b})<br>
+		내림차순 nums.sort(function(b,a) {a-b})<br>
+		<input type="button" value="sort" onclick="proc6()">
+		<input type="button" value="sort_de" onclick="proc7()">
+		<input type="button" value="sort_ase" onclick="proc8()">
+		<br>
+		<div id="result6"></div>
+		<div id="result7"></div>
+		<div id="result8"></div>
+	</div>
+
+	<div class="box">
+		<h3>splice-수정(삭제/추가)</h3>
+		splice(index, n) - index위치에서 n개를 삭제<br>
+		splice(index, n,  a,b,c) - index위치에서 n개를 삭제하고 a,b,c를 추가<br>
+		splice(index, 0,  a,b,c) - index위치에서 삭제 하지 않고 a,b,c를 추가<br>
+		<input type="button" value="sort" onclick="proc9()">
+		<input type="button" value="sort_de" onclick="proc10()">
+		<input type="button" value="sort_ase" onclick="proc11()">
+		<br>
+		<div id="result9"></div>
+		<div id="result10"></div>
+		<div id="result11"></div>
 	</div>
 
 </body>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../WebPage/css/mystyle.css">
+
+<style>
+	#caption_title {
+		text-decoration: underline;
+		color : red;
+	}
+	tr, th, td {
+		width : 100px;
+		text-align: center;
+	}
+	#a {
+		width : 200px;
+	}
+</style>
+
+<script>
+	function calc() {
+		alert("계산하셨습니다.");
+	}
+	function buy() {
+		alert("구매하셨습니다.");
+	}
+</script>
+
+
+</head>
+<body>
+	<form action="#" >
+		<table border="1">
+			<caption id="caption_title">Shopping Cart</caption>
+			<tr>
+				<th>품목</th>
+				<th>가격</th>
+				<th>수량</th>
+				<th>합계</th>
+			</tr>
+			
+			<tr>
+				<td>테스크탑1</td>
+				<td>2,000,000</td>
+				<td>
+					<input id="a" type="number" min="0" max="100" step="1" placeholder="0">
+				</td>
+				<td><input type="text" name="sum" placeholder="0"></td>
+			</tr>
+			
+			<tr>
+				<td>티셔츠1</td>
+				<td>1,000,000</td>
+				<td>
+					<input id="a" type="number" min="0" max="100" step="1" placeholder="0">
+				</td>
+				<td><input type="text" name="sum" placeholder="0"></td>
+			</tr>
+			
+			<tr>
+				<td>바지1</td>
+				<td>1,500,000</td>
+				<td>
+					<input id="a" type="number" min="0" max="100" step="1" placeholder="0">
+				</td>
+				<td><input type="text" name="sum" placeholder="0"></td>
+			</tr>
+			
+			<tr>
+				<td>모니터1</td>
+				<td>2,000,000</td>
+				<td>
+					<input id="a" type="number" min="0" max="100" step="1" placeholder="0">
+				</td>
+				<td><input type="text" name="sum" placeholder="0"></td>
+			</tr>
+			
+			<tr>
+				<td>노트북1</td>
+				<td>2,500,000</td>
+				<td>
+					<input id="a" type="number" min="0" max="100" step="1" placeholder="0">
+				</td>
+				<td><input type="text" name="sum" placeholder="0"></td>
+			</tr>
+			
+			<tr>
+				<td>블랙위도우</td>
+				<td>10,000</td>
+				<td>
+					<input id="a" type="number" min="0" max="100" step="1" placeholder="0">
+				</td>
+				<td><input type="text" name="sum" placeholder="0"></td>
+			</tr>
+			
+			
+		</table>
+		<input class="register_input" type="button" value="계산" onclick="calc()">
+		<input class="register_input" type="button" value="구매" onclick="buy()">
+		<input class="register_input" type="reset" value="초기화">
+	</form>
+	<br>
+
+	<a href="../WebPage/main.html" target="ifr">Back to Home</a>
+</body>
+</html>

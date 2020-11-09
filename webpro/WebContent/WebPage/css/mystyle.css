@@ -126,3 +126,6 @@
 	.register_input {
 		margin : 5px;
 	}
+	#body_body {
+		min-width: 1000px;
+	}

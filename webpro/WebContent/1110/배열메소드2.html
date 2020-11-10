@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/public.css">
+
+<style>
+</style>
+
+<script>
+	fruits = ["사과", "바나나", "수박", "참외", "사과", "바나나", "포도", "사과"];
+	
+	function proc1() {
+		start = 1;
+		end = 5;
+		
+		fr = fruits.slice(start, end);/* 1~4까지라는 의미 */
+		
+		res = "원래 배열 : " + fruits + "<br>";
+		//res += 'slice(' + start + ', ' + end + ') : ' + fr + "<br>";
+		
+		res += `slice(${start}, ${end}) : ${fr} <br>`;
+		
+		document.getElementById('result1').innerHTML = res;
+		
+		
+	}
+	
+	function proc2() {
+		arr =["홍길동", "수선화", "개나리", "라일락", "진달래", "백일홍"];
+		
+		arrcon = arr.concat(fruits);
+		
+		res = "fruits : " + fruits.length + "<br>";
+		res += "arr : " + arr.length + "<br>";
+		res += "arrcon : " + arrcon.length + "<br>";
+		
+		for(i=0; i<arrcon.length; i++) {
+			res += i + "번째 : " + arrcon[i] + "<br>"
+		}
+		
+		res += arrcon ;
+		
+		document.getElementById('result2').innerHTML = res;
+	}
+	
+	function proc3() {
+		
+		fr = fruits.join();
+		
+		res = "fruits : " + fruits.length + "<br>";
+		res += "fr : " + fr.length + "<br>";
+		
+		for(i=0; i<fr.length; i++) {
+			res += i + "번째 : " + fr[i] + "<br>";
+		}
+		document.getElementById('result3').innerHTML = res;
+	}
+</script>
+
+</head>
+
+<body>
+
+	<div class="box">
+		<h3>slice</h3>
+		slice(start, end) : start ~ end-1 까지의 문자를 추출<br>
+		<input type="button" value="slice" onclick="proc1()">
+		<br>
+		<div id="result1"></div>
+	</div>
+
+	<div class="box">
+		<h3>concat</h3>
+		arr.concat(fruits) : arr 배열과 fruits 배열을 하나의 배열로 합친다.<br>
+		arr =["홍길동", "수선화", "개나리", "라일락", "진달래", "백일홍"];<br>
+		fruits = ["사과", "바나나", "수박", "참외", "사과", "바나나", "포도", "사과"];<br>
+		<input type="button" value="concat" onclick="proc2()">
+		<br>
+		<div id="result2"></div>
+	</div>
+
+	<div class="box">
+		<h3>join</h3>
+		fruits.join() : fruits의 배열을 ,로 구분하는 문자열로 변경한다.<br>
+		fruits = ["사과", "바나나", "수박", "참외", "사과", "바나나", "포도", "사과"];<br>
+		<input type="button" value="join" onclick="proc3()">
+		<br>
+		<div id="result3"></div>
+	</div>
+
+</body>
+</html>

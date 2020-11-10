@@ -44,6 +44,7 @@
 		
 		document.getElementById('result2').innerHTML = res;
 	}
+	
 	function proc3() {
 		fr = prompt("찾을 과일을 입력");
 		idx = 0;
@@ -63,6 +64,7 @@
 		document.getElementById('result3').innerHTML = res;
 		
 	}
+	
 	function proc4() {
 		// 추가할 항목을 입력
 		item = prompt("추가할 과일을 입력");
@@ -81,11 +83,13 @@
 		// 출력
 		document.getElementById('result4').innerHTML = "push : " + fruits;
 	}
+	
 	function proc5() {
 		fruits.pop();
 		
 		document.getElementById('result5').innerHTML = "pop : " + fruits;
 	}
+	
 	function proc6() {
 		nums = [234, 10, 134, 250, 300, 3];
 		// 10, 134, 234, 250, 3, 300
@@ -93,19 +97,45 @@
 		
 		document.getElementById('result6').innerHTML = nums;
 	}
+	
 	function proc7() {
 		nums.sort(function(b,a){return a-b;});
 		document.getElementById('result7').innerHTML = nums;
 	}
+	
 	function proc8() {
 		nums.sort(function(a,b){return a-b;});
 		document.getElementById('result8').innerHTML = nums;
 	}
-	function proc9(){
+	
+	function proc9() {
+		fruits = ["사과", "바나나", "수박", "참외", "사과", "바나나", "포도", "사과"];
+		
+		res = "원래 배열 : " + fruits + "<br>";
+		
+		fruits.splice(3, 2);
+		res += "splice(3, 2) : " + fruits + "<br>";
+		
+		document.getElementById('result9').innerHTML = res;
+	}
+	
+	function proc10(){
+		fruits = ["사과", "바나나", "수박", "참외", "사과", "바나나", "포도", "사과"];
+		
 		res = "원래 배열 : " + fruits + "<br>";
 		fruits.splice(2, 1, "메론", "토마토");
 		res += "fruits.splice(2, 1, '메론', '토마토') : " + fruits + "<br>";
-		document.getElementById('result9').innerHTML = res;
+		document.getElementById('result10').innerHTML = res;
+	}
+	
+	function proc11() {
+		fruits = ["사과", "바나나", "수박", "참외", "사과", "바나나", "포도", "사과"];
+		res = "원래 배열 : " + fruits + "<br>";
+		
+		fruits.splice(4, 0, "복숭아", "메론");
+		res += 'splice(4, 0, "복숭아", "메론") : ' + fruits + "<br>";
+		
+		document.getElementById('result11').innerHTML = res;
 	}
 </script>
 
@@ -159,9 +189,9 @@
 		splice(index, n) - index위치에서 n개를 삭제<br>
 		splice(index, n,  a,b,c) - index위치에서 n개를 삭제하고 a,b,c를 추가<br>
 		splice(index, 0,  a,b,c) - index위치에서 삭제 하지 않고 a,b,c를 추가<br>
-		<input type="button" value="sort" onclick="proc9()">
-		<input type="button" value="sort_de" onclick="proc10()">
-		<input type="button" value="sort_ase" onclick="proc11()">
+		<input type="button" value="splice" onclick="proc9()">
+		<input type="button" value="splice" onclick="proc10()">
+		<input type="button" value="splice" onclick="proc11()">
 		<br>
 		<div id="result9"></div>
 		<div id="result10"></div>

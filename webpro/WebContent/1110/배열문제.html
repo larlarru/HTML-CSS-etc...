@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/public.css">
+
+<style>
+</style>
+
+<script>
+	function proc1() {
+		
+		arr = new Array();
+		
+		while(true) {
+			// 입력
+			input = prompt("이름 입력"); 
+			
+			// 비교
+			if(input == "" || input == null) break;
+			
+			// 배열에 저장 - push(입력한 값)
+			arr.push(input);
+			
+		}
+		
+		// arr 배열 출력
+		document.getElementById('result1').innerHTML = arr;
+		
+	}
+	
+	function proc2() {
+		arr = new Array();
+		
+		while(true) {
+			input = prompt('정수 입력');
+			
+			// 배열에 저장 - push(입력값)
+			if(arr.indexOf(input) == -1) arr.push(input); 
+			
+			if(arr.length == 5) break;
+		}
+		
+		// arr배열 출력
+		document.getElementById('result2').innerHTML = arr;
+		
+		
+	}
+</script>
+
+</head>
+
+<body>
+
+
+	<div class="box">
+		<h3>제목</h3>
+		사람 이름을 계속 입력 받아 배열에 저장하고 그 저장된 이름을 출력하는 프로그램<br>
+		입력은 prompt<br>
+		공백문자를 입력하거나 "취소" 버튼을 눌렀을 때 종료한다.<br>
+		"취소" 버튼은 null<br> 
+		<input type="button" value="확인" onclick="proc1()">
+		<br>
+		<div id="result1"></div>
+	</div>
+
+	<div class="box">
+		<h3>제목</h3>
+		서로 중복되지 않은 정수 5개를 입력 받아 출력하는 프로그램을 작성하시오.<br>
+		입력은 prompt - 입력횟수는 모르고 배열갯수가 5개이면 종료한다.<br>
+		arr = arr.indexOf(입력값) - 입력값이 배열에 이미 저장되어 있다면 0~이상 값<br>
+		입력값이 배열에 없다면 -1이 나온다. 그럴때 배열에 저장한다.<br> 
+		<input type="button" value="확인" onclick="proc2()">
+		<br>
+		<div id="result2"></div>
+	</div>
+
+</body>
+</html>

@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/public.css">
+
+<style>
+</style>
+
+<script>
+	today = new Date();
+	function proc1() {
+		now1 = new Date();
+		now2 = new Date(2010, 5-1, 10);
+		now3 = new Date("2010, 5, 10");
+		now4 = new Date(1000);
+		
+		result1 = document.getElementById('result1');
+		/* res = now1 + "<br>";
+		res += now2 + "<br>";
+		res += now3 + "<br>";
+		res += now4 + "<br>"; */
+		
+		res = "Date() : " + now1.toLocaleString() + "<br>";
+		res += "Date(2010, 5-1, 10) : " + now2.toLocaleDateString() + "<br>";
+		res += 'Date("2010, 5, 10") : ' + now3.toLocaleTimeString() + "<br>";
+		res += "Date(1000) : " + now4 + "<br>";
+		
+		result1.innerHTML = res;
+	}
+	
+	function proc2() {
+		today = new Date();
+		
+		day = today.getDay();	// 0~6
+		res = today.toLocaleString() + "<br>";
+		
+		switch(day) {
+			case 0:
+				res += "일요일";
+				break;
+			case 1:
+				res += "월요일";
+				break
+			case 2:
+				res += "화요일";
+				break;
+			case 3:
+				res += "수요일";
+				break
+			case 4:
+				res += "목요일";
+				break;
+			case 5:
+				res += "금요일";
+				break
+			case 6:
+				res += "토요일";
+				break;
+		}
+		
+		res += " 입니다.";
+		
+		result2 = document.getElementById('result2');
+		result2.innerHTML = res;
+	}
+	
+	function proc3() {
+		days = ["일요일", "월요일", "화요일", "수요일", "목요일", "금요일", "토요일"];
+		
+		// dats[0], dats[1], dats[2]
+		day = today.getDay();
+		res = today.toLocaleString() + "<br>";
+		res += days[day] + "입니다.";
+		
+		result3 = document.getElementById('result3');
+		result3.innerHTML = res;
+	}
+	
+	function proc4() {
+		
+		myday = new Date("1996, 5, 14");
+		
+		time = today.getTime() - myday.getTime();	// time은 millisec값
+		console.log(time);
+		
+		res = "오늘 " + today.toLocaleString() + "<br>";
+		res += "태어난 날 : " + myday.toLocaleString() + "<br>";
+		res += Math.floor(time/1000) + "초 지났습니다.<br>";
+		res += Math.ceil(time/1000) + "초 지났습니다.<br>";
+		res += time/1000/60 + "분 지났습니다.<br>";
+		res += time/1000/60/60 + "시간 지났습니다.<br>";
+		res += time/1000/60/60/24 + "일 지났습니다.<br>";
+		res += time/1000/60/60/24/365 + "년 지났습니다.<br>";
+		
+		document.getElementById('result4').innerHTML = res;
+	}
+	
+	function proc5() {
+		christ = new Date("2020, 12, 25");
+		
+		time = christ.getTime() - today.getTime();
+		
+		res = "오늘 " + today.toLocaleString() + "<br>";
+		res += "크리스마스 : " + christ.toLocaleString() + "<br>";
+		res += Math.floor(time/1000) + "초 남았습니다.<br>";
+		res += Math.ceil(time/1000) + "초 남았습니다.<br>";
+		res += time/1000/60 + "분 남았습니다.<br>";
+		res += time/1000/60/60 + "시간 남았습니다.<br>";
+		res += time/1000/60/60/24 + "일 남았습니다.<br>";
+		res += time/1000/60/60/24/365 + "년 남았습니다.<br>";
+		
+		document.getElementById('result5').innerHTML = res;
+	}
+	
+	function proc6() {
+		// 100일에 대한 getTime
+		time = today.getTime() + (1000*60*60*24*100);
+		
+		day100 = new Date(time);
+		day100.toLocaleString();
+		
+		res = "오늘 : " + today.toLocaleString() +"<br>";
+		res += "100일 후  : " + day100.toLocaleString() + "<br>";
+		document.getElementById('result6').innerHTML = res;
+	}
+	
+	function proc7() {
+		
+		inday = document.getElementById('day').value;
+		inday = new Date(inday);
+		time = today.getTime() - inday.getTime();
+		
+		days = time/1000/60/60/24;
+		console.log(days);
+		
+		res = "오늘 : " + today.toLocaleString() +"<br>";
+		res += "구입한 날  : " + inday.toLocaleString() + "<br>";
+		
+		if(days > 7) {
+			res += "교환/반품 불가능 합니다.";
+		} else if(days >= 0){
+			res += "교환/반품 가능 합니다.";
+		} else {
+			res += "선택 오류 입니다.";
+		}
+		
+		document.getElementById('result7').innerHTML = res;
+	}
+</script>
+
+</head>
+
+<body>
+
+	<div class="box">
+		<h3>Date객체</h3>
+		new Date().toLocaleString()<br>
+		new Date(year, month, date).toLocaleDateString()<br>
+		<!-- 1월 하고 싶으면 new Date(year, 1+1, date)이다 -->
+		new Date("year, month, date").toLocaleTimeString<br>
+		<!-- 문자열로 들어가는것은 상관없다. 굳이 1+1 할 필요 없다. -->
+		new Date(millisec)<br>
+		<input type="button" value="확인" onclick="proc1()">
+		<br>
+		<div id="result1"></div>
+	</div>
+
+	<div class="box">
+		<h3>Date객체</h3>
+		요일 구하기 : getDay()<br>
+		0(일요일)~6(토요일)의 값을 리턴한다.<br>
+		switch로 비교하기 proc2()<br>
+		배열을 이용하기 proc3()<br>
+		<input type="button" value="확인" onclick="proc2()">
+		<input type="button" value="확인" onclick="proc3()">
+		<br>
+		<div id="result2"></div>
+		<div id="result3"></div>
+	</div>
+
+	<div class="box">
+		<h3>Date객체</h3>
+		경과시간 구하기 - getTime()<br>
+		태어난 날로부터 지금까지 경과시간 구하기 proc4()<br>
+		크라스마스까지 남은 날 수 - proc5()<br>
+		100일 후의 날 구하기 - proc6()<br>
+		<input type="button" value="태어난 날" onclick="proc4()">
+		<input type="button" value="크리스마스" onclick="proc5()">
+		<input type="button" value="100일후" onclick="proc6()">
+		<br>
+		<div id="result4"></div>
+		<div id="result5"></div>
+		<div id="result6"></div>
+	</div>
+
+	<div class="box">
+		<h3>Date객체</h3>
+		경과시간 구하기 - getTime()<br>
+		물품 구매한 날짜를 선택하여 7일이 지났으면 교환반품이 불가능<br>
+		<input type = "date" id="day">
+		<input type="button" value="확인" onclick="proc7()">
+		<br>
+		<div id="result7"></div>
+	</div>
+
+</body>
+</html>

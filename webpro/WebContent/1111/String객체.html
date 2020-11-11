@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/public.css">
+
+<style>
+</style>
+
+<script>
+	str = "I Love Korea 만세 Korea ";
+	
+	function proc1() {
+		
+		value = str.charAt(10);
+		
+		document.getElementById('result1').innerHTML = 
+			"str.charAt(10) : " + value;
+	}
+	
+	function proc2() {
+		
+		value = str.charCodeAt(10);
+		
+		document.getElementById('result2').innerHTML = 
+			"str.charCodeAt(10) : " + value;
+	}
+	
+	function proc3() {
+		
+		idx = str.indexOf("만세");
+		
+		document.getElementById('result3').innerHTML = 
+			'str.indexOf("만세") : ' + idx;
+	}
+	
+	function proc4() {
+		
+		namevalue = document.getElementById('name').value;
+
+		res = "입력" + namevalue.length + "<br>";
+		
+		namevalue = namevalue.trim();
+		
+		res += "trim() : " + namevalue.length + "<br>";
+		
+		if(namevalue.length < 1) {
+			window.alert("이름은 필수 항목입니다.");
+			return;
+		}
+		
+		/* document.getElementById('result4').innerHTML = 
+			"이름 : " + namevalue; */
+			
+		res += "이름 : " + namevalue;
+		
+		document.getElementById('result4').innerHTML = res;
+	}
+	
+	function proc5() {
+		
+		str1 = str.substring(2, 6);
+		
+		res = "str.substring(2,6) : " + str1;
+		
+		document.getElementById('result5').innerHTML = res;
+	}
+	
+	function proc6() {
+
+		str1 = str.slice(13, 15);
+		
+		res = "str.slice(13, 15) : " + str1;
+		
+		document.getElementById('result6').innerHTML = res;
+	}
+	
+	function proc7() {
+		
+		str1 = str.substr(7, 5);
+		
+		res = 'str.substr(7, 5) : ' + str1;
+		
+		document.getElementById('result7').innerHTML = res;
+	}
+	
+	function proc8() {
+		
+		str1 = str.trim().split(" ");
+		
+		res = 'str.trim().split(" ") : ' + str1 + "<br>";
+		
+		for(i=0; i<str1.length; i++) {
+			res += i + "번째 : " + str1[i] + "<br>";
+		}
+		
+		document.getElementById('result8').innerHTML = res;
+		
+	}
+	
+	function proc9() {
+		
+		str1 = str.trim().split(" ", 3);
+		
+		res = 'str.trim().split(" ",3 ) : ' + str1 + "<br>";
+		
+		for(i=0; i<str1.length; i++) {
+			res += i + "번째 : " + str1[i] + "<br>";
+		}
+		
+		document.getElementById('result9').innerHTML = res;
+	}
+	
+	function proc10() {
+		
+		text = document.getElementById('area').value;
+		
+		text = text.replace(/\r/g, "").replace(/\n/g, '<br>');
+		
+		document.getElementById('result10').innerHTML = text;
+	}
+</script>
+
+</head>
+
+<body>
+
+	<div class="box">
+		<h3>String</h3>
+		str = "I Love Korea 만세 Korea"<br>
+		charAt(index) : 인덱스 위치의 문자를 얻는다<br>
+		charCodeAt(index) : 인덱스 위치의 유니코드(아스키코드값) 값을 얻는다.<br>
+		indexOf(item) : item(문자/문자열)의 위치를 얻는다<br>
+		<input type="button" value="확인" onclick="proc1()">
+		<input type="button" value="확인" onclick="proc2()">
+		<input type="button" value="확인" onclick="proc3()">
+		<br>
+		<div id="result1"></div>
+		<div id="result2"></div>
+		<div id="result3"></div>
+	</div>
+	
+	<div class="box">
+		<h3>String</h3>
+		trim() : 앞뒤 공백을 제거한다.<br>
+		입력한 값이 공백인지 아닌지 체크한다.<br>
+		공백이면 다시 입력하도록 한다.<br><br>
+		이름<input type="text" id="name"><br>
+		<input type="button" value="확인" onclick="proc4()">
+		<br>
+		<div id="result4"></div>
+	</div>
+	
+	<div class="box">
+		<h3>String</h3>
+		substring(start, end) : start ~ end - 1 까지의 문자열을 추출<br>
+		slice(start, end) : start~ end -1 까지의 문자열을 추출<br>
+		substr(start, length) start에서 length(갯수)만큼의 문자를 추출<br>
+		<input type="button" value="Love" onclick="proc5()">
+		<input type="button" value="만세" onclick="proc6()">
+		<input type="button" value="Korea" onclick="proc7()">
+		<br>
+		<div id="result5"></div>
+		<div id="result6"></div>
+		<div id="result7"></div>
+	</div>
+	
+	<div class="box">
+		<h3>String</h3>
+		split(구분자, 갯수) : 구분자를 기준으로 문자열을 분리 하여 배열로 리턴<br>
+		갯수는 생략하면 문자열의 끝까지 수행, 갯수를 지정하면 갯수만큼만 수행<br>
+		<input type="button" value="split" onclick="proc8()">
+		<input type="button" value="split-갯수" onclick="proc9()">
+		<br>
+		<div id="result8"></div>
+		<div id="result9"></div>
+	</div>
+	
+	<div class="box">
+		<h3>String</h3>
+		replace(old, new) : old문자를 new문자로 변경 한다.<br>
+		정규식 사용 가능 = //g<br>
+		<textarea rows="10" cols="50" id="area"></textarea><br><br>
+		<input type="button" value="replace" onclick="proc10()">
+		<br>
+		<div id="result10"></div>
+	</div>
+	
+</body>
+</html>

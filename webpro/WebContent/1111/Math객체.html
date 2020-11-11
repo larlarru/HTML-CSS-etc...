@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/public.css">
+
+<style>
+</style>
+
+<script>
+	rand = Math.random() * 100 + 1;
+	function proc1() {
+		
+		invalue = document.getElementById('in').value.trim();
+		
+		if(invalue > rand) {
+			
+		}
+		
+		document.getElementById('result1')
+		
+	}
+</script>
+
+</head>
+
+<body>
+
+	<div class="box">
+		<h3>Math</h3>
+		랜덤수를 발생하여 맞추는 프로그램<br>
+		랜덤은 1~100 Math.random() * 100+1<br>
+		<input type="text" id="in"><br>
+		<input type="button" value="확인" onclick="proc1()">
+		<br>
+		<div id="result1"></div>
+	</div>
+
+</body>
+</html>

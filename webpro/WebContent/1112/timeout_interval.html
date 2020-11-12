@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/public.css">
+
+<style>
+	img {
+		width : 100px;
+		height : 100px;
+	}
+</style>
+
+<script>
+	function proc1() {
+		
+		setTimeout(function() {
+			document.getElementById('result1').style.background = 'yellow';
+		}, 1000);
+		
+	}
+	
+	function proc2(but) {
+		
+		but.style.display = "none";
+		
+		a = setInterval(function() {
+			console.log(a);
+			r = Math.floor(Math.random() * 256);
+			g = Math.floor(Math.random() * 256);
+			b = Math.floor(Math.random() * 256);
+			/*document.getElementById('result2').style.background = `rgb(${r}, ${g}, ${b})`; */
+			
+			cr = r.toString(16);
+			cg = r.toString(16);
+			cb = r.toString(16);
+			
+			document.body.style.background = "#" + cr + cg + cb;
+			/* document.getElementById('result2').style.background = "#" + cr + cg + cb; */
+			
+		}, 1000);
+		
+	}
+	
+	function proc3(but) {
+		
+		clearInterval(a);
+		
+		document.getElementById('start').style.display = "inline";
+	}
+	
+	function proc4() {
+				
+		imgs = ["../images/단풍.jpg", "../images/셔틀콕.jpg"
+			, "../images/식품1.jpg", "../images/아메리카노.jpg"
+			, "../images/산.png", "../images/쇼핑백2.jpg"
+			, "../images/뱅쇼.jpg", "../images/딸기스무디.jpg"
+			, "../images/등대.jpg", "../images/진달래.jpg"];
+		
+		// imgs[0], imgs[2], imgs[9]...
+		
+		// 1초마다 한번씩 이미지 변경
+		vimg = document.getElementsByTagName('img')[0];
+		
+		b = setInterval(function() {
+			
+			idx = Math.floor(Math.random() * imgs.length);
+			
+			vimg.src = imgs[idx];
+			
+			start = imgs[idx].lastIndexOf("/") + 1;
+			end = imgs[idx].lastIndexOf(".");
+			vimg.alt = imgs[idx].slice(start, end);
+			
+			console.log(" alt = " + vimg.alt);
+						
+		}, 1000);
+	}
+	
+	function proc5() {
+		
+	}
+</script>
+
+</head>
+
+<body>
+
+	<div class="box">
+		<h3>setTimeout</h3>
+		setTimeout(fn, millisec) : <br>
+			지정된 millisec 시간이 경과후 fn함수를 한번 실행 후 종료한다.<br>
+		버튼을 클릭하면 1초 후에 result1의 배경색을 변경한다.<br>
+		<input type="button" value="확인" onclick="proc1()">
+		<br>
+		<div id="result1"></div>
+	</div>
+
+	<div class="box">
+		<h3>setInterval</h3>
+		setInterval(fn, millisec) : <br>
+			지정된 millisec 시간이 경과 할때마다 fn함수를 반복적으로 실행한다.<br>
+		버튼을 클릭하면 1초 후가 경과 할때마다 result2의 배경색을 변경한다.<br>
+		<input id="start" type="button" value="확인" onclick="proc2(this)">
+		<input id = "stop" type="button" value="종료" onclick="proc3(this)">
+		<br>
+		<div id="result2"></div>
+	</div>
+
+	<div class="box">
+		<h3>setInterval</h3>
+		setInterval(fn, millisec) : <br>
+			지정된 millisec 시간이 경과 할때마다 fn함수를 반복적으로 실행한다.<br>
+		버튼을 클릭하면 1초 후가 경과 할때마다 이미지를 result4에 출력한다.<br>
+		<input id="start2" type="button" value="확인" onclick="proc4(this)">
+		<input id = "stop2" type="button" value="종료" onclick="proc5(this)">
+		<br>
+		<div id="result4">
+			<img src="../images/영화2.jpg" alt="영화">
+		</div>
+	</div>
+
+</body>
+</html>

@@ -9,16 +9,34 @@
 </style>
 
 <script>
-	rand = Math.random() * 100 + 1;
+	rand = Math.floor(Math.random() * 100 + 1);
+	count = 0;
+	ins = "";
+	
+	window.onload = function() {
+		document.getElementById('in').focus();
+	}
+	
 	function proc1() {
-		
+		res = "";
+		count ++;
 		invalue = document.getElementById('in').value.trim();
+		/* console.log('rand=' + rand + " invalue = " + invalue); */
+		ins += invalue + "<br>";
 		
-		if(invalue > rand) {
-			
+		if(invalue == rand) {
+			res += "랜덤 : " + rand + "<br>";
+			res += ins + "<br>";
+			res += count + "번 입력해서 맞췄습니다.";
+		} else if(invalue > rand) {
+			res += "더 작은수로 입력";
+		} else {
+			res += "더 큰수로 입력하세요.";
 		}
+		document.getElementById('in').value = "";
+		document.getElementById('in').focus();
 		
-		document.getElementById('result1')
+		document.getElementById('result1').innerHTML = res;
 		
 	}
 </script>
@@ -31,6 +49,7 @@
 		<h3>Math</h3>
 		랜덤수를 발생하여 맞추는 프로그램<br>
 		랜덤은 1~100 Math.random() * 100+1<br>
+		힌트와 counte구하기<br>
 		<input type="text" id="in"><br>
 		<input type="button" value="확인" onclick="proc1()">
 		<br>

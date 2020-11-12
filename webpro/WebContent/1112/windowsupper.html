@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/public.css">
+
+<style>
+</style>
+
+<script>
+	function proc1() {
+		
+		/* window.open("windowsub.html", "sub", "top = 100 left = 200 width = 400 height = 300"); */
+		/* window.open("windowsub.html", "_blank", "width = 400 height = 300"); */
+		window.open();
+	}
+</script>
+
+</head>
+
+<body>
+
+	<div class="box">
+		<h3>Window</h3>
+		open(url, name, specs)<br>
+		open() : 빈 창이 열림<br>
+		확인버튼 클릭하면 새로운 창을 연다.<br>
+		새로운 창(자식창)에서 이름을 입력받아서 부모창(현재창)에 출력한다.<br>
+		<input type="button" value="확인" onclick="proc1()">
+		<br>
+		<div id="result1"></div>
+	</div>
+
+</body>
+</html>

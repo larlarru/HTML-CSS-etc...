@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/public.css">
+
+<style>
+</style>
+
+<script>
+	function proc1() {
+		
+		res = "href = " + location.href + "<br>";
+		res += "protocol : " + location.protocol + "<br>";
+		res += "hostname : " + location.hostname + "<br>";
+		res += "port : " + location.port + "<br>";
+		
+		document.getElementById('result1').innerHTML = res;
+	}
+</script>
+
+</head>
+
+<body>
+
+	<div class="box">
+		<h3>제목</h3>
+		내용<br>
+		<input type="button" value="확인" onclick="proc1()">
+		<br>
+		<div id="result1"></div>
+	</div>
+
+</body>
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/public.css">
+
+<style>
+</style>
+
+<script>
+	str = ["Hello~~", "JavaScript", "HTML", "CSS", "jQuery", "Good~"];
+	
+	function proc1() {
+		
+		// 랜덤 발생 -str[0], str[3] str[6] - 문자열 선택
+		random = Math.floor(Math.random() * str.length);
+		
+		// 선택된 문자열로 textNode를 생성
+		text = document.createTextNode(str[random]);
+		
+		// p태그 생성
+		ptag = document.createElement("p");
+		
+		// text를 ptag에 추가한다.
+		ptag.appendChild(text);
+		
+		// result1에 ptag를 추가한다.
+		result1 = document.getElementById('result1');
+		result1.appendChild(ptag);
+	}
+	
+	function proc2() {
+		
+		// 부모 요소를 접근한다 - result1
+		result1 = document.getElementById('result1');
+		
+		//부모요소.첫번째(마지막)자식을 얻는다.
+		child = result1.lastChild;
+		
+		//삭제 = 부모요소.removeChild(자식요소)
+		result1.removeChild(child);
+	}
+	
+	function proc3() {
+		
+		random = Math.floor(Math.random() * str.length);
+		
+		// 선택된 문자열로 textNode를 생성
+		text = document.createTextNode(str[random]);
+		
+		// input 태그 생성
+		input = document.createElement('input');
+		input.type ="button";
+		input.value = "삭제";
+		
+		// p태그 생성
+		ptag = document.createElement("p");
+		
+		// text를 ptag에 추가한다.
+		ptag.appendChild(text);
+		
+		// result1에 ptag를 추가한다.
+		ptag.appendChild(input);
+		document.getElementById('result3').appendChild(ptag);
+		
+	}
+</script>
+
+</head>
+
+<body>
+
+
+	<div class="box">
+		<h3>추가/삭제</h3>
+		추가 : 배열로 문자열 생성, 랜덤 발생으로 문자열 선택<br>
+		선택한 문자열로 textnode를 생성<br>
+		p태그를 생성 - createElement("p")<br>
+		p태그의 자식요소로 textnode를 추가한다.<br>
+		result1의 자식요소로 p태그를 추가한다.<br>
+		삭제 : <br>
+			child = result1.lastChild<br>
+			result1.removeChild(child);<br>
+		<input type="button" value="추가" onclick="proc1()">
+		<input type="button" value="삭제" onclick="proc2()">
+		<br>
+		<div id="result1"></div>
+	</div>
+
+	<div class="box">
+		<h3>추가/삭제</h3>
+		추가 : 배열로 문자열 생성, 랜덤 발생으로 문자열 선택<br>
+		선택한 문자열로 textnode를 생성<br>
+		button요소를 생성 = createElement('input')<br>
+		p태그를 생성 - createElement("p")<br>
+		p태그의 자식요소로 textnode와 button요소를 추가한다.<br>
+		result2의 자식요소로 p태그를 추가한다.<br>
+		
+		삭제 : <br>
+		<input type="button" value="추가/삭제" onclick="proc3()">
+		<br>
+		<div id="result3"></div>
+	</div>
+
+</body>
+</html>

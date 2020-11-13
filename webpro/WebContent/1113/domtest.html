@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/public.css">
+
+<style>
+</style>
+
+<script>
+	function proc1() {
+		/* 뒤에다가 [0]안쓰면 다 가져온다. [0]은 하나만 가져온다. */
+		//ulist = document.getElementsByTagName("ul")[0];
+		ulist = document.querySelector('ul');
+		listitem = ulist.getElementsByTagName('li');
+		
+		res = "";
+		
+		for(i=0; i<listitem.length; i++) {
+			
+			res += listitem[i].firstChild.data + "<br>";
+		}
+		
+		document.getElementById('result1').innerHTML = res;
+	}
+	
+	function proc2() {
+		
+		ultag = document.getElementsByTagName('ul')[1];
+		/* ultag = document.getElementsByTagName('ul');
+		ultag[1].querySelectorAll('li'); */
+		
+		litag = ultag.querySelectorAll('li');
+		console.log(litag.length);
+		
+		for(i=0; i<litag.length; i++) {
+			
+			imgdata = litag[i].firstChild.data;	// 뱅쇼
+			
+			// 이미지 생성 <img src="" alt="">
+			vimg = document.createElement("img");
+			vimg.src = "../images/" + imgdata + ".jpg";
+			vimg.alt = imgdata;
+			vimg.width = 100;
+			vimg.height = 100;
+			
+			/* // 생성된 이미지(자식)를 result2(부모)에 추가
+			result2 = document.getElementById('result2');
+			result2.appendChild(); */
+			
+			// 생성된 이미지(자식)를 li(부모)에 추가
+			litag[i].appendChild(vimg);
+		}
+	}
+	
+	function proc3(litag) {
+		
+		textdata = litag.firstChild.data;
+		
+		vimg = document.createElement("img");
+		vimg.src = "../images/" + textdata + ".jpg";
+		vimg.alt = textdata;
+		vimg.width = 100;
+		vimg.height = 100;
+		
+		litag.appendChild(vimg);
+	}
+</script>
+
+</head>
+
+<body>
+
+	<div class="box">
+		<h3>Dom Test</h3>
+		UL요소와 자식요소에 접근해서 값을 가져온다<br>
+		<ul>
+	        <li>홍길동</li>
+	        <li>개나리</li>
+	        <li>진달래</li>
+	        <li>수선화</li>
+	        <li>라일락</li>
+    	</ul>
+		
+		<input type="button" value="확인" onclick="proc1()">
+		<br>
+		<div id="result1"></div>
+	</div>
+
+	<div class="box">
+		<h3>Dom Test</h3>
+		UL요소와 자식요소에 접근해서 값을 가져온다<br>
+		각 아이템을 클릭하면 이미지를 생성하여 출력한다.<br>
+		<ul>
+	        <li onclick="proc3(this)">뱅쇼</li>
+	        <li onclick="proc3(this)">셔틀콕</li>
+	        <li onclick="proc3(this)">소우주</li>
+	        <li onclick="proc3(this)">딸기스무디</li>
+	        <li onclick="proc3(this)">등대</li>
+    	</ul>
+		
+		<input type="button" value="확인" onclick="proc2()">
+		<br>
+		<div id="result2"></div>
+	</div>
+
+</body>
+</html>

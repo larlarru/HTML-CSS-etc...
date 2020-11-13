@@ -6,6 +6,9 @@
 <link rel="stylesheet" href="../css/public.css">
 
 <style>
+	.box button {
+		width : 120px;
+	}
 </style>
 
 <script>
@@ -18,6 +21,37 @@
 		
 		document.getElementById('result1').innerHTML = res;
 	}
+	
+	function proc2() {
+		
+		location.href = 'test.jsp';
+	}
+	
+	function goPage() {
+		
+		location.href='test.jsp?code=2&name=홍길동';
+	}
+	
+	function replaceProc() {
+		
+		location.replace('test.jsp');
+	}
+	
+	function reloadProc() {
+		
+		str = ["Hello~~", "JavaScript", "HTML", "CSS", "jQuery", "Good~"];
+		// str[0] str[4] str[2]
+		
+		rand = Math.floor(Math.random() * str.length);
+		
+		res = "<h1>" + str[rand] + "</h1>";
+		document.getElementById('result2').innerHTML = res;
+		document.getElementById('result2').style.color = 'red';
+		
+		setTimeout(function() {
+			location.reload();
+		}, 1000);
+	}
 </script>
 
 </head>
@@ -25,11 +59,40 @@
 <body>
 
 	<div class="box">
-		<h3>제목</h3>
-		내용<br>
+		<h3>Location</h3>
+		url의 정보를 얻는다.<br>
+		href : url전체 정보<br>
+		protocal : 인터넷규악 http<br>
+		host : hostname + port<br>
+		hostname : server이름<br>
+		port : 데이터의 출입구<br>
 		<input type="button" value="확인" onclick="proc1()">
 		<br>
 		<div id="result1"></div>
+	</div>
+
+	<div class="box">
+		<h3>Location</h3>
+		
+		- 자동으로 특정페이지로 이동할때 사용 - location.href="페이지이름" 
+		<input type="button" value="페이지이동" onclick="proc2()">
+		<br>
+		- a 태그에서 이용 - 함수호출 : javascript : 함수명() 
+		<a href="javascript:goPage()">공지사항목록</a>
+		<br>
+		- 이벤트 서버 전송(get) - location.href = 페이지이름 
+		<button type="button" onclick="location.href='test.jsp?code=1&name=korea'">공지사항목록</button>
+		<br>
+		- 새로운 문서로 대체 - location.replace(페이지이름)<br>
+		- replace() 메서드는 현재 페이지를 대체 하기 때문에 뒤로 아이콘이 비활성화 된다.<br>
+		- 뒤로 가기가 실행되지 않는다.   
+		<button type="button" onclick="replaceProc()">공지사항목록</button>
+		<br>
+		- 현재 문서를 다시 리로드<br>
+		문자열을 배열로 생성하고 랜덤으로 발생하여 문자열을 선택한다.<br>
+		선택된 문자열을 result2에 출력하고 1초후에 원래문서로 돌아온다.<br> 
+		<button type="button" onclick="reloadProc()">페이지 재호출</button>
+		<div id="result2"></div>
 	</div>
 
 </body>

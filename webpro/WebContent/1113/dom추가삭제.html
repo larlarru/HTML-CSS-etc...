@@ -53,6 +53,13 @@
 		input = document.createElement('input');
 		input.type ="button";
 		input.value = "삭제";
+		input.onclick = function() {
+			// 현재 노드(button, this)의 부모노드를 반환
+			parentp = this.parentNode;
+			
+			// parentp는 result3의 자식
+			parentp.remove();	// result3에서 삭제
+		};
 		
 		// p태그 생성
 		ptag = document.createElement("p");
@@ -98,6 +105,8 @@
 		result2의 자식요소로 p태그를 추가한다.<br>
 		
 		삭제 : <br>
+		자식요소.remove() : 부모요소에서 선택한 자식요소를 삭제한다.<br>
+		<br>
 		<input type="button" value="추가/삭제" onclick="proc3()">
 		<br>
 		<div id="result3"></div>

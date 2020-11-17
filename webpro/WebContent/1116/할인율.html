@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/public.css">
+
+<style>
+	.box div { /* result1 */
+		height : 200px;
+		width : 660px;
+	}
+	
+	.box .guess_box {
+		width : 150px;
+		height : 150px;
+		float : left;
+		margin : 3px;
+		padding : 3px;
+		background : gray;
+	}
+	
+	img {
+		width : 100%;
+		height : 80%;
+	}
+	img:hover {
+		border : 2px solid green;
+	}
+</style>
+
+<script>
+	///////////////////////////////
+	window.onload = function() {
+		vimgs = document.getElementsByClassName('cimg');
+		vimgs = document.querySelectorAll('.cimg');
+		for(i=0; i<vimgs.length; i++) {
+			vimgs[i].addEventListener('click', proc2);
+		}
+	}
+	
+	ptag2 = null;
+	function proc2() {
+		
+		// this - (img)를 사용할 수 있다.
+		if(ptag2 != null) {
+			
+			pp = document.getElementsByClassName('pp2')[0];
+			guessBox = pp.parentNode;
+			// ptag의 부모요소
+			guessBox.removeChild(pp);
+		}
+		
+		// 랜덤발생
+		rand = Math.floor(Math.random() * 6 + 5);
+		
+		// textNode생성 - 할인율 : 10%
+		text2 = document.createTextNode("할인율 : " + rand + "%");
+		
+		// p태그 생성
+		ptag2 = document.createElement('p');
+		ptag2.setAttribute('class', 'pp2');
+		
+		// p태그에 text노드 추가한다.
+		ptag2.appendChild(text2);
+		
+		// guess_box에 p태그 추가
+		// img를 this로 사용한다.
+		// guess box를 검색하기 위해서 img를 기준으로 부모요소를 검색한다.
+		this.parentNode.appendChild(ptag2);
+		
+	}
+	
+	//////////////////////
+	ptag = null;
+	function proc1(vimg) {
+		
+		if(ptag != null) {
+			
+			//pp = document.getElementsByClassName('pp')[0];
+			guessBox = ptag.parentNode;
+			// ptag의 부모요소
+			guessBox.removeChild(ptag);
+			//guessBox.removeChild(pp);
+		}
+		
+		// 랜덤발생
+		rand = Math.floor(Math.random() * 6 + 5);
+		
+		// textNode생성 - 할인율 : 10%
+		text = document.createTextNode("할인율 : " + rand + "%");
+		
+		// p태그 생성
+		ptag = document.createElement("p");
+		ptag.setAttribute('class', 'pp');
+		
+		// p태그에 text노드 추가한다.
+		ptag.appendChild(text);
+		
+		// guess_box에 p태그 추가
+		// img를 this를 파라미터로 넘겨서 vimg변수로 받았다.
+		// guess box를 검색하기 위해서 img를 기준으로 부모요소를 검색한다.
+		vimg.parentNode.appendChild(ptag);
+	}
+</script>
+
+</head>
+
+<body>
+
+
+	<div class="box">
+		<h3>할인율</h3>
+		&lt;img onclick="proc1(this)" src="" alt=""><br>
+		이미지를 클릭하면 p태그를 생성, guess_box에 p태그를 추가<br> 
+		&lt;p class="pp">할인율 : 10%&lt;/p><br>
+		할인율은 5~10사이의 난수를 발생한다.<br>
+		<div id="result1">
+			<div class="guess_box">
+				<img src="../images/딸기스무디.jpg" alt="딸기스무디" onclick="proc1(this)">
+			</div>
+			<div class="guess_box">
+				<img src="../images/가구3.jpg" alt="가구3" onclick="proc1(this)">
+			</div>
+			<div class="guess_box">
+				<img src="../images/국화.jpg" alt="국화" onclick="proc1(this)">
+			</div>
+			<div class="guess_box">
+				<img src="../images/소우주.jpg" alt="소우주" onclick="proc1(this)">
+			</div>
+		</div>
+	</div>
+
+	<div class="box">
+		<h3>할인율</h3>
+		&lt;img onclick="proc1(this)" src="" alt=""><br>
+		이미지를 클릭하면 p태그를 생성, guess_box에 p태그를 추가<br> 
+		&lt;p class="pp">할인율 : 10%&lt;/p><br>
+		할인율은 5~10사이의 난수를 발생한다.<br>
+		이벤트 일괄처리<br>
+		vimgs = document.getElementsByClassName('cimg');<br>
+		vimgs = document.querySelectorAll('.cimg')<br>
+		for(i=0; i&lt;vimgs.length; i++) {<br>
+			vimgs[i].addEventListener('click', proc2)<br>
+		}<br>
+		proc2는 새로 정의하는 사용자 함수<br>
+		proc2 함수내에서 img를 this로 사용할 수 있다.<br>
+		<div id="result2">
+			<div class="guess_box">
+				<img class="cimg" src="../images/딸기스무디.jpg" alt="딸기스무디">
+			</div>
+			<div class="guess_box">
+				<img class="cimg" src="../images/가구3.jpg" alt="가구3">
+			</div>
+			<div class="guess_box">
+				<img class="cimg" src="../images/국화.jpg" alt="국화">
+			</div>
+			<div class="guess_box">
+				<img class="cimg" src="../images/소우주.jpg" alt="소우주">
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>

@@ -30,7 +30,7 @@
 		tvalue = tel.value.trim().length;
 		pvalue = pass.value.trim().length;
 			
-		/* if(nvalue < 1) {
+		if(nvalue < 1) {
 			alert("이름 입력");
 			return false;
 		}
@@ -87,22 +87,30 @@
 		if(pvalue < 8 || pvalue > 15) {
 			alert("비밀번호 8 ~ 15 사이로 입력");
 			return false;
-		} */
+		}
 		
 		// 비밀번호 정규식
 		// 검색문자?=기준문자 : 기준문자를 기준으로해서 전방(앞에)탐색으로 검색한다.
 		// a = http://www.naver.com	https://www.daum.net
 		// http인지 https인지 비교한다. - 해당문자를 직접가져온다. - value.match(reg)
 		// match()수행후 해당 문자가 있으면 문자를 가져오고 없으면 null를 리턴한다.
-		a = "https://www.naver.com";
+		/* a = "https://www.naver.com";
 		reg = /\w+(?=:)/;
 		b = a.match(reg)
 		if(b == "http") {
 			alert("http 요청입니다.");
 		} else if(b == "https") {
 			alert("https 요청입니다.");
+		} */
+		
+		// 정규식 - 전방 탐색 응용 - 영문소문자대문자숫자특수문자가 반드시 한개이상씩 포함된다.
+		passReg = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*]).{8,15}$/;
+		if(!(passReg.test(pass.value))) {
+			alert("비밀번호 형식 오류");
+			return false;
 		}
-		/* 
+		
+		
 		// 메일 공백
 		if(mvalue < 1) {
 			alert("이메일 입력");
@@ -128,7 +136,7 @@
 		if(!(telReg.test(tel.value))) {
 			alert("전화번호 형식 오류");
 			return false;
-		}*/
+		}
 			
 		alert("성공");
 	}
@@ -151,7 +159,7 @@
 			생일: <input type='date' id='birthday' ><br>
 			아이디(6-8 문자): 
 			<input type='text' id='userid' ><br>
-			비밀번호 : <input type="text" id="pass"><br>
+			비밀번호 : <input type="password" id="pass"><br>
 			이메일: <input type='email' id='email' ><br>
 			휴대폰: <input type='tel' id='phone' ><br>
 			<input type='button' onclick ="proc1()" value='확인' ><br>

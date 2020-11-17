@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/public.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<style>
+</style>
+
+<script>
+	$(document).ready(function() {
+		jQuery('#btn1').on('click', function() {
+			$('#result1').html("안녕하세요<br>")
+			.css('color', 'red').css('background', 'yellow');
+		})
+	})
+</script>
+
+</head>
+
+<body>
+
+	<pre>
+		CDN 방식으로 jQuery사용
+		구글이나 마이크로소프트에서 제공하는 CDN을 사용하여 jQuery 파일을 포함하는 방법
+		공개 서버로부터 네트워크를 통하여 웹페이지를 실행할 때마다 다운로드 받을 수도 있다 
+	</pre>
+	
+	<div class="box">
+		<h3>CDN 방식으로 jQuery사용</h3>
+		내용<br>
+		<input id="btn1" type="button" value="확인">
+		<br>
+		<div id="result1"></div>
+	</div>
+
+</body>
+</html>

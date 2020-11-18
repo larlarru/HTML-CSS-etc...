@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/public.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<style>
+	#show {
+		display : none;
+	}
+</style>
+
+<script>
+	
+	//$(document).ready(function() {
+	$(function() {
+		
+		$('#show').on('click', function() {
+			
+			$('h2').show();
+			//$('h2').css('display', 'block');
+			$(this).hide();
+			//$(this).css('display', 'none'); 
+		})
+		
+		/* $('#show').on('click', function() {
+			
+			vh = document.getElementsByTagName('h2');
+			for(i=0; i<vh.length; i++) {
+				
+				//$(vh[i]).css('display', 'block');
+				//$(vh[i]).show();
+				vh[i].style.display = "block";
+			}
+			//this.style.display = "none";
+			$(this).hide();
+			//$(this).css('display', 'none'); 
+		}) */
+		
+		$('h2').on('click', function() {
+			$(this).hide();
+			
+			// 남은 h2를 비교
+			if( $('h2:visible').length < 1 ) {
+				$('#show').css('display', 'block');
+			}
+		})
+	})
+</script>
+
+</head>
+
+<body>
+
+	<div class="box">
+		<h3>제목</h3>
+		내용<br>
+		<br>
+		<div id="result1">
+			<h2>클릭하면 사라집니다1.</h2>
+			<h2>클릭하면 사라집니다2.</h2>
+			<h2>클릭하면 사라집니다3.</h2>
+			<h2>클릭하면 사라집니다4.</h2>
+			<h2>클릭하면 사라집니다5.</h2>
+			<h2>클릭하면 사라집니다6.</h2>
+			<h2>클릭하면 사라집니다7.</h2>
+		</div>
+		
+		<input id="show" type ="button" value="보이기">
+	</div>
+
+</body>
+</html>

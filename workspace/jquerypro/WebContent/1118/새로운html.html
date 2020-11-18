@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/public.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<style>
+</style>
+
+<script>
+	$(function() {
+		
+		count = 0;
+		
+		$('input[value=확인]').on('click', function() {
+			
+			count++;
+			//vp = $('<p id="p'  + count +  '" onclick="proc1(this)">Hello~~jQuery!!</p>');
+			vp = $('<p></p>', {
+				'id' : 'p' + count , 'text' : 'Hello~~jQuery!!', 
+				'click' : function() {
+					//$(this).css('font-size', '+=3px');
+					//$(this).css('color', 'red').css('font-size', '+=3px');
+					$(this).css( {'color':'red', 'font-size':'+=1px'} );
+				}
+			});
+			//vp.appendTo('#result1');
+			$(vp).appendTo('#result1');
+		});
+		
+		$('input[value=이미지추가]').on('click', function() {
+			
+			// 이미지 생성 - <img src="" >
+			/* imgs = $('<img></img>', {
+				'src' : '../images/가구1.jpg', 'onclick' : function() {
+					$(this).css( {'border':'5px solid blue'} );
+				} ,'style' : function() {
+					$(this).css( {'width':'100px', 'height':'100px'} );
+				}
+			}); */  
+			imgs = $('<img>', {
+				'src' : '../images/가구1.jpg',
+				'alt' : '가구1',
+				'click' : function() {
+					$(this).css( {'border':'5px solid blue'} );
+				} ,
+				'style' : function() {
+					$(this).css( {'width':'100px', 'height':'100px'} );
+				}
+			});  
+			
+			// result2에 추가
+			$(imgs).appendTo('#result2');
+		})
+		
+	})
+	
+	/* function proc1(v) {
+			
+		$(v).css('font-size', '+=3px');
+	}  */
+</script>
+
+</head>
+
+<body>
+
+	<div class="box">
+		<h3>새로운 html요소 만들기</h3>
+		$('html')<br>
+		$('html', { 속성, 이벤트, text })<br>
+		확인 버튼 클릭하면 result1에 새로운 p태그로 Hello jQuery문자를 생성<br>
+		생성된 문자를 클릭하면 글자크기를 증가 시킨다.<br>
+		vp = $('&lt;p id="p'  + count +  '" onclick="proc1(this)">Hello~~jQuery!!&lt;/p>');<br>
+		$(vp).appendTo('#result1');<br>
+		function proc1(v) {<br>
+		&nbsp;&nbsp;&nbsp;$(v).css('font-size', '+=3px');<br>
+		}<br>
+		<input type="button" value="확인">
+		<br>
+		<div id="result1"></div>
+	</div>
+
+	<div class="box">
+		<h3>새로운 html요소 만들기</h3>
+		버튼 클릭하면 result2에 이미지를 추가한다.<br>
+		이미지를 클릭하면 이미지의 테두리를 설정한다.<br>
+		<input type="button" value="이미지추가">
+		<br>
+		<div id="result2"></div>
+	</div>
+
+</body>
+</html>

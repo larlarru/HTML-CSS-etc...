@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/public.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<style>
+</style>
+
+<script>
+	
+	$(document).ready(function() {
+		$('#result3 h2').on('click', function() {
+			
+			//$(this).css('display', 'none');
+			$(this).hide();
+			//this.style.display = "none";
+		})
+	})
+	
+	window.onload = function() {
+		
+		vch = document.querySelectorAll('.ch');
+		for(i=0; i<vch.length; i++) {
+			vch[i].addEventListener('click', proc2);
+		}
+		
+		//$('#result3 h2').on('click', function() { })
+	}
+	
+	function proc2() {
+		
+		// this 사용
+		this.style.display = "none";
+		//$(this).css('display', 'none');
+	}
+		
+	function proc1(vh2) {
+		
+		vh2.style.display = "none";
+	}
+</script>
+
+</head>
+
+<body>
+
+	<div class="box">
+		<h3>제목</h3>
+		각 모든 h2태그에 onclick="proc1(this)" 형식으로 이벤트함수를 직접 호출<br>
+		<br>
+		<div id="result1">
+			<h2 onclick="proc1(this)">클릭하면 사라집니다1.</h2>
+			<h2 onclick="proc1(this)">클릭하면 사라집니다2.</h2>
+			<h2 onclick="proc1(this)">클릭하면 사라집니다3.</h2>
+			<h2 onclick="proc1(this)">클릭하면 사라집니다4.</h2>
+			<h2 onclick="proc1(this)">클릭하면 사라집니다5.</h2>
+			<h2 onclick="proc1(this)">클릭하면 사라집니다6.</h2>
+			<h2 onclick="proc1(this)">클릭하면 사라집니다7.</h2>
+		</div>
+	
+		<br>
+		<br>
+		이벤트 일괄등록<br>
+		vch = document.querySelectorAll('.ch');<br>
+		for(i=0; i&lt;vch.length; i++) {<br>
+		&nbsp;&nbsp;&nbsp;&nbsp;vch[i].addEventListener('click', proc2);<br>
+		}<br>
+		<br>
+		<div id="result2">
+			<h2 class="ch">클릭하면 사라집니다1.</h2>
+			<h2 class="ch">클릭하면 사라집니다2.</h2>
+			<h2 class="ch">클릭하면 사라집니다3.</h2>
+			<h2 class="ch">클릭하면 사라집니다4.</h2>
+			<h2 class="ch">클릭하면 사라집니다5.</h2>
+			<h2 class="ch">클릭하면 사라집니다6.</h2>
+			<h2 class="ch">클릭하면 사라집니다7.</h2>
+		</div>
+		
+		jQuery<br>
+		선택 : $('#result3 h2')<br>
+		이벤트 : $('#result3 h2').on('click', function() {<br>
+		&nbsp;&nbsp;&nbsp;클릭한 대상의 객체를 this변수로 받는다.<br>
+		&nbsp;&nbsp;&nbsp;$(this)<br>
+		});<br>
+		<br>
+		<div id="result3">
+			<h2>클릭하면 사라집니다1.</h2>
+			<h2>클릭하면 사라집니다2.</h2>
+			<h2>클릭하면 사라집니다3.</h2>
+			<h2>클릭하면 사라집니다4.</h2>
+			<h2>클릭하면 사라집니다5.</h2>
+			<h2>클릭하면 사라집니다6.</h2>
+			<h2>클릭하면 사라집니다7.</h2>
+		</div>
+	</div>
+
+</body>
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/public.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<style>
+#id {
+ ;
+}
+</style>
+
+<script>
+	$(function() {
+		
+		//h2의 자식 a 태그의 스타일 에 테두리 설정 - solid
+		$('h2 > a').css('border', '3px solid blue');
+		
+		//h2의 후손 a태그의 스타일 배경색 을 노란색으로 변경
+		$('h2 a').css('background', 'yellow');
+		
+		$('.box2 input[type=button]').on('click', function() {
+			
+		// result2내에서 모든 span 태그의 배경색 변경 - yellow
+		$('#result2 span').css('background', 'lightgreen');
+		
+		// result2내에서 div의 모든 후손중 span 태그의 테두리 - red
+		$('#result2 div span').css('border', '3px solid red');
+		
+		// result2내에서 div의 바로 다음 자식 span 태그의 테두리 - blue
+		$('#result2 div>span').css('border', '3px solid blue');
+			
+		});
+		
+		$('.box3 input[type=button]').on('click', function() {
+			//h3 다음의 모든 형제의 배경색을 변경, 길이지정, 가운데정렬
+			$('#result3 h3 ~ p').css( {
+				'background':'cyan', 
+				'width':'500px', 
+				'text-align':'center'} );
+			
+			//h3 다음의 첫번째 형제의 글자를 굵게, 크게 : font-weight
+			$('#result3 h3+p').css( { 
+				'font-size':'2.0em', 
+				'font-weight':'bold'} );
+			
+		});
+		
+		
+		
+	})
+</script>
+
+</head>
+
+<body>
+
+	<div class="box box1">
+		<h3>선택자</h3>
+		h2의 자식 a 태그 : $('h2 > a').css('border', '3px solid blue');<br>
+		h2의 후손 a 태그 : $('h2 a').css('background', 'yellow');<br>
+		<br>
+		<div id="result1">
+			<h2> 문단 안에 <a>링크</a> 태그가 있다
+     		두번째  <span><a>링크</a></span> 은 손자이다 
+			</h2>
+		</div>
+	</div>
+
+	<div class="box box2">
+		<h3>선택자</h3>
+		result2안에서 선택<br>
+		모든 span태그의 배경색 변경 - yellow<br>
+		div의 모든 후손중 span 태그의 테두리 - red<br>
+		div의 바로 다음 자식 span태그의 테두리 - blue<br>
+		<br>
+		<input type="button" value="확인">
+		<div id="result2">
+			<p>이 문단에는 <span>스팬</span> 엘리먼트가 있다</p>
+			<div>
+				이 디비젼에도 <span>스팬</span> 엘리먼트가 있다
+				<p>디비젼의 내부 문단의 <span>스팬</span> 엘리먼트이다</p>
+
+				<div>
+					<p>내부 디비젼의 다시 문단 속 아주 <strong>깊은곳에 </strong> 
+					<em> 숨어있는 </em> <span>스팬</span>엘리먼트도 있다</p>
+				</div>
+			</div>
+			
+		</div>
+	</div>
+
+	<div class="box box3">
+		<h3>선택자</h3>
+		h3의 바로 다음 형제 형제 p 태그 : $('#result3 h3+p').css()<br>
+		h2의 모든 형제 p태그 : $('#result3 h3 ~ p').css()<br>
+		<br>
+		<input type="button" value="확인">
+		<div id="result3">
+			<p>형제 선택자 에 대하여</p>
+			<h3>꼬마버스 타요 가족을 소개 합니다</h3>
+			<p>타요</p>
+			<p>로기</p>
+			<p>라니</p>
+			<p>가니</p>
+		</div>
+	</div>
+
+</body>
+</html>

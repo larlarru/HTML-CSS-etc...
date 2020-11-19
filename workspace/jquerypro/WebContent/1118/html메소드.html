@@ -14,7 +14,24 @@
 		
 		$('input[value=html]').on('click', function() {
 			
-			alert( $('p').html());
+			//alert( $('p').html());
+			res ="";
+			
+			/*-------------------------------------------------- 
+			$.each( $('p'), function(i) {
+				
+				//res += $('p').eq(i).html() + "\n";
+				res += $(this).html() + "\n";
+			});
+			alert(res);
+			------------------------------------------------------*/
+						
+			$('p').each(function(i, v) {
+				//res += $(this).html() + "\n";
+				res += $(v).html() + "\n";
+			});
+			alert(res);
+			
 		});
 		
 		$('input[value=text]').on('click', function() {
@@ -33,6 +50,10 @@
 		html() : 대상 항목에서 태그를 포함한 문장<br>
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;대상항목이 body일때는 모든 문장<br>
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;대상항목이 body가 아닐때 첫번째 항목의 문장만 가져온다.<br>
+		<br>
+		전체 항목을 가져오기 위해서 반목문을 실행시킨다.<br>
+		반복문 안에서 각각의 항목은 $(this), $('p').eq(i)로 접근한다.<br>
+		<br>
 		text() : 대상 항목에서 태그 포함하지 않고 모든 문장<br>
 		<input type="button" value="html">
 		<input type="button" value="text">

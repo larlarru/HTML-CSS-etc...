@@ -26,7 +26,8 @@ pre {
 	margin : 5px;
 }
 
-.box input[type=button], .box button {
+.box input[type=button], .box button,
+.box input[type=reset], .box input[type=submit] {
 	width : 80px;
 	background : blue;
 	color : white;

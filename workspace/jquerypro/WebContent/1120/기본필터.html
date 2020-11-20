@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/public.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<style>
+	table{
+		border : 1px solid blue;
+		border-collapse : collapse;
+	}
+	
+	td {
+		width : 500px;
+		height : 30px;
+		text-align: center;
+	}
+	
+	#result2 td.aa {
+		font-weight : bold;
+		font-size : 2.0em;
+	}
+</style>
+
+<script>
+	$(function() {
+		
+		$('.box1 > input').on('click', function() {
+			$('#result1 tr:even').css( {'background':'lightcyan'} );
+			$('#result1 tr:odd').css( {'background':'lightgreen'} );
+		})
+		
+		$('.box2>input').on('click', function() {
+
+			$('#result2 tr:even').css( {'background':'pink'} );
+			$('#result2 tr:odd').css( {'background':'lightblue'} );
+			
+			$('#result2 tr:first').css( {'background':'black', 'color':'white'} );
+		})
+		
+	})
+</script>
+
+</head>
+
+<body>
+
+	<div class="box box1">
+		<h3>제목</h3>
+		내용<br>
+		<input type="button" value="확인">
+		<br>
+		
+		<div id="result1">
+			<table id="table1" border="1">
+				<tr>
+					<td></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td></td>
+				</tr>
+			</table>
+		</div>
+	</div>
+	
+	<div class="box box2">
+		<h3>제목</h3>
+		내용<br>
+		<input type="button" value="확인">
+		<br>
+		
+		<div id="result2">
+			<table id="table2" border="1">
+				<tr>
+					<td class="aa">이름</td>
+					<td class="aa">주소</td>
+				</tr>
+				<tr>
+					<td>a</td>
+					<td>1</td>
+				</tr>
+				<tr>
+					<td>b</td>
+					<td>2</td>
+				</tr>
+				<tr>
+					<td></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td></td>
+				</tr>
+			</table>
+		</div>
+	</div>
+
+</body>
+</html>

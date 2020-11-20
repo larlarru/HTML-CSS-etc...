@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/public.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<style>
+	table{
+		border : 1px solid gray;
+	}
+	
+	td {
+		width : 500px;
+		height : 30px;
+		text-align: center;
+	}
+</style>
+
+<script>
+	
+	$(function() {
+		
+		$('.box1 input:button').on('click', function() {
+			
+			$('#result1 td:first-child').css( {'background':'gray'} );
+			$('#result1 td:nth-child(2)').css( {'background':'#c8c8c8'} );
+			$('#result1 td:last-child').css( {'background':'#dcdcdc'} );
+		})
+		
+		$('.box2 input:button').on('click', function() {
+			
+			$('#result2 td:first-child').css( {'background':'#FFC8C8'} );
+			$('#result2 td:nth-child(2)').css( {'background':'#FFDCDC'} );
+			$('#result2 td:last-child').css( {'background':'#FFF0F0'} );
+			
+			$('#result2 tr:first-child td').css( {
+				'background':'black',
+				'color':'white'
+				} );
+		})
+	})
+</script>
+
+</head>
+
+<body>
+
+	<div class="box box1">
+		<h3>제목</h3>
+		first-child, nth-child(2), last-child<br>
+		td:first-child : td의 부모가 되는 각각의 tr에서 첫번째 자식인 td를 선택한다.<br>
+		$('#result1 td:first-child').css( {'background':'gray'} );<br>
+		$('#result1 td:nth-child(2)').css( {'background':'#c8c8c8'} );<br>
+		$('#result1 td:last-child').css( {'background':'#dcdcdc'} );<br>
+		<input type="button" value="확인">
+		<br>
+		
+		<div id="result1">
+			<table id="table1" border="1">
+				<tr>
+					<td></td>
+					<td></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td></td>
+					<td></td>
+				</tr>
+				
+			</table>
+		</div>
+		
+	</div>
+	
+	<div class="box box2">
+		<h3>제목</h3>
+		first-child, nth-child(2), last-child<br>
+		$('#result2 td:first-child').css( {'background':'#FFC8C8'} );<br>
+		$('#result2 td:nth-child(2)').css( {'background':'#FFDCDC'} );<br>
+		$('#result2 td:last-child').css( {'background':'#FFF0F0'} );<br>
+		<br><br>
+		$('#result2 tr:first-child td').css( {'background':'black', 'color':'white'} );<br>
+		<input type="button" value="확인">
+		<br>
+		
+		<div id="result2">
+			<table id="table1" border="1">
+				<tr>
+					<td>이름</td>
+					<td>주소</td>
+					<td>전화번호</td>
+				</tr>
+				<tr>
+					<td></td>
+					<td></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td></td>
+					<td></td>
+				</tr>
+				
+			</table>
+		</div>
+		
+	</div>
+
+</body>
+</html>

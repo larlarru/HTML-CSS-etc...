@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/public.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<style>
+	img {
+		width : 100ppx;
+		height : 100px;
+		margin : 5px;
+	}
+</style>
+
+<script>
+	$(function() {
+		
+		$('.box1 input').on('click', function() {
+			
+			vimg = $('<img>', {
+				'src' : '../images/셔틀콕.jpg',
+				'alt' : "셔틀콕",
+				'width' : '100px',
+				'height' : '100px'
+			})
+			//$('#result1').appendTo(vimg);
+			$(vimg).appendTo('#result1');
+		})
+		
+		$('.box2 input[value=중지]').hide();
+		
+		var time;
+		$('.box2 input[value=확인]').on('click', function() {
+			
+			$('.box2 input[value=확인]').hide();
+			$('.box2 input[value=중지]').show();
+			
+			time = setInterval(function() {
+				
+				$('#result2 img:first').appendTo('#result2');
+			}, 1000);
+			
+			
+		})
+		$('.box2 input[value=중지]').on('click', function() {
+			$(this).hide();
+			$('.box2 input[value=확인]').show();
+			
+			clearInterval(time);
+		})
+		
+	})
+</script>
+
+</head>
+
+<body>
+
+	<div class="box box1">
+		<h3>추가</h3>
+		새로운 요소<br>
+		<input type="button" value="확인">
+		<br>
+		<div id="result1"></div>
+	</div>
+
+	<div class="box box2">
+		<h3>추가</h3>
+		기존의 요소를 추가 - 이동의 의미<br>
+		<input type="button" value="확인">
+		<input type="button" value="중지">
+		<br>
+		<div id="result2">
+			<img src="../images/셔틀콕.jpg" alt="셔틀콕">
+			<img src="../images/대나무숲.jpg" alt="대나무숲">
+			<img src="../images/가구1.jpg" alt="가구1">
+			<img src="../images/딸기스무디.jpg" alt="딸기스무디">
+			<img src="../images/수국.jpg" alt="수국">
+			<img src="../images/단풍.jpg" alt="단풍">
+		</div>
+	</div>
+
+</body>
+</html>

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/public.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<style>
+</style>
+
+<script>
+	$(function() {
+		
+		/* 
+		$('.box1 input:button').click(function() {
+		}) 
+		*/
+		
+		$('.box1 input[value=hidden]').on('click', function() {
+			
+			res = "hidden 요소 <br>";
+			
+			$('#result1 p:hidden').each(function() {
+				
+				res += $(this).text() + "<r>";
+				
+			})
+			
+			$('#result1 div').html(res);
+			
+		})
+		
+		$('.box1 input[value=visible]').on('click', function() {
+			
+			res = "visible 요소 <br>";
+			
+			$('#result1 p:visible').each(function() {
+				
+				res += $(this).text() + "<br>";
+			})
+			
+			$('#result1 div').html(res);
+		})
+		
+		$('.box2 input[value=hidden]').on('click', function() {
+			
+			res ="hidden 요소<br>";
+			
+			$('#testForm *:hidden').each(function() {
+				
+				if(this.tagName == "INPUT") {
+					
+					res += "input " + $(this).attr('name') + ":" + $(this).val() + "<br>";
+					
+				} else {
+					res += this.tagName + " " + $(this).text();
+				}
+				
+			}) 
+			
+			$('#hid').html(res);
+			
+		})
+		
+		$('.box2 input[value=visible]').on('click', function() {
+			
+			res ="visible 요소 <br>";
+			
+			$('#testForm *:visible').each(function() {
+				
+				if(this.tagName == "INPUT") {
+					
+					// :radio인지 비교
+					vtype = $(this).attr('type');
+					if(vtype == 'radio') {
+						
+						if($(this).prop('checked')) {
+							// check상태의 값을 가져온다 - true / false - prop()
+							res += $(this).attr('name') + ":" + $(this).val() + "<br>";
+						}
+					} else {
+						res += "input " + $(this).attr('name') + ":" + $(this).val() + "<br>";	
+					}
+					
+					
+					//$(this).attr('name');
+					//$(this).val();
+				} else if(this.tagName !="BR"){
+					res += this.tagName + " " + $(this).text() + "<br>";
+				}
+				
+			}) 
+			
+			$('#visi').html(res);
+			
+		})
+		
+		
+	})
+</script>
+
+</head>
+
+<body>
+
+	<div class="box box1">
+		<h3>기타필터-visibility 필터</h3>
+		내용<br>
+		<input type="button" value="hidden">
+		<input type="button" value="visible">
+		<br>
+		:hidden - display : none, type=hidden, width=0 height=0, 부모요소가 hidden<br>
+		:visible - hidden의 반대, visibility=hidden, opacity=0 인것<br>
+		html() / html(값) - input 요소, select, textarea가 아닌 요소 값을 가져오거나 출력할때<br>
+		text() / text(값) - input 요소, select, textarea가 아닌 요소 값을 가져오거나 출력할때<br>
+		val() / val(값) - input 요소, select, textarea의 값을 가져오거나 출력할때<br>
+		<div id="result1">
+		  <p> 보이는 문단</p>
+		  <p style="visibility:hidden;">숨겨진 문단</p>
+		  <p style="display:none;"> 자리를 차지 하지 못한 문단 </p>
+		  <p style="opacity:0;"> 투명한 문단</p>
+		  <div></div>
+				
+		</div>
+	</div>
+
+	<div class="box box2">
+		<h3>기타필터-visibility 필터</h3>
+		attr('name')/attr('name', 'korea') : 속성의 값을 가져오거나 설정, 변경한다.<br>
+		prop('checked')/prop('checked', false) : radio나 checkbox에서  
+		check되어 있는 상태 값을 가져오거나 설정변경 한다.<br>
+		<br>
+		<input type="button" value="hidden">
+		<input type="button" value="visible">
+		<br>
+		<div id="result2">
+			 <form id="testForm"> 
+				<input type="hidden" name="userAge" value="33">
+				<input type="hidden" name="userCity" value="대전">
+				
+				I D : <input type="text" name="userID" value="hong">  
+				<span style="display:none">ID가 중복됩니다. </span> <br>
+				  
+				이름 : <input type="text" name="userName" value="홍길동">   
+				<span style="visibility:hidden">이름을 입력하세요</span><br>
+				  
+				성별 : <input type="radio" name="sung" value="남" checked>남자  
+				<input type="radio" name="sung" value="여">여자  
+			</form>
+			<div id="hid"></div>
+			<div id="visi"></div>
+		
+				
+		</div>
+		
+	</div>
+
+</body>
+</html>

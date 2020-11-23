@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/public.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<style>
+</style>
+
+<script>
+	$(function() {
+		
+		$('#btnview').on('click', function() {
+			
+			res = "이름 : " + $('#user').val() + "<br>";
+			res += "성별 : " + $('#gend:checked').val() + "<br>";
+			
+			text = $('#intro').val();
+			text = text.replace(/\r/g, "").replace(/\n/g, "<br>");
+			
+			res += "소개 : " + text + "<br>";
+			res += "직업 : " + $('#work option:selected').val() + "<br>";
+			
+			$('#div_res').html(res);
+		})
+		
+		$('#btnchange').on('click', function() {
+			
+			text = prompt("이름입력");
+			$('#user').val(text);
+		})
+		
+	})
+</script>
+
+</head>
+
+<body>
+
+	<div class="box box1">
+		<h3>form 내부의 요소들의 값 가져오기</h3>
+		html()<br>
+		text()<br>
+		val() - input, select, textarea의 값 가져오기<br>
+		<br>
+		<div id="result1">
+			<form>
+				<label for="user">이름</label>
+				<input type="text" id="user" value="korea"><br>
+				
+				<label >성별</label>
+				<input type="radio" id="gend" name="gend" value="남자" checked >남자
+				<input type="radio" id="gend" name="gend" value="여자"  >여자<br>
+				
+				<label for="intro">소개</label> 
+				<textarea id="intro" cols="40" rows="4"></textarea> <br>
+				
+				<label for="work">직업</label>
+				<select id="work">
+					<option value="programmer">프로그래머</option>
+				    <option value="progammer">프로게이머</option>
+				    <option value="whitehand">백수</option>
+				</select><br>
+				
+				<button id="btnview" type="button">조사하기 </button>
+				<button  id="btnchange" type="button">이름변경 </button>
+			</form>
+			<div id="div_res"></div>
+		</div>
+	</div>
+
+</body>
+</html>

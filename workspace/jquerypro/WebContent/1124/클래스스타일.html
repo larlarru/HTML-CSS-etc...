@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/public.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<style>
+	.fcolor_size{
+		
+		color : red;
+		font-size : 1.5em;
+	}
+</style>
+
+<script>
+	$(function() {
+		
+		$('#result1 p').on('dblclick', function() {
+			
+			if( $(this).hasClass('fcolor_size') ) {
+				
+				$(this).css('background', 'pink');
+				
+			} else {
+				
+				$(this).css('background', 'yellow');
+				
+			}
+		})
+		
+		$('#result1 p').on('click', function() {
+			
+			//$(this).addClass('fcolor_size');
+			$(this).toggleClass('fcolor_size');
+		})
+		/* 
+		$('#result1 p').on('mouseover', function() {
+			
+			$(this).addClass('fcolor_size');
+		})
+		
+		
+		$('#result1 p').on('mouseout', function() {
+			
+			$(this).removeClass('fcolor_size');
+		})
+		 */
+		
+	})
+</script>
+
+</head>
+
+<body>
+
+	<div class="box box1">
+		<h3>스타일 지정하기</h3>
+		style태그에 .을 이용한 class를 정의한다.<br>
+		script에서 동적으로 스타일을 지정 한다.<br>
+		addClass('class이름')<br>
+		removeClass('class이름')<br>
+		toggdleClass('class이름')<br>
+		hasClass('class이름')<br>
+		<br>
+		<div id="result1">
+			<p>무궁화 꽃이 피었습니다.</p>
+			<p>맛있는 점심밥을 먹기 위해서 열심히 ~~</p>
+			<p>안 열심인 사람은 점심밥이 맛있을까 없을까 ~~</p>
+		</div>
+	</div>
+
+</body>
+</html>

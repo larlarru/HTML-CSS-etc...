@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/public.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<link rel="shortcut icon" type="image/x-icon" href="../images/check.png"/> 
+
+<style>
+</style>
+
+<script>
+	$(function() {
+		
+		$('#result1 p').on('click', function() {
+			
+			vtext = $(this).text();
+			
+			$('<img>', {
+				'src':'../images/' + vtext +  '.jpg',
+				'alt' : vtext,
+				'width' : '100px',
+				'height' : '100px'
+			}).prependTo(this);
+			
+			
+		})
+		
+		$('#result2 p').on('click', function() {
+			
+			vtext = $(this).text();
+			
+			vimg = $('<img>', {
+				'src':'../images/' + vtext +  '.jpg',
+				'alt' : vtext,
+				'width' : '100px',
+				'height' : '100px'
+			});
+			
+			//$(this).append(vimg)
+			//$(vimg).appendTo(this)
+			
+			//$(this).after(vimg);
+			//$(vimg).insertAfter(this);
+			
+			$(this).before(vimg)
+			//$(vimg).insertBefore(this)
+			
+		})
+		
+		
+		
+	})
+</script>
+
+</head>
+
+<body>
+
+	<div class="box box1">
+		<h3>이미지 추가하기</h3>
+		append(content)/appendTo(selector) : 해당 selector 내부의 뒤로 추가된다.<br>
+		prepend(content)/prependTo(selector) : 해당 selector 내부의 앞으로 추가된다.<br>
+		<br>
+		<div id="result1">
+			<p>셔틀콕</p>
+			<p>대나무숲</p>
+			<p>가구1</p>
+			<p>딸기스무디</p>
+			<p>수국</p>
+			<p>단풍</p>
+						
+		</div>
+	</div>
+
+	<div class="box box2">
+		<h3>이미지 추가하기</h3>
+		after(content)/insertAfter(selector) : 해당 selector 외부의 뒤로 추가된다.<br>
+		before(content)/insertBefore(selector) : 해당 selector 외부의 앞으로 추가된다.<br>
+		<br>
+		<div id="result2">
+			<p>셔틀콕</p>
+			<p>대나무숲</p>
+			<p>가구1</p>
+			<p>딸기스무디</p>
+			<p>수국</p>
+			<p>단풍</p>
+						
+		</div>
+	</div>
+
+</body>
+</html>

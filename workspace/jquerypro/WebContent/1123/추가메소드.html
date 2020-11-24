@@ -31,11 +31,13 @@
 		
 		$('.box2 input[value=중지]').hide();
 		
-		var time;
+		//var time;
 		$('.box2 input[value=확인]').on('click', function() {
 			
 			$('.box2 input[value=확인]').hide();
 			$('.box2 input[value=중지]').show();
+			//$(this).prop('disabled', ture);
+			//$(this).attr('disabled', 'disabled');
 			
 			time = setInterval(function() {
 				

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/public.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<style>
+	.ancestors * { 
+		display: block;
+		border: 2px solid lightgrey;
+		color: lightgrey;
+		padding: 5px;
+		margin: 15px;
+	}
+</style>
+
+<script>
+	$(function() {
+		
+		$('#par').on('click', function() {
+			
+			$('span').parent().css( {'border':'1px solid red', 'color':'red'} );
+		})
+		
+		$('#pars').on('click', function() {
+			
+			$('span').parents().css( {'border':'1px solid blue', 'color':'blue'} );
+		})
+		
+		$('#parsul').on('click', function() {
+
+			$('span').parents('ul').css( {'border':'3px solid green', 'color':'green'} );
+		})
+		
+		$('#parsunt').on('click', function() {
+			
+			$('span').parentsUntil('.box').css( {'border':'3px solid orange', 'color':'orange'} );
+		})
+		
+		$('#find').on('click', function() {
+			
+			$('.box2').find('span').css( {'border':'3px solid crimson', 'color':'crimson'} )
+		})
+		
+		// click(function() { })와 on('click', function() { })의 차이는 jQuery버전 차이
+		//$('.box3 p').click(function() { })
+		$('.box3 p').on('click', function() {
+			
+			if( $(this).parent().is('.pd') ) {
+				
+				// clone는 복사
+				// 앞에 즉 this를 복사해서 클릭하는 해당곳에 복사한것을 붙인다
+				$(this).clone().appendTo( $(this).parent() ).css('color', 'red');
+			}
+		})
+		
+		
+		
+	})
+</script>
+
+</head>
+
+<body>body (great-great-grandparent)
+
+	<h3>부모/조상 찾기</h3>
+	요소.parent() : 해당요소의 부모 찾기<br>
+	요소.parents() : 해당요소의 조상들 찾기<br>
+	요소.parents(selector) : 해당요소의 selector로 지정된 조상 찾기<br>
+	요소.parentsUntil(selector) : 해당요소와 selector사이의 조상 찾기<br>
+	<br>
+	<input id="par" type="button" value="parent">
+	<input id="pars" type="button" value="parents">
+	<input id="parsul" type="button" value="parents_ul">
+	<input id="parsunt" type="button" value="parentsUntil">
+	
+	<div class="box ancestors">
+
+		<div style="width: 500px;">div (great-grandparent)
+			<ul>ul (grandparent)
+				<li>li (direct parent)
+					<span>span</span>
+				</li>
+			</ul>
+		</div>
+	</div>
+	
+	<h3>후손찾기</h3>
+	요소.find(selector) : 해당요소의 후손중 selector를 찾는다.<br>
+	$('.box2').find('span')<br>
+	<input type="button" id="find" value="find">
+	<div class="box box2 ancestors">
+		<div class="box ancestors">
+	
+			<div style="width: 500px;">div (great-grandparent)
+				<ul>ul (grandparent)
+					<li>li (direct parent)
+						<span>span</span>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	
+	<h3>부모 비교하기</h3>
+	요소의 부모.is(selector)<br>
+	p태그의 부모가 div인지 비교 해서 맞다면 p태그를 복사하고 
+	글자색을 변경<br>
+	
+	<div class="box box3">
+		<div class="pd">
+			<p>무궁화 꽃이 피었습니다.</p>
+		</div>
+		
+		<div class="pd">
+			<p>단풍이 다떨어져서 바닥을 바람과 함께 휭휭 ~~</p>
+		</div>
+		
+		<p>여기는 class가 pd인 div가 없어요. 크리스마스가 오기를 ~~</p>
+	</div>
+
+</body>
+</html>

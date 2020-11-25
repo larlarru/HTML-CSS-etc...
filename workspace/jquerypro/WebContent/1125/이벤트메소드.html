@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/public.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<style>
+</style>
+
+<script>
+	$(function() {
+		
+		count = 0;
+		
+		$('.box1 .bb').on('click', function() {
+			
+			count++;
+			
+			vbut = $('<input>', {
+				'class':'bb',
+				'type':'button',
+				'value':'새로운버튼' + count
+				});
+			
+			$('#result2').append(vbut)
+			
+		})
+		
+		$('.box2 div').on('click', $('.box2 .bb'), function() {
+			
+			count++;
+			
+			vbut = $('<input>', {
+				'class':'bb',
+				'type':'button',
+				'value':'새로운버튼' + count
+				});
+			
+			$('#result4').append(vbut)
+			
+		})
+		
+		$('#clearb').on('click', function() {
+			
+			// bind 방식의 연결된 click이벤트 해제
+			$('.box1 .bb').off('click');
+		})
+		
+		$('#cleard').on('click', function() {
+			
+			// delegate방식으로 연결된 click이벤트 해제
+			$('.box2 div').off('click');
+		})
+		
+		
+		
+	})
+</script>
+
+</head>
+
+<body>
+
+	<div class="box box1">
+		<h3>bind</h3>
+		실행전에 미리 body에 작성된 요소에 대한 이벤트<br>
+		<br>
+		<div id="result1">
+			<input class="bb" type="button" value="버튼1">
+			<input class="bb" type="button" value="버튼2">
+		</div>
+		<input id="clearb" type="button" value="해제">
+		<br>
+		<div id="result2"></div>
+	</div>
+
+	<div class="box box2">
+		<h3>delegate</h3>
+		실행 이후에 새롭게 추가되는 요소에 대한 이벤트<br>
+		$('부모요소').on('click', $('p'), function() { $(this) } )<br>
+		부모요소는 원래부터 미리 생성되어 있는 요소이고 p태크는 새로 추가된 요소<br>
+		<br>
+		<div id="result3">
+			<input class="bb" type="button" value="버튼1">
+			<input class="bb" type="button" value="버튼2">
+		</div>
+		<input id="cleard" type="button" value="해제">
+		<br>
+		<div id="result4"></div>
+	</div>
+
+</body>
+</html>

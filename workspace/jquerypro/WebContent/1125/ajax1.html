@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/public.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="../js/jquery.serializejson.min.js"></script>
+
+<style>
+</style>
+
+<script>
+	$(function() {
+		
+		$('#result1 input:button').on('click', function() {
+			
+			//console.log($('#ff').serialize());
+			//console.log($('#ff').serializeArray());
+			console.log($('#ff').serializeJSON());
+			
+			/* 
+			vname = $('#name').val();
+			vid = $('#id').val();
+			vtel = $('#tel').val();
+			
+			datas ={ "name":vname, "id":vid, "tel":vtel };
+			 */
+			 
+			// 서버로 보내기
+			$.ajax({
+				
+				url : 'test.jsp',
+				type : 'post',
+				//data : datas,
+				data : $('#ff').serializeJSON(),
+				success : function(res) {
+					
+					code = "";
+					code += "<div> 이름 : " + res.name + "<br>"
+					code += "아이디 : " + res.id + "<br>"
+					code += "전화번호 : " + res.tel + "</div>"
+					
+					$('#result1').append(code);
+				},
+				error : function(xhr) {
+					
+					alert("상태 : " +  xhr.status);
+					// status : 403, 404, 500 
+					// 200 : 응답은 성공했지만 응답데이터의 형식오류
+					
+				},
+				dataType : 'json' // text, json, html, xml
+				
+			}) 
+		}) // click
+		
+		
+		
+	}) // function
+</script>
+
+</head>
+
+<body>
+
+	<div class="box box1">
+		<h3>ajax을 이용한 전송과 응답</h3>
+		전송후 처리결과를 새로운 페이지로 다시 로드되지 않고 현페이지의 일부분에 출력<br>
+		<br>
+		<div id="result1">
+			<!-- <form action="test.jsp" method="post"> -->
+			<form id="ff">
+				이름 : <input type="text" name="name" id="name"><br>
+				아이디 : <input type="text" name="id" id="id"><br>
+				전화번호 : <input type="text" name="tel" id="tel"><br>
+				<input type="button" value="전송">
+			</form>
+		</div>
+	</div>
+
+</body>
+</html>

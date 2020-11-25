@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/public.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="../js/jquery.serializejson.min.js"></script>
+
+<style>
+</style>
+
+<script>
+	$(function() {
+		
+		$('#txt').on('click', function() {
+			
+			$.ajax({
+				
+				url : 'text.jsp',
+				type : 'get', // data가 없을때는 get
+				dataType : 'text',
+				error : function(xhr) {
+					
+					alert("상태 : " + xhr.status);
+					// 200 : jsp에서 형식을 수정한다.
+					// 500 : 이클립스의 console에서 에러 확인 후 수정
+					// 404 : url에 지정한 해당 파일이 없습니다. - 파일의 위치나 이름 확인
+				},
+				success : function(res) {
+					
+					
+				}
+				
+				
+			})
+			
+			
+			
+		})
+		
+		
+		
+	})
+</script>
+
+</head>
+
+<body>
+
+	<div class="box box1">
+		<h3>제목</h3>
+		내용<br>
+		<input id="txt" type="button" value="text">
+		<input id="jarr" type="button" value="jsonArr">
+		<input id="jobj" type="button" value="jsonOBJ">
+		<input id="jobarr" type="button" value="jsonOBArr">
+		<br>
+		<div id="result1"></div>
+		<div id="result2"></div>
+		<div id="result3"></div>
+		<div id="result4"></div>
+	</div>
+
+</body>
+</html>

@@ -29,15 +29,138 @@
 				},
 				success : function(res) {
 					
+					// res = 홍길동, 개나리, 진달래, 무궁화, 수선화, 라일락
+					
+					res = res.split(",");
+					code = "<ul>";
+					$.each(res, function(i,v) {
+						
+						code += "<li>" + res[i] + "</li>";
+					})
+					code += "</ul>";
+					
+					//$('#result1').append(code);
+					$('#result1').html(code);
 					
 				}
 				
-				
 			})
 			
-			
-			
 		})
+		
+		
+		$('#jarr').on('click', function() {
+			
+			$.ajax({
+				
+				url : 'jsonArr.jsp',
+				type : 'get', // data 없을때는 기본적으로 type은 get
+				dataType : 'json',
+				success : function(res) {
+					//res = [홍길동, 개나리, 진달래, 수선화, 목련, 백일홍]	
+					code = "<ol>";
+					$.each(res, function(i) {
+						
+						code += '<li>' + res[i] + '</li>';
+					})
+					code += "</ol>";
+					$('#result2').html(code);
+				},
+				error : function(xhr) {
+					
+					alert("상태 : " + xhr.status);
+					// 200 - jsp 수정
+					// 500 - 소스를 수정(이클립스 콘솔 에러 확인)
+					// 404 - url 부분 확인
+				}
+				
+			})
+		})
+		
+		$('#jobj').on('click', function() {
+			
+			$.ajax({
+				
+				url : 'jsonObj.jsp',
+				type : 'get', // data 없을때는 기본적으로 type은 get
+				dataType : 'json',
+				success : function(res) {
+					
+					code = "이름 : " + res.name + "<br>";
+					code += "주소 : " + res.addr + "<br>";
+					code += "전화번호 : " + res.tel + "<br>";
+					code += "아이디 : " + res.id + "<br>";
+					code += "이메일 : " + res.mail + "<br>";
+					
+					$('#result3').html(code);
+				},
+				error : function(xhr) {
+					
+					alert("상태 : " + xhr.status);
+					// 200 - jsp 수정
+					// 500 - 소스를 수정(이클립스 콘솔 에러 확인)
+					// 404 - url 부분 확인
+				}
+				
+			})
+		})
+		
+		$('#jobarr').on('click', function() {
+			
+			$.ajax({
+				
+				url : 'jsonObArr.jsp',
+				type : 'get', // data 없을때는 기본적으로 type은 get
+				dataType : 'json',
+				success : function(res) {
+					
+					code = "";
+					$.each(res, function(i, v) {
+						
+						code += `${i} 번째 자료<br>`;
+						code += `이름 : ${v.name} <br>`;
+						code += `주소 : ${res[i].addr} <br>`;
+						code += `아이디 : ${res[i].id} <br>`;
+						code += `전화번호 : ${res[i].tel} <br>`;
+						code += `이메일 : ${res[i].mail} <br><br>`;
+					})
+					
+					$('#result4').html(code);
+				},
+				error : function(xhr) {
+					
+					alert("상태 : " + xhr.status);
+					// 200 - jsp 수정
+					// 500 - 소스를 수정(이클립스 콘솔 에러 확인)
+					// 404 - url 부분 확인
+				}
+				
+			})
+		})
+		
+		$('#html').on('click', function() {
+			
+			$.ajax({
+				
+				url : 'html.jsp',
+				type : 'get', // data 없을때는 기본적으로 type은 get
+				dataType : 'html',
+				success : function(res) {
+					
+					$('#result5').html(res);
+					
+				},
+				error : function(xhr) {
+					
+					alert("상태 : " + xhr.status);
+					// 200 - jsp 수정
+					// 500 - 소스를 수정(이클립스 콘솔 에러 확인)
+					// 404 - url 부분 확인
+				}
+				
+			})
+		})
+		
 		
 		
 		
@@ -55,11 +178,13 @@
 		<input id="jarr" type="button" value="jsonArr">
 		<input id="jobj" type="button" value="jsonOBJ">
 		<input id="jobarr" type="button" value="jsonOBArr">
+		<input id="html" type="button" value="html">
 		<br>
 		<div id="result1"></div>
 		<div id="result2"></div>
 		<div id="result3"></div>
 		<div id="result4"></div>
+		<div id="result5"></div>
 	</div>
 
 </body>

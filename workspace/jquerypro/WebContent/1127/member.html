@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/public.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="../js/jquery.serializejson.min.js"></script>
+
+<style>
+</style>
+
+<script>
+	$(function() {
+		
+		$('input:button').on('click', function() {
+			
+			$.ajax({
+				
+				url : '/jquerypro/List.do',
+				type : 'get',
+				dataType : 'json',
+				success : function(res) {
+					
+					code = "<table border='1'>";
+					code += "<tr><td>아이디</td>";
+					code += "<td>이름</td><td>전화번호</td>";
+					code += "<td>이메일</td></tr>";
+					$.each(res, function(i, v) {
+						
+						code += "<tr><td>" + res[i].id + "</td>";
+						code += "<td>" + res[i].name + "</td><td>" + res[i].tel + "</td>";
+						code += "<td>" + res[i].mail + "</td></tr>";
+					})
+					
+					code += "</table>";
+					
+					$('#result1').html(code);
+					
+				},
+				error : function(xhr) {
+					
+					alert("상태 : " + xhr.status);
+				}
+				
+			})
+		})
+		
+		
+		
+	})
+</script>
+
+</head>
+
+<body>
+
+	<div class="box box1">
+		<h3>제목</h3>
+		내용<br>
+		<input type="button" value="MemberList">
+		<br>
+		<div id="result1"></div>
+	</div>
+
+</body>
+</html>

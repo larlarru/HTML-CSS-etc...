@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/public.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="../js/jquery.serializejson.min.js"></script>
+
+<style>
+	#table1 {
+		border-collapse : collapse;
+	}
+	#tr1 {
+		background: lightblue;
+	}
+</style>
+
+<script>
+	$(function() {
+		
+		code = "";
+		$('#select1').on('click', function() {
+				idvalue1 = $(this).val();
+		})
+		
+		$('#select2').on('click', function() {
+			idvalue2 = $(this).val();
+		})
+			
+			$('#btn1').on('click', function() {
+				//alert(idvalue1);
+				//alert(idvalue2);
+					
+					$.ajax({
+						
+						url : '/jquerypro/lprod.do',
+						type : 'post',
+						data : { "value1" : idvalue1, "value2" : idvalue2 },
+						dataType : 'json',
+						success : function(res) {
+							
+							code += "<table border='1'>";
+							/*
+							code += "<tr><td>id</td></tr>";
+							code += "<tr><td>name</td></tr><tr><td>lgu</td></tr>";
+							code += "<tr><td>buyer</td></tr><tr><td>cost</td></tr>";
+							code += "<tr><td>price</td></tr><tr><td>sale</td></tr>";
+							code += "<tr><td>outline</td></tr><tr><td>detail</td></tr>"; */
+							/* 
+							code += "<table border='1'>";
+							code += "<tr><td>id</td>";
+							code += "<td>name</td><td>lgu</td>";
+							code += "<td>buyer</td><td>cost</td>";
+							code += "<td>price</td><td>sale</td>";
+							code += "<td>outline</td><td>detail</td></tr>";
+							 */
+							$.each(res, function(i, v) {
+								
+															
+								code += "<tr><td>id</td><td>" + res[i].id + "</td></tr>";
+								code += "<tr><td>name</td><td>" + res[i].name + "</td></tr>";
+								code +="<tr><td>lgu</td><td>" + res[i].lgu + "</td></tr>";
+								code += "<tr><td>buyer</td><td>" + res[i].buyer + "</td></tr>";
+								code += "<tr><td>cost</td><td>" + res[i].cost + "</td></tr>";
+								
+								code += "<tr><td>price</td><td>" + res[i].price + "</td></tr>";
+								code += "<tr><td>sale</td><td>" + res[i].sale + "</td></tr>";
+								
+								code += "<tr><td>outline</td><td>" + res[i].outline + "</td></tr>";
+								code += "<tr><td>detail</td><td>" + res[i].detail + "</td></tr>";
+								 
+								/* 															
+								code += "<tr><td>" + res[i].id + "</td></tr>";
+								code += "<tr><td>" + res[i].name + "</td></tr><tr><td>" + res[i].lgu + "</td></tr>";
+								code += "<tr><td>" + res[i].buyer + "</td></tr><tr><td>" + res[i].cost + "</td></tr>";
+								
+								code += "<tr><td>" + res[i].price + "</td></tr><tr><td>" + res[i].sale + "</td></tr>";
+								
+								code += "<tr><td>" + res[i].outline + "</td></tr><tr><td>" + res[i].detail + "</td></tr>";
+								  */
+						
+								
+								/* 
+								code += "<tr><td>" + res[i].id + "</td>";
+								code += "<td>" + res[i].name + "</td><td>" + res[i].lgu + "</td>";
+								code += "<td>" + res[i].buyer + "</td><td>" + res[i].cost + "</td>";
+								
+								code += "<td>" + res[i].price + "</td><td>" + res[i].sale + "</td>";
+								
+								code += "<td>" + res[i].outline + "</td><td>" + res[i].detail + "</td></tr>";
+								 */
+							})
+							
+							code += "</table>";
+							
+							$('#result1').html(code);
+						},
+						error : function(xhr) {
+							alert("상태이상 : " + xhr.status);
+						},
+					})
+					
+					
+					code ="";
+				})
+				
+			
+			$('#btn2').on('click', function() {
+			
+				$.ajax({
+					
+					url : '/jquerypro/lprod.do',
+					type : 'get',
+					dataType : 'json',
+					success : function(res) {
+						
+						code = "<table id='table1' border='1'>";
+						code += "<tr id='tr1'><td>LPROD_ID</td>";
+						code += "<td>LPROD_GU</td>";
+						code += "<td>LPROD_NM</td></tr>";
+						$.each(res, function(i, v) {
+							
+							code += "<tr><td>" + res[i].id + "</td>";
+							code += "<td>" + res[i].gu + "</td>";
+							code += "<td>" + res[i].nm + "</td></tr>";
+						})
+						
+						code += "</table>";
+						
+						$('#result2').html(code);
+						
+					},
+					error : function(xhr) {
+						
+						alert("상태 : " + xhr.status);
+					}
+					
+				})	
+				code="";
+			})
+		
+		
+			
+		})
+		
+		
+</script>
+
+</head>
+
+<body>
+
+	<div class="box box1">
+		<h3>제목</h3>
+		내용<br>
+		<input type="button" value="확인" id="btn1">
+		<br>
+		
+		<select id="select1">
+			<option value="컴퓨터제품">컴퓨터제품</option>
+			<option value="전자제품">전자제품</option>
+			<option value="여성캐주얼">여성캐주얼</option>
+			<option value="남성캐주얼">남성캐주얼</option>
+			<option value="피혁잡화">피혁잡화</option>
+			<option value="화장품">화장품</option>
+			<option value="음반/CD">음반/CD</option>
+			<option value="도서">도서</option>
+			<option value="문구류">문구류</option>
+		</select>
+		<select id="select2">
+			<option value="모니터 삼성전자15인치칼라">모니터 삼성전자15인치칼라</option>
+			<option value="모니터 삼성전자17인치칼라">모니터 삼성전자17인치칼라</option>
+			<option value="모니터 삼성전자19인치칼라">모니터 삼성전자19인치칼라</option>
+			<option value="삼보컴퓨터 P-III 600Mhz">삼보컴퓨터 P-III 600Mhz</option>
+			<option value="삼보컴퓨터 P-III 700Mhz">삼보컴퓨터 P-III 700Mhz</option>
+			<option value="삼보컴퓨터 P-III 800Mhz">삼보컴퓨터 P-III 800Mhz</option>
+			<option value="대우 칼라 TV 25인치">대우 칼라 TV 25인치</option>
+			<option value="대우 칼라 TV 29인치">대우 칼라 TV 29인치</option>
+			<option value="삼성 칼라 TV 21인치">삼성 칼라 TV 21인치</option>
+			<option value="삼성 칼라 TV 29인치">삼성 칼라 TV 29인치</option>
+			<option value="삼성 칼라 TV 53인치">삼성 칼라 TV 53인치</option>
+			<option value="삼성 캠코더">삼성 캠코더</option>
+			<option value="대우 VTR 6헤드">대우 VTR 6헤드</option>
+		</select>	
+		
+		<div id="result1">
+		</div>
+	</div>
+	
+	<div class="box box2">
+		<h3>제목</h3>
+		내용<br>
+		<input type="button" value="확인" id="btn2">
+		<br>
+		
+		<div id="result2">
+		</div>
+	</div>
+
+</body>
+</html>

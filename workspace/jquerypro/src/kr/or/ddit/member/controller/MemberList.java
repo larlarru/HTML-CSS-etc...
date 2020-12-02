@@ -1,4 +1,4 @@
-package kr.or.ddit.meber.controller;
+package kr.or.ddit.member.controller;
 
 import java.io.IOException;
 import java.util.List;
@@ -9,9 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import kr.or.ddit.member.service.IMemberService;
+import kr.or.ddit.member.service.MemberServiceImpl;
 import kr.or.ddit.member.vo.MemberVO;
-import kr.or.ddit.service.IMemberService;
-import kr.or.ddit.service.MemberServiceImpl;
 
 /**
  * Servlet implementation class MemberList

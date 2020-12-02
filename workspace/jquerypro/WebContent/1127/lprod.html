@@ -29,8 +29,6 @@
 		})
 			
 			$('#btn1').on('click', function() {
-				//alert(idvalue1);
-				//alert(idvalue2);
 					
 					$.ajax({
 						
@@ -41,23 +39,9 @@
 						success : function(res) {
 							
 							code += "<table border='1'>";
-							/*
-							code += "<tr><td>id</td></tr>";
-							code += "<tr><td>name</td></tr><tr><td>lgu</td></tr>";
-							code += "<tr><td>buyer</td></tr><tr><td>cost</td></tr>";
-							code += "<tr><td>price</td></tr><tr><td>sale</td></tr>";
-							code += "<tr><td>outline</td></tr><tr><td>detail</td></tr>"; */
-							/* 
-							code += "<table border='1'>";
-							code += "<tr><td>id</td>";
-							code += "<td>name</td><td>lgu</td>";
-							code += "<td>buyer</td><td>cost</td>";
-							code += "<td>price</td><td>sale</td>";
-							code += "<td>outline</td><td>detail</td></tr>";
-							 */
+							
 							$.each(res, function(i, v) {
 								
-															
 								code += "<tr><td>id</td><td>" + res[i].id + "</td></tr>";
 								code += "<tr><td>name</td><td>" + res[i].name + "</td></tr>";
 								code +="<tr><td>lgu</td><td>" + res[i].lgu + "</td></tr>";
@@ -69,27 +53,6 @@
 								
 								code += "<tr><td>outline</td><td>" + res[i].outline + "</td></tr>";
 								code += "<tr><td>detail</td><td>" + res[i].detail + "</td></tr>";
-								 
-								/* 															
-								code += "<tr><td>" + res[i].id + "</td></tr>";
-								code += "<tr><td>" + res[i].name + "</td></tr><tr><td>" + res[i].lgu + "</td></tr>";
-								code += "<tr><td>" + res[i].buyer + "</td></tr><tr><td>" + res[i].cost + "</td></tr>";
-								
-								code += "<tr><td>" + res[i].price + "</td></tr><tr><td>" + res[i].sale + "</td></tr>";
-								
-								code += "<tr><td>" + res[i].outline + "</td></tr><tr><td>" + res[i].detail + "</td></tr>";
-								  */
-						
-								
-								/* 
-								code += "<tr><td>" + res[i].id + "</td>";
-								code += "<td>" + res[i].name + "</td><td>" + res[i].lgu + "</td>";
-								code += "<td>" + res[i].buyer + "</td><td>" + res[i].cost + "</td>";
-								
-								code += "<td>" + res[i].price + "</td><td>" + res[i].sale + "</td>";
-								
-								code += "<td>" + res[i].outline + "</td><td>" + res[i].detail + "</td></tr>";
-								 */
 							})
 							
 							code += "</table>";
@@ -142,7 +105,9 @@
 		
 		
 			
-		})
+			
+			
+})
 		
 		
 </script>
@@ -195,6 +160,13 @@
 		<br>
 		
 		<div id="result2">
+		</div>
+	</div>
+	
+	<div class="box box3">
+		<h3>제목</h3>
+		내용<br>
+		<div id="result3">
 		</div>
 	</div>
 

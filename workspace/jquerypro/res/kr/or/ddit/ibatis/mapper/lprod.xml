@@ -22,6 +22,12 @@
  	<select id="getAllLprod" resultClass="lprodVO">
  		SELECT * FROM LPROD
  	</select>
+ 	
+ 	<select id="getLprodName" resultClass="lprodVO">
+ 		SELECT lp.lprod_nm 
+ 		FROM lprod lp, prod pr
+		WHERE lp.lprod_gu = pr.prod_lgu
+ 	</select>
 	
 </sqlMap> 	
  	

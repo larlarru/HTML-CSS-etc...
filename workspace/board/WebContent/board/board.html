@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script src="../js/board.js"></script>
+
+<style>
+	.pager {
+		float : left;
+		width : 80px;
+		margin: 5px;
+		margin-left : 5%;
+	}
+	
+	.p1 {
+		float: left;
+		width : 80%;
+	}
+	.p2 {
+		float: right;
+		width : 20%;
+	}
+	hr{
+		clear : both;
+	}
+	.repb {
+		height : 45px;
+		vertical-align: top;
+	}
+</style>
+
+<script>
+
+	$(function() {
+		
+		//listAll();
+		listPageServer(1);
+		
+		// 페이지번호를 클릭했을때 이벤트 처리
+		$('#pagelist').on('click', '.paging', function() {
+			
+			currentPage =  $(this).text().trim();
+			//console.log(currentPage);
+			listPageServer(currentPage);
+		})
+		
+		// next버튼 클릭 이벤트
+		$('#pagelist').on('click', '.next', function() {
+			
+			//$('.paging:last')
+			currentPage = parseInt( $('.paging').last().text() ) + 1;
+			listPageServer(currentPage);
+		})
+		
+		// 이전 버튼 클릭 이벤트
+		$('#pagelist').on('click', '.prev', function() {
+			
+			//$('.paging:first')
+			currentPage = parseInt( $('.paging').first().text() ) - 1;
+			listPageServer(currentPage);
+		})
+		
+		// 각 버튼의 이벤트 - 수정, 삭제, 댓글 등록, 댓글 수정, 댓글 삭제
+		$('.box').on('click', '.action', function() {
+			
+			vidx = $(this).attr('idx');
+			vname = $(this).attr('name');
+			
+			if(vname == 'modify') {
+				
+				alert(vidx + "번글 수정");
+			} else if(vname == 'delete') {
+				
+				alert(vidx + "번글 삭제");
+			} else if(vname == 'reply') {
+				
+				//alert(vidx + "번글 댓글 등록");
+				// reply테이블에 저장 - renum, bonum, name, cont, redate
+			}
+		})
+		
+		
+		
+		
+		
+	})
+</script>
+
+</head>
+
+<body>
+
+	<div class="box">
+	</div>
+	<br><br>
+	
+	<div id="pagelist">
+		<ul class="pager">
+				<li><a href="#">Previous</a></li>
+				<li><a href="#">Next</a></li>
+		</ul>
+	</div>
+
+</body>
+</html>

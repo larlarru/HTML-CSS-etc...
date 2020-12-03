@@ -25,8 +25,16 @@
  	
  	<select id="getLprodName" resultClass="lprodVO">
  		SELECT lp.lprod_nm 
- 		FROM lprod lp, prod pr
+		FROM lprod lp, prod pr
 		WHERE lp.lprod_gu = pr.prod_lgu
+		GROUP BY lp.lprod_nm
+ 	</select>
+ 	
+ 	<select id="getProdName" resultClass="lprodVO" parameterClass="String">
+ 		SELECT pr.prod_name
+		FROM lprod lp, prod pr
+		WHERE lp.lprod_gu = pr.prod_lgu
+		AND lp.lprod_nm = #lprod_nm#
  	</select>
 	
 </sqlMap> 	

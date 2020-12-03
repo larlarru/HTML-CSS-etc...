@@ -55,37 +55,14 @@
 		 
 	 })
 	
-	// 정규식 - 전방 탐색 응용 - 영문소문자대문자숫자특수문자가 반드시 한개이상씩 포함된다.
-	// 비밀번호 체크
-	//passReg = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*]).{8,12}$/;
-	
+		
 	$("#pwd").keyup(function() {
 
 		if(regcheck()) {
 			 
 			 return false;
 		 }
-		/* 
-		//$('#pwdbtn').on('click', function(){
-
-		pwdvalue = $('#pwd').val().trim();
-		//alert("pwd 입력값 : " + pwdvalue);
-		 if( passReg.test(pwdvalue) ) {
-			
-			if ( 8 <= pwdvalue <= 12) {
-				
-				$('#pwdspan').html("올바른 형식입니다.").css('color', 'green');
-			} else {
-				
-				$('#pwdspan').html("올바르지 않습니다.").css('color', 'red');
-			}
-			
-		} else {
-			
-			//$('#pwdspan').html("올바른 형식입니다.").css('color', 'green');
-			$('#pwdspan').html("올바르지 않습니다.").css('color', 'red');
-		} 
-		 */
+		
 	});
 	
 	// 비밀번호 확인
@@ -203,15 +180,10 @@
 		// 전송 - 회원가입신청
 		$('#joinbtn').on('click', function() {
 
-			/* 
-			// 입력한 모든 값을 가져온다. $('#id').val();, $('#name').val();
-			console.log($('#joinform').serializeJSON())	// json 이걸 위해  serializesjson이 필요
-			console.log($('#joinform').serializeArray())	// 배열
-			console.log("string " + $('#joinform').serialize())	// 문자?
-			 */
+		
 			// 각 항목의 정규식과 길이 체크
 			// 체크한 결과가 모두 올바르면 ajax를 실행한다.
-			// 만약 하나라도 올바르지 않은 데이ㅓ가 포함되어 있다면 리턴 한다.
+			// 만약 하나라도 올바르지 않은 데이터가 포함되어 있다면 리턴 한다.
 			if (!regcheck()) {
 
 				return false;

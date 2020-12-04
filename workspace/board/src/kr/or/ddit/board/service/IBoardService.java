@@ -33,5 +33,6 @@ public interface IBoardService {
 	// 댓글 삭제
 	
 	// 댓글 리스트
+	public List<ReplyVO> listReply(int bonum);
 
 }

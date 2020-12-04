@@ -33,9 +33,16 @@
 		height : 45px;
 		vertical-align: top;
 	}
+	.rep{
+		margin: 2px;
+		padding: 3px;
+		background: pink;
+	}
 </style>
 
 <script>
+
+	reply = {};	// 객체 선언, 동적으로 객체의 속성이나 메소드를 추가 할 수 있다. 
 
 	$(function() {
 		
@@ -69,6 +76,7 @@
 		// 각 버튼의 이벤트 - 수정, 삭제, 댓글 등록, 댓글 수정, 댓글 삭제
 		$('.box').on('click', '.action', function() {
 			
+			//var vidx = $(this).attr('idx');
 			vidx = $(this).attr('idx');
 			vname = $(this).attr('name');
 			
@@ -82,6 +90,24 @@
 				
 				//alert(vidx + "번글 댓글 등록");
 				// reply테이블에 저장 - renum, bonum, name, cont, redate
+				reply.bonum = vidx;
+				
+				rname1 = Math.floor(Math.random() * 50 + 1);	// 숫자
+				rname2 = String.fromCharCode(Math.random() * 26 + 65);	// 65~90 알파벳 대문자
+				rname3 = String.fromCharCode(Math.random() * 26 + 97);	// 97~112 알파벳 소문자
+				
+				
+				reply.name = rname2 + rname3 + rname1;
+				reply.cont = $(this).parent().find('.area').val();
+				
+				// ajax를 통해서 reply객체를 서버로 보내기
+				//replySaveServer(this , vidx);
+				replySaveServer(this);
+				
+			} else if(vname == 'list') {	// 제목 클릭하면 
+				
+				//replyListServer(this, vidx);	// this -> list : a태그
+				replyListServer(this);	// this -> list : a태그
 			}
 		})
 		

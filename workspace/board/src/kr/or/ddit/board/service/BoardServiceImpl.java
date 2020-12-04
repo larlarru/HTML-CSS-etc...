@@ -71,8 +71,32 @@ public class BoardServiceImpl implements IBoardService{
 
 	@Override
 	public int insertReply(ReplyVO vo) {
-		// TODO Auto-generated method stub
-		return 0;
+		
+		int rnum = 0;
+		
+		try {
+			rnum = dao.insertReply(vo);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return rnum;
+	}
+
+	@Override
+	public List<ReplyVO> listReply(int bonum) {
+		
+		List<ReplyVO> list = null;
+		
+		try {
+			list = dao.listReply(bonum);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return list;
 	}
 	
 	

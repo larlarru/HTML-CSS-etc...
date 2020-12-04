@@ -4,6 +4,73 @@
 
 currentPage = 1;
 
+//var replyListServer = function(but, vidx) {	// but : 댓글등록버튼, 제목을 클릭 - a 태그
+var replyListServer = function(but) {	// but : 댓글등록버튼, 제목을 클릭 - a 태그
+	
+	$.ajax({
+		
+		url : '/board/ReplyList.do',
+		type : 'post',
+		data : { "bonum" : vidx },
+		success : function(res) {
+			
+			//$(but).parents('.panel').find('.pbody').find('.rep').remove();
+			$(but).parents('.panel').find('.pbody').find('.rep').remove();
+			
+			code="";
+			$.each(res, function(i, v) {
+				
+				
+				code += '<div class="panel-body rep">';
+				code += '<p class="p1">';
+				code += v.name +' &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
+				code += v.redate +' &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
+				code += '<br><br><span class="cont">' + v.cont +'</span>';
+				code += '</p>';
+				code += '<p class="p2">';
+				code += '<button type="button" idx="'+ v.renum +'" name="r_modify" class="action">댓글수정</button>';
+				code += '<button type="button" idx="'+ v.renum +'" name="r_delete" class="action">댓글삭제</button>';
+				code += '</p>';
+				code += '</div>';
+				
+			});
+			//$(but).parents('.panel').find('.pbody').append(code);
+			$(but).parents('.panel').find('.pbody').append(code);
+			
+			
+		},
+		error : function(xhr) {
+			alert("에러 상태 : " + xhr.status)
+		},
+		dataType : 'json'
+	});
+	
+	
+	
+}
+
+//var replySaveServer = function(but, vidx) {
+var replySaveServer = function(but) {
+
+	$.ajax({
+		
+		url : '/board/ReplySave.do',
+		type : 'post',
+		data : reply,
+		success : function(res) {
+			replyListServer(but, vidx);
+		},
+		error : function(xhr) {
+			alert("에러 상태 : " + xhr.status)
+		},
+		dataType : 'json'
+		
+	})
+	
+	
+	
+}
+
 // 페이지별 리스트 - html에서 listPageServer(1) 호출
 // cpage 변수는 페이지번호이고 controller로 전송한다.
 var listPageServer = function(cpage) {
@@ -24,11 +91,11 @@ var listPageServer = function(cpage) {
 				code += '<div class="panel panel-default">';
 				code += '<div class="panel-heading">';
 				code += '<h4 class="panel-title">';
-				code += '<a data-toggle="collapse" data-parent="#accordion" href="#collapse'+ v.seq +'">'+ v.title +'</a>';
+				code += '<a name="list" class="action" idx="'+ v.seq +'" data-toggle="collapse" data-parent="#accordion" href="#collapse'+ v.seq +'">'+ v.title +'</a>';
 				code += '</h4>';
 				code += '</div>';
 				code += '<div id="collapse'+ v.seq +'" class="panel-collapse collapse">';
-				code += '<div class="panel-body">';
+				code += '<div class="panel-body pbody">';
 				code += '<p class="p1">';
 				code += '작성자 : '+ v.name +' &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
 				code += '이메일 : '+ v.mail +' &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';

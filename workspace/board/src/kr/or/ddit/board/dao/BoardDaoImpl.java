@@ -56,7 +56,13 @@ public class BoardDaoImpl implements IBoardDao{
 	@Override
 	public int insertReply(ReplyVO vo) throws SQLException {
 		
-		return client.q
+		return  (Integer) client.insert("reply.insertReply", vo);
+	}
+
+	@Override
+	public List<ReplyVO> listReply(int bonum) throws SQLException {
+		
+		return client.queryForList("reply.listReply", bonum);
 	}
 	
 	

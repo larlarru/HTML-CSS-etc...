@@ -15,7 +15,8 @@ var boardUpdateServer = function() {
 			alert(res.sw);
 			
 			// 화면 수정
-			$(but).parents('.panel').remove();
+			//$(this).parents('.panel').remove();
+			listPageServer(1);
 		},
 		error : function(xhr) {
 			alert("상태 : " + xhr.status);

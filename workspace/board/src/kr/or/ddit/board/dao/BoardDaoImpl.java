@@ -64,6 +64,36 @@ public class BoardDaoImpl implements IBoardDao{
 		
 		return client.queryForList("reply.listReply", bonum);
 	}
+
+	@Override
+	public int updateReply(ReplyVO vo) throws SQLException {
+		// TODO Auto-generated method stub
+		return client.update("reply.updateReply", vo);
+	}
+
+	@Override
+	public int deleteReply(int renum) throws SQLException {
+		// TODO Auto-generated method stub
+		return client.delete("reply.deleteReply", renum);
+	}
+
+	@Override
+	public int insertBoard(BoardVO vo) throws SQLException {
+		// TODO Auto-generated method stub
+		return (Integer) client.insert("board.insertBoard", vo);
+	}
+
+	@Override
+	public int deleteBoard(int seq) throws SQLException {
+		// TODO Auto-generated method stub
+		return client.delete("board.deleteBoard", seq);
+	}
+
+	@Override
+	public int updateBoard(BoardVO vo) throws SQLException {
+		// TODO Auto-generated method stub
+		return client.update("board.updateBoard", vo);
+	}
 	
 	
 

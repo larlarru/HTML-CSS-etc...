@@ -24,6 +24,38 @@
 	<select id="getTotalCount" resultClass="int">
 		select count(*) from board1
 	</select>
+	
+	<insert id="insertBoard" parameterClass="boardVO">
+		insert into board1 values (
+			board1_seq.nextval,
+			#subject#,
+			#writer#,
+			#mail#,
+			#password#,
+			#content#,
+			0,
+			#wip#,
+			sysdate
+		)
+		
+		<selectKey keyProperty = "seq" resultClass="int">
+			select board1_seq.currval from dual
+		</selectKey>
+	</insert>
+	
+	<delete id="deleteBoard" parameterClass="int">
+		delete from board1 where seq = #data#
+	</delete>
+	
+	<update id="updateBoard" parameterClass="boardVO">
+		update board1 set 
+				subject = #subject#,
+				password = #password#,
+				mail = #mail#,
+				content = #content#,
+				wdate = sysdate
+			where seq = #seq#
+	</update>
 
 </sqlMap>
 

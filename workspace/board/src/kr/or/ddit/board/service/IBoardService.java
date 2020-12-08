@@ -18,10 +18,13 @@ public interface IBoardService {
 	public int getTotalCount();
 	
 	// 게시글 등록
+	public int insertBoard(BoardVO vo);
 	
 	// 게시글 삭제
+	public int deleteBoard(int seq);
 	
 	// 게시글 수정
+	public int updateBoard(BoardVO vo);
 	
 	// 조회수 증가
 	
@@ -29,8 +32,10 @@ public interface IBoardService {
 	public int insertReply(ReplyVO vo);
 	
 	// 댓글 수정
+	public int updateReply(ReplyVO vo);
 	
 	// 댓글 삭제
+	public int deleteReply(int renum);
 	
 	// 댓글 리스트
 	public List<ReplyVO> listReply(int bonum);

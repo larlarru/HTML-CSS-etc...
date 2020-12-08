@@ -9,11 +9,12 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <script src="../js/board.js"></script>
+<script src="../js/jquery.serializejson.min.js"></script>
 
 <style>
 	.pager {
 		float : left;
-		width : 80px;
+		width : 120px;
 		margin: 5px;
 		margin-left : 5%;
 	}
@@ -38,11 +39,17 @@
 		padding: 3px;
 		background: pink;
 	}
+	label{
+		display : inline-block;
+		width : 100px;
+		height : 30px;
+	}
 </style>
 
 <script>
 
 	reply = {};	// 객체 선언, 동적으로 객체의 속성이나 메소드를 추가 할 수 있다. 
+	board = {};	// 객체 선언, 동적으로 객체의 속성이나 메소드를 추가 할 수 있다.
 
 	$(function() {
 		
@@ -52,6 +59,14 @@
 		// 페이지번호를 클릭했을때 이벤트 처리
 		$('#pagelist').on('click', '.paging', function() {
 			
+			// 수정폼이 이미 열려있는지 비교
+			// 다른곳에 열려 있다면 열려있는 수정폼을 닫는다. - 폼을 body태그로 다시 append한다.
+			if($('#modifyForm').css('display') != 'none') {	// display뒤에 none가 없으니 가져오는거다.
+				
+				// 다른곳은 이미 열려있다.
+				replyReset();
+			}
+			
 			currentPage =  $(this).text().trim();
 			//console.log(currentPage);
 			listPageServer(currentPage);
@@ -60,6 +75,14 @@
 		// next버튼 클릭 이벤트
 		$('#pagelist').on('click', '.next', function() {
 			
+			// 수정폼이 이미 열려있는지 비교
+			// 다른곳에 열려 있다면 열려있는 수정폼을 닫는다. - 폼을 body태그로 다시 append한다.
+			if($('#modifyForm').css('display') != 'none') {	// display뒤에 none가 없으니 가져오는거다.
+				
+				// 다른곳은 이미 열려있다.
+				replyReset();
+			}
+			
 			//$('.paging:last')
 			currentPage = parseInt( $('.paging').last().text() ) + 1;
 			listPageServer(currentPage);
@@ -67,6 +90,14 @@
 		
 		// 이전 버튼 클릭 이벤트
 		$('#pagelist').on('click', '.prev', function() {
+			
+			// 수정폼이 이미 열려있는지 비교
+			// 다른곳에 열려 있다면 열려있는 수정폼을 닫는다. - 폼을 body태그로 다시 append한다.
+			if($('#modifyForm').css('display') != 'none') {	// display뒤에 none가 없으니 가져오는거다.
+				
+				// 다른곳은 이미 열려있다.
+				replyReset();
+			}
 			
 			//$('.paging:first')
 			currentPage = parseInt( $('.paging').first().text() ) - 1;
@@ -82,10 +113,31 @@
 			
 			if(vname == 'modify') {
 				
-				alert(vidx + "번글 수정");
+				//alert(vidx + "번글 수정");
+				
+				$('#uModal').modal('show');
+				
+				// 수정할 내용을 가져와서 modal창에 출력
+				pbody = $(this).parents('.panel');
+				name = $(pbody).find('.nspan').text();	// 이름
+				mail = $(pbody).find('.mspan').text();	// 메일
+				
+				cont = $(pbody).find('.cspan').html();	// 내용 - 줄칸띄어쓰기 때문에 text가 아닌 html로 가져와야한다.
+				cont = cont.replace(/<br>/g, "\n");
+				
+				title = $(pbody).find('a').text();	// 제목
+				
+				// uform에 출력
+				$('#uform #name').val(name);
+				$('#uform #subject').val(title);
+				$('#uform #mail').val(mail);
+				$('#uform #cont').val(cont);
+				
 			} else if(vname == 'delete') {
 				
-				alert(vidx + "번글 삭제");
+				//alert(vidx + "번글 삭제");
+				boardDeleteServer(this);
+				
 			} else if(vname == 'reply') {
 				
 				//alert(vidx + "번글 댓글 등록");
@@ -100,15 +152,140 @@
 				reply.name = rname2 + rname3 + rname1;
 				reply.cont = $(this).parent().find('.area').val();
 				
+				$(this).parent().find('.area').val("");	// val()에 ""넣어서 val("")하면 댓글 등록하고 비워진다.
+				
 				// ajax를 통해서 reply객체를 서버로 보내기
 				//replySaveServer(this , vidx);
 				replySaveServer(this);
 				
-			} else if(vname == 'list') {	// 제목 클릭하면 
+			} else if(vname == 'list') {	// 제목 클릭하면 해당 댓글 가져오기
 				
 				//replyListServer(this, vidx);	// this -> list : a태그
 				replyListServer(this);	// this -> list : a태그
+			} else if(vname == 'r_modify') {
+				//alert(vidx + "번 댓글을 수정합니다.");
+				
+				// 수정폼이 이미 열려있는지 비교
+				// 다른곳에 열려 있다면 열려있는 수정폼을 닫는다. - 폼을 body태그로 다시 append한다.
+				if($('#modifyForm').css('display') != 'none') {	// display뒤에 none가 없으니 가져오는거다.
+					
+					// 다른곳은 이미 열려있다.
+					replyReset();
+				}
+				
+				// 원래 내용 가져오기
+				modifycont = $(this).parents('.rep').find('.cont').html();
+								
+				// <br>태그를 \n으로 변경
+				modifycont = modifycont.replace(/<br>/g, "\n")
+				
+				// 수정내용을 수정폼의 text에 출력
+				$('#text').val(modifycont);
+				
+				// body에 있는 댓글 수정폼을 댓글 수정위치로 추가한다.
+				$(this).parents('.rep').find('.cont').empty().append($('#modifyForm'));
+				$('#modifyForm').show();
+				
+			} else if(vname == 'r_delete') {
+				//alert(vidx + "번 댓글을 삭제합니다.");
+				
+				replyDeleteServer(this);
 			}
+			
+			
+			
+		})
+		
+		function replyReset() {
+			
+			// 원래 댓글 내용이 있었던 span검색
+			spantag = $('#modifyForm').parent();
+			
+			// body로 다시 수정폼을 보낸다. - .body가 아니다.
+			$('body').append($('#modifyForm'));
+			$('#modifyForm').hide();
+			
+			// spantag내용으로 span에 원래 내용을 다시 출력한다.
+			$(spantag).html(modifycont.replace(/\n/g, '<br>'));
+		}
+		
+		// 댓글 수정폼에서 확인버튼 클릭
+		$('#btnok').on('click', function() {
+			
+			//alert(vidx);
+			
+			// 수정 내용 가져오기
+			modicont = $('#text').val();
+			
+			// 수정폼은 사라지고 수정 내용으로 다시 출력 
+			spantag = $('#modifyForm').parent();
+			$('body').append($('#modifyForm'));
+			$('#modifyForm').hide();
+			
+			$(spantag).html(modicont.replace(/\n/g, "<br>"));
+			
+			//alert(modicont);
+			replyModifyServer();	// vidx, modicont
+			
+		})
+		
+		// 댓글 수정폼에서 취소버튼 클릭
+		$('#btnreset').on('click', function() {
+			
+			// 수정폼이 이미 열려있는지 비교
+			// 다른곳에 열려 있다면 열려있는 수정폼을 닫는다. - 폼을 body태그로 다시 append한다.
+			if($('#modifyForm').css('display') != 'none') {	// display뒤에 none가 없으니 가져오는거다.
+				
+				// 다른곳은 이미 열려있다.
+				replyReset();
+			}
+			
+		})
+		
+		/* 
+		// 글쓰기 이벤트
+		$('#write').on('click', function() {
+			
+			//글쓰기 창
+			$('#wModal').modal('show');
+			
+		})
+		본문의 버튼에서 data-toggle, data-target속성으로 modal를 연다.
+		<input data-toggle="modal" data-target="#wModal" type="button" value="글쓰기" id="write">
+		 */
+		
+		// 글쓰기 폼에서 확인버튼 클릭
+		$('#wsend').on('click', function() {
+			
+			//입력한 모든 값을 가져온다. - 
+			//name = $('#name'),val();
+			//subject = $('#subject').val();
+			//data = {"writer" : name, "subject", subject}
+			
+			//console.log($('wform').serializeJSON());
+			
+			boardSaverServer();
+			
+			// 모달창 닫기
+			$('#wModal').modal('hide');
+			$('#wform .txt').val("");
+			
+		})
+		
+		// 글 수정창에서 글 수정 후 확인버튼 클릭
+		$('#usend').on('click', function() {
+			
+			//modal창에 수정된 내용을 가져온다.
+			board.writer = $('#uform #name').val();
+			board.subject = $('#uform #subject').val();
+			board.mail = $('#uform #mail').val();
+			board.content = $('#uform #cont').val();
+			board.password = $('#uform #pass').val();
+			board.seq = vidx;
+			
+			boardUpdateServer();
+			
+			
 		})
 		
 		
@@ -122,6 +299,18 @@
 
 <body>
 
+	<!-- 댓글 수정을 위한 폼 -->
+	<div id="modifyForm" style="display:none">
+		<textarea id="text" rows="5" cols="50"></textarea>
+		<input type="button" value="확인" id="btnok">
+		<input type="button" value="취소" id="btnreset">
+	</div>
+
+	<h1>게시판</h1>
+	<br>
+	<input data-toggle="modal" data-target="#wModal" type="button" value="글쓰기" id="write">
+	<br><br><br>
+	
 	<div class="box">
 	</div>
 	<br><br>
@@ -131,6 +320,68 @@
 				<li><a href="#">Previous</a></li>
 				<li><a href="#">Next</a></li>
 		</ul>
+	</div>
+	
+	 <!-- Modal -->
+	<div id="wModal" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+	
+	    <!-- Modal content-->
+	    <div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+	        	<h4 class="modal-title">Modal Header</h4>
+	      	</div>
+			<div class="modal-body">
+	         
+	         	<form id="wform">
+					<label>이름</label> : <input type='text' class="txt" id='name' name="writer"><br>
+					<label>제목</label> : <input type='text' class="txt" id='subject' name="subject"><br>
+					<label>메일</label> : <input type='text' class="txt" id='mail' name="mail"><br>
+					<label>비밀번호</label> : <input type="password" class="txt" id="pass" name="password"><br>
+					<label>내용</label> : <br>
+					<textarea rows="10" cols="50" class="txt" name="content"></textarea><br>
+					<input type='button' value='확인' id="wsend"><br>
+				</form>
+	         
+	      	</div>
+	      	<div class="modal-footer">
+	        	<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	      	</div>
+	    </div>
+	
+	  </div>
+	</div>
+	
+	<!-- Modal -->
+	<div id="uModal" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+	
+	    <!-- Modal content-->
+	    <div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+	        	<h4 class="modal-title">Modal Header</h4>
+	      	</div>
+			<div class="modal-body">
+	         
+	         	<form id="uform">
+					<label>이름</label> : <input type='text' class="txt" id='name' name="writer"><br>
+					<label>제목</label> : <input type='text' class="txt" id='subject' name="subject"><br>
+					<label>메일</label> : <input type='text' class="txt" id='mail' name="mail"><br>
+					<label>비밀번호</label> : <input type="password" class="txt" id="pass" name="password"><br>
+					<label>내용</label> : <br>
+					<textarea rows="10" cols="50" class="txt" id="cont" name="content"></textarea><br>
+					<input type='button' value='확인' id="usend"><br>
+				</form>
+	         
+	      	</div>
+	      	<div class="modal-footer">
+	        	<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	      	</div>
+	    </div>
+	
+	  </div>
 	</div>
 
 </body>

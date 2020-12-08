@@ -4,7 +4,129 @@
 
 currentPage = 1;
 
-//var replyListServer = function(but, vidx) {	// but : 댓글등록버튼, 제목을 클릭 - a 태그
+var boardUpdateServer = function() { 
+	
+	$.ajax({
+		
+		url : '/board/BoardUpdate.do',
+		type : 'post',
+		data : board,	// seq, writer, subject, content, password, mail
+		success : function(res) {
+			alert(res.sw);
+			
+			// 화면 수정
+			$(but).parents('.panel').remove();
+		},
+		error : function(xhr) {
+			alert("상태 : " + xhr.status);
+		},
+		dataType : 'json'
+	})
+	
+}
+
+var boardDeleteServer = function(but) {	// but 삭제버튼
+	
+	$.get(
+			'/board/BoardDelete.do',
+			{"seq" : vidx},
+			function(res) {
+				//alert(res.sw);
+				
+				// 화면에서 지우기
+				$(but).parents('.panel').remove();
+				
+			},
+			'json'
+		)
+}
+
+var boardSaverServer = function() {
+	
+	$.ajax({
+		
+		url : '/board/BoardSave.do',
+		data : $('#wform').serializeJSON(),
+		type : 'post',
+		dataType : 'json',
+		success : function(res) {
+			//alert(res.sw);
+			listPageServer(1);
+		},
+		error : function(xhr) {
+			alert("오류 : " + xhr.status);
+		}
+		
+	})
+}
+
+var replyDeleteServer = function(but) {	// but : 댓글 삭제 버튼
+	/*
+	$.getJSON(
+			'/board/ReplyDelete.do',
+			{"renum" : vidx},
+			function(res) {
+				
+			}
+	)
+	*/
+/*	$.get(
+			'/board/ReplyDelete.do',
+			{"renum" : vidx},
+			function(res) {
+				
+			},
+			'json'
+	)
+*/	
+	$.ajax({
+		
+		url : '/board/ReplyDelete.do',
+		type : 'get',
+		data : {"renum" : vidx}, 
+		success : function(res) {
+			// 성공 - 화면에서 삭제
+			//alert(res.sw);
+			$(but).parents('.rep').remove();
+			
+		},
+		error : function(xhr) {
+			alert("오류 : " + xhr.status);
+		},
+		dataType : 'json'
+		
+	})
+	
+}
+
+var replyModifyServer = function() {
+	/*
+	$.ajax({
+		
+		url : '/board/ReplyModify.do',
+		type : 'post',
+		data : {"renum" : vidx, "cont" : modicont},
+		success : function(res) {
+			alert(res.sw);
+		},
+		error : function(xhr) {
+			alert("오류 : " + xhr.status);
+		},
+		dataType : 'json'
+		
+	})
+	*/
+	$.post(
+			'/board/ReplyModify.do',
+			{"renum" : vidx, "cont" : modicont},
+			function(res) {
+				alert(res.sw);
+			},
+			'json'
+		)
+	
+}
+
 var replyListServer = function(but) {	// but : 댓글등록버튼, 제목을 클릭 - a 태그
 	
 	$.ajax({
@@ -14,7 +136,6 @@ var replyListServer = function(but) {	// but : 댓글등록버튼, 제목을 클
 		data : { "bonum" : vidx },
 		success : function(res) {
 			
-			//$(but).parents('.panel').find('.pbody').find('.rep').remove();
 			$(but).parents('.panel').find('.pbody').find('.rep').remove();
 			
 			code="";
@@ -34,7 +155,6 @@ var replyListServer = function(but) {	// but : 댓글등록버튼, 제목을 클
 				code += '</div>';
 				
 			});
-			//$(but).parents('.panel').find('.pbody').append(code);
 			$(but).parents('.panel').find('.pbody').append(code);
 			
 			
@@ -49,7 +169,6 @@ var replyListServer = function(but) {	// but : 댓글등록버튼, 제목을 클
 	
 }
 
-//var replySaveServer = function(but, vidx) {
 var replySaveServer = function(but) {
 
 	$.ajax({
@@ -97,10 +216,10 @@ var listPageServer = function(cpage) {
 				code += '<div id="collapse'+ v.seq +'" class="panel-collapse collapse">';
 				code += '<div class="panel-body pbody">';
 				code += '<p class="p1">';
-				code += '작성자 : '+ v.name +' &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
-				code += '이메일 : '+ v.mail +' &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
-				code += '조회수 : '+ v.hit +' &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
-				code += '작성날짜 : '+ v.wdate +'';
+				code += '작성자 : <span class="nspan">'+ v.name +'</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
+				code += '이메일 : <span class="mspan">'+ v.mail +'</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
+				code += '조회수 : <span class="hspan">'+ v.hit +'</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
+				code += '작성날짜 : <span class="wspan">'+ v.wdate +'</span>';
 				code += '</p>';
 
 				code += '<p class="p2">';
@@ -109,9 +228,9 @@ var listPageServer = function(cpage) {
 				code += '</p>';
 
 				code += '<hr>';
-				code += '<p>';
+				code += '<p><span class="cspan">';
 				code += v.cont;
-				code += '	</p>';
+				code += '</span>	</p>';
 				code += '<p>';
 				code += '	<textarea class="area" cols="60"></textarea>';
 				code += '	<button type="button" idx="'+ v.seq +'" class="action repb" name="reply">댓글등록</button>';

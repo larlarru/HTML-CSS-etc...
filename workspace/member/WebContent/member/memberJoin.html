@@ -100,6 +100,16 @@
 			 return false;
 		 } 
 	})
+	
+	// 성별
+	$("#gender").on('click', function(){	
+		
+		
+		if(regcheck()) {
+			 
+			 return false;
+		 } 
+	})
 
 	
 	// 전화번호
@@ -271,6 +281,19 @@
         <input type="date" class="form-control" id="bir" placeholder="Enter bir" name="mem_bir">
       </div>
       <span id="birspan"></span>
+    </div> 
+    
+   <div class="form-group">
+      <label class="control-label col-sm-2" for="gender">성별</label>
+      <div class="col-sm-4">
+        <!-- <input type="date" class="form-control" id="gender" placeholder="Enter bir" name="mem_gender"> -->
+        <select id="gender" class="form-control" name="mem_gender">
+		    <option value="">성별 선택</option>
+		    <option value="남">남</option>
+		    <option value="여">여</option>
+		</select>
+      </div>
+      <span id="genderspan"></span>
     </div> 
     
     

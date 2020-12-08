@@ -72,7 +72,7 @@ public class BoardList extends HttpServlet {
 		int totalCount = service.getTotalCount();
 		
 		// 한 페이지당 출력할 글 갯수
-		int perList = 3;
+		int perList = 5;
 		
 		int start = (cpage - 1) * perList + 1;
 		
@@ -85,7 +85,7 @@ public class BoardList extends HttpServlet {
 		if(end > totalCount) end = totalCount;
 		
 		// 한 화면에 출력될 페이지 갯수
-		int perPage = 2;
+		int perPage = 3;
 		
 		int totalPage= (int)(Math.ceil(totalCount / (double)perList));
 		

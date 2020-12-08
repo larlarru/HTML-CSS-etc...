@@ -98,6 +98,79 @@ public class BoardServiceImpl implements IBoardService{
 		
 		return list;
 	}
+
+	@Override
+	public int updateReply(ReplyVO vo) {
+		
+		int res = 0;
+		
+		try {
+			res = dao.updateReply(vo);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return res;
+	}
+
+	@Override
+	public int deleteReply(int renum) {
+		
+		int res = 0;
+		
+		try {
+			res = dao.deleteReply(renum);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return res;
+	}
+
+	@Override
+	public int insertBoard(BoardVO vo) {
+		
+		int seq = 0;
+		
+		try {
+			seq = dao.insertBoard(vo);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return seq;
+	}
+
+	@Override
+	public int deleteBoard(int seq) {
+		
+		int cnt = 0;
+		
+		try {
+			cnt = dao.deleteBoard(seq);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return cnt;
+	}
+
+	@Override
+	public int updateBoard(BoardVO vo) {
+		
+		int cnt = 0;
+		
+		try {
+			cnt = dao.updateBoard(vo);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return cnt;
+	}
 	
 	
 

@@ -59,7 +59,7 @@ function regcheck() {
 	passReg = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*]).{8,12}$/;
 	
 	if(!(passReg.test(vpass))) {
-		$('#pwdspan').html("올바르지 않습니다.").css('color', 'red');
+		$('#pwdspan').html("올바르지 않습니다. 영문대소문자 숫자 특수문자가 하나이상씩 8~12 입력해주십시오.").css('color', 'red');
 		return false;
 	} else {
 		$('#pwdspan').html("올바른 형식입니다.").css('color', 'green');
@@ -76,14 +76,14 @@ function regcheck() {
 	// 이름 2 ~ 5
 	if(vname.length < 2 || vname.length > 5) {
 		
-		$('#namespan').html("이름 2 ~ 5").css('color', 'red');
+		$('#namespan').html("한글로 이름 2 ~ 5 입력해 주십시오.").css('color', 'red');
 		return false;
 	}
 	
 	nameReg = /^[가-힣]{2,5}$/;
 	
 	if(!(nameReg.test(vname))) {
-		$('#namespan').html("올바르지 않습니다.").css('color', 'red');
+		$('#namespan').html("올바르지 않습니다. 한글로 이름 2 ~ 5 입력해 주십시오.").css('color', 'red');
 		return false;
 	} else {
 		$('#namespan').html("올바른 형식입니다.").css('color', 'green');
@@ -102,8 +102,20 @@ function regcheck() {
 	if(age < 10) {
 		$('#birspan').html("당신의 나이는 어립니다.").css('color', 'red');
 		return false;
-	} else {
+	} else if(age >= 10) {
 		$('#birspan').html("올바른 형식입니다.").css('color', 'green');
+	} else {
+		$('#birspan').html("올바른 형식이 아닙니다.").css('color', 'red');
+	}
+	
+	// 성별
+	genderVal = $('#gender').val();
+	if(genderVal == "남") {
+		$('#genderspan').html("올바른 형식입니다.(남)").css('color', 'green');
+	} else if(genderVal == "여") {
+		$('#genderspan').html("올바른 형식입니다.(여)").css('color', 'green');
+	} else {
+		$('#genderspan').html("올바른 형식이 아닙니다.").css('color', 'red');
 	}
 	
 	
@@ -120,7 +132,7 @@ function regcheck() {
 	// 전화번호 정규식
 	telReg = /\d{3}\d{4}\d{4}/;
 	if(!(telReg.test(vhp))) {
-		$('#hpspan').html("전화번호 형식 오류").css('color', 'red');
+		$('#hpspan').html("전화번호 형식 오류(3-4-4(-빼고 입력해 주십시오.))").css('color', 'red');
 		return false;
 	}  else {
 		$('#hpspan').html("올바른 형식입니다.").css('color', 'green');
@@ -138,7 +150,7 @@ function regcheck() {
 	// 메일 정규식
 	mailReg = /^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z]+){1,2}$/;
 	if(!(mailReg.test(vemail))) {
-		$('#emailspan').html("올바르지 않습니다.").css('color', 'red');
+		$('#emailspan').html("올바르지 않습니다.(*@*.(알파벳).(알파벳) 또는 *@*.(알파벳)이런식으로 써주십시오.)").css('color', 'red');
 		return false;
 	} else {
 		$('#emailspan').html("올바른 형식입니다.").css('color', 'green');

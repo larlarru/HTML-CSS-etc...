@@ -56,6 +56,10 @@
 				wdate = sysdate
 			where seq = #seq#
 	</update>
+	
+	<update id="hitUpdate" parameterClass="int">
+		update board1 set hit = hit + 1 where seq = #data#
+	</update>
 
 </sqlMap>
 

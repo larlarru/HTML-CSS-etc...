@@ -12,6 +12,12 @@
 <script src="../js/jquery.serializejson.min.js"></script>
 
 <style>
+	h1, #write, .panel {
+		margin : 10px;
+	}
+	.panel-heading:hover {
+		blackground : blue;
+	}
 	.pager {
 		float : left;
 		width : 120px;
@@ -160,6 +166,18 @@
 				
 			} else if(vname == 'list') {	// 제목 클릭하면 해당 댓글 가져오기
 				
+				// 조회수 증가
+				vclass = $(this).parents('.panel').find('.in').attr('class');
+				console.log("class = " + vclass);
+				
+				// 닫혔을때 제목을 클릭하면 in이 없는 상태 - undefined - 조회수 증가
+				// undefined는 일반 문자가 아니기 때문에 equals로 비교할수 없고 typeof를 이용하여 비교한다.
+				if(typeof vclass == "undefined") {
+					
+					hitUpdateSaver(this);	// 여기 this는 제목(list)
+					
+				}
+				
 				//replyListServer(this, vidx);	// this -> list : a태그
 				replyListServer(this);	// this -> list : a태그
 			} else if(vname == 'r_modify') {
@@ -285,6 +303,7 @@
 			
 			boardUpdateServer();
 			$('#uModal').modal('hide');
+			$('#uform .txt').val("");
 			
 			
 		})

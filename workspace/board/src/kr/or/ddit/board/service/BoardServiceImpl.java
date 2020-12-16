@@ -171,6 +171,23 @@ public class BoardServiceImpl implements IBoardService{
 		
 		return cnt;
 	}
+
+	@Override
+	public int hitUpdate(int seq) {
+		
+		int cnt = 0;
+		
+		try {
+			cnt = dao.hitUpdate(seq);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		// ajax가 아닐때
+		// dao.listPage(1,5);
+		
+		return cnt;
+	}
 	
 	
 

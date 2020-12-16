@@ -42,7 +42,7 @@ public class BoardUpdate extends HttpServlet {
 		vo.setMail(request.getParameter("mail"));
 		vo.setPassword(request.getParameter("password"));
 		vo.setContent(request.getParameter("content"));
-		vo.setSeq(Integer.parseInt((request.getParameter("seq"))));
+		vo.setSeq(Integer.parseInt(request.getParameter("seq")));
 		
 		// 1
 		IBoardService serivce = BoardServiceImpl.getService();

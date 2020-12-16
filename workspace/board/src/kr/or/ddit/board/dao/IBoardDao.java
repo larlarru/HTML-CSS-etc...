@@ -28,6 +28,7 @@ public interface IBoardDao {
 	public int updateBoard(BoardVO vo) throws SQLException;
 	
 	// 조회수 증가
+	public int hitUpdate(int seq) throws SQLException;
 	
 	// 댓글 등록
 	public int insertReply(ReplyVO vo) throws SQLException;

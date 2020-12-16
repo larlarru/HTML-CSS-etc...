@@ -4,6 +4,31 @@
 
 currentPage = 1;
 
+var hitUpdateSaver = function(but) {	// but : 제목이 있는 a태그 - 리스트
+	
+	$.ajax({
+		
+		url : '/board/HitUpdate.do',
+		type : 'get',
+		data : { "seq" : vidx },	// data : "seq=" + vidx;
+		success : function(res) {
+			//alert(res.sw);
+			
+			// 화면의 조회수 수정
+			hit = $(but).parents('.panel').find('.hspan').text();
+			hit = parseInt(hit) + 1;
+			$(but).parents('.panel').find('.hspan').text(hit);
+		},
+		error : function(xhr) {
+			alert("상태 : " + xhr.status);
+		},
+		dataType : 'json'
+		
+	})
+	
+	
+}
+
 var boardUpdateServer = function() { 
 	
 	$.ajax({
@@ -14,9 +39,21 @@ var boardUpdateServer = function() {
 		success : function(res) {
 			alert(res.sw);
 			
-			// 화면 수정
-			//$(this).parents('.panel').remove();
-			listPageServer(1);
+			// 화면 수정 - 수정모달창에 있는 값들을 다시 가져와서(board객체) 화면에 출력한다.
+			//listPageServer(1);
+			$(pbody).find('.nspan').text(board.writer);
+			$(pbody).find('.mspan').text(board.mail);
+			content = board.content;
+			content = content.replace(/\n/g, "<br>");
+			$(pbody).find('.cspan').html(content);
+			$(pbody).find('a').text(board.subject);
+			
+			today = new Date();
+			//today.toLocaleDateString
+			today = today.toLocaleString();
+			$(pbody).find('.wspan').text(today);
+			//listPageServer(1);
+			
 		},
 		error : function(xhr) {
 			alert("상태 : " + xhr.status);
@@ -229,9 +266,7 @@ var listPageServer = function(cpage) {
 				code += '</p>';
 
 				code += '<hr>';
-				code += '<p><span class="cspan">';
-				code += v.cont;
-				code += '</span>	</p>';
+				code += '<p><span class="cspan">'+ v.cont +'</span></p>';
 				code += '<p>';
 				code += '	<textarea class="area" cols="60"></textarea>';
 				code += '	<button type="button" idx="'+ v.seq +'" class="action repb" name="reply">댓글등록</button>';

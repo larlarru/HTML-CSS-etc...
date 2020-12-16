@@ -94,6 +94,11 @@ public class BoardDaoImpl implements IBoardDao{
 		// TODO Auto-generated method stub
 		return client.update("board.updateBoard", vo);
 	}
+
+	@Override
+	public int hitUpdate(int seq) throws SQLException {
+		return client.update("board.hitUpdate", seq);
+	}
 	
 	
 

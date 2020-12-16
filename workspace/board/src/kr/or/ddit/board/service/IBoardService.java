@@ -27,6 +27,7 @@ public interface IBoardService {
 	public int updateBoard(BoardVO vo);
 	
 	// 조회수 증가
+	public int hitUpdate(int seq);
 	
 	// 댓글 등록
 	public int insertReply(ReplyVO vo);
